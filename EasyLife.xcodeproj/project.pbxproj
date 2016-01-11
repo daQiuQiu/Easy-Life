@@ -1,0 +1,522 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8F0385FA1C43856A00AE9523 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0385F91C43856A00AE9523 /* main.m */; };
+		8F0385FD1C43856A00AE9523 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0385FC1C43856A00AE9523 /* AppDelegate.m */; };
+		8F0386001C43856A00AE9523 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0385FF1C43856A00AE9523 /* ViewController.m */; };
+		8F0386031C43856A00AE9523 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F0386011C43856A00AE9523 /* Main.storyboard */; };
+		8F0386051C43856A00AE9523 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F0386041C43856A00AE9523 /* Assets.xcassets */; };
+		8F0386081C43856A00AE9523 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F0386061C43856A00AE9523 /* LaunchScreen.storyboard */; };
+		8F0386131C43856B00AE9523 /* EasyLifeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0386121C43856B00AE9523 /* EasyLifeTests.m */; };
+		8F03861E1C43856B00AE9523 /* EasyLifeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F03861D1C43856B00AE9523 /* EasyLifeUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8F03860F1C43856B00AE9523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F0385ED1C43856900AE9523 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F0385F41C43856A00AE9523;
+			remoteInfo = EasyLife;
+		};
+		8F03861A1C43856B00AE9523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F0385ED1C43856900AE9523 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F0385F41C43856A00AE9523;
+			remoteInfo = EasyLife;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8F0385F51C43856A00AE9523 /* EasyLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F0385F91C43856A00AE9523 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8F0385FB1C43856A00AE9523 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8F0385FC1C43856A00AE9523 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8F0385FE1C43856A00AE9523 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8F0385FF1C43856A00AE9523 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8F0386021C43856A00AE9523 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8F0386041C43856A00AE9523 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8F0386071C43856A00AE9523 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8F0386091C43856A00AE9523 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F03860E1C43856B00AE9523 /* EasyLifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyLifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F0386121C43856B00AE9523 /* EasyLifeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EasyLifeTests.m; sourceTree = "<group>"; };
+		8F0386141C43856B00AE9523 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F0386191C43856B00AE9523 /* EasyLifeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyLifeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F03861D1C43856B00AE9523 /* EasyLifeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EasyLifeUITests.m; sourceTree = "<group>"; };
+		8F03861F1C43856B00AE9523 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8F0385F21C43856A00AE9523 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F03860B1C43856B00AE9523 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F0386161C43856B00AE9523 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8F0385EC1C43856900AE9523 = {
+			isa = PBXGroup;
+			children = (
+				8F0385F71C43856A00AE9523 /* EasyLife */,
+				8F0386111C43856B00AE9523 /* EasyLifeTests */,
+				8F03861C1C43856B00AE9523 /* EasyLifeUITests */,
+				8F0385F61C43856A00AE9523 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8F0385F61C43856A00AE9523 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8F0385F51C43856A00AE9523 /* EasyLife.app */,
+				8F03860E1C43856B00AE9523 /* EasyLifeTests.xctest */,
+				8F0386191C43856B00AE9523 /* EasyLifeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8F0385F71C43856A00AE9523 /* EasyLife */ = {
+			isa = PBXGroup;
+			children = (
+				8F0385FB1C43856A00AE9523 /* AppDelegate.h */,
+				8F0385FC1C43856A00AE9523 /* AppDelegate.m */,
+				8F0385FE1C43856A00AE9523 /* ViewController.h */,
+				8F0385FF1C43856A00AE9523 /* ViewController.m */,
+				8F0386011C43856A00AE9523 /* Main.storyboard */,
+				8F0386041C43856A00AE9523 /* Assets.xcassets */,
+				8F0386061C43856A00AE9523 /* LaunchScreen.storyboard */,
+				8F0386091C43856A00AE9523 /* Info.plist */,
+				8F0385F81C43856A00AE9523 /* Supporting Files */,
+			);
+			path = EasyLife;
+			sourceTree = "<group>";
+		};
+		8F0385F81C43856A00AE9523 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8F0385F91C43856A00AE9523 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8F0386111C43856B00AE9523 /* EasyLifeTests */ = {
+			isa = PBXGroup;
+			children = (
+				8F0386121C43856B00AE9523 /* EasyLifeTests.m */,
+				8F0386141C43856B00AE9523 /* Info.plist */,
+			);
+			path = EasyLifeTests;
+			sourceTree = "<group>";
+		};
+		8F03861C1C43856B00AE9523 /* EasyLifeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8F03861D1C43856B00AE9523 /* EasyLifeUITests.m */,
+				8F03861F1C43856B00AE9523 /* Info.plist */,
+			);
+			path = EasyLifeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8F0385F41C43856A00AE9523 /* EasyLife */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F0386221C43856B00AE9523 /* Build configuration list for PBXNativeTarget "EasyLife" */;
+			buildPhases = (
+				8F0385F11C43856A00AE9523 /* Sources */,
+				8F0385F21C43856A00AE9523 /* Frameworks */,
+				8F0385F31C43856A00AE9523 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EasyLife;
+			productName = EasyLife;
+			productReference = 8F0385F51C43856A00AE9523 /* EasyLife.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8F03860D1C43856B00AE9523 /* EasyLifeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F0386251C43856B00AE9523 /* Build configuration list for PBXNativeTarget "EasyLifeTests" */;
+			buildPhases = (
+				8F03860A1C43856B00AE9523 /* Sources */,
+				8F03860B1C43856B00AE9523 /* Frameworks */,
+				8F03860C1C43856B00AE9523 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8F0386101C43856B00AE9523 /* PBXTargetDependency */,
+			);
+			name = EasyLifeTests;
+			productName = EasyLifeTests;
+			productReference = 8F03860E1C43856B00AE9523 /* EasyLifeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8F0386181C43856B00AE9523 /* EasyLifeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F0386281C43856B00AE9523 /* Build configuration list for PBXNativeTarget "EasyLifeUITests" */;
+			buildPhases = (
+				8F0386151C43856B00AE9523 /* Sources */,
+				8F0386161C43856B00AE9523 /* Frameworks */,
+				8F0386171C43856B00AE9523 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8F03861B1C43856B00AE9523 /* PBXTargetDependency */,
+			);
+			name = EasyLifeUITests;
+			productName = EasyLifeUITests;
+			productReference = 8F0386191C43856B00AE9523 /* EasyLifeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8F0385ED1C43856900AE9523 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "易仁";
+				TargetAttributes = {
+					8F0385F41C43856A00AE9523 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = C5SY83Z869;
+					};
+					8F03860D1C43856B00AE9523 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = C5SY83Z869;
+						TestTargetID = 8F0385F41C43856A00AE9523;
+					};
+					8F0386181C43856B00AE9523 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = C5SY83Z869;
+						TestTargetID = 8F0385F41C43856A00AE9523;
+					};
+				};
+			};
+			buildConfigurationList = 8F0385F01C43856900AE9523 /* Build configuration list for PBXProject "EasyLife" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8F0385EC1C43856900AE9523;
+			productRefGroup = 8F0385F61C43856A00AE9523 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8F0385F41C43856A00AE9523 /* EasyLife */,
+				8F03860D1C43856B00AE9523 /* EasyLifeTests */,
+				8F0386181C43856B00AE9523 /* EasyLifeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8F0385F31C43856A00AE9523 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F0386081C43856A00AE9523 /* LaunchScreen.storyboard in Resources */,
+				8F0386051C43856A00AE9523 /* Assets.xcassets in Resources */,
+				8F0386031C43856A00AE9523 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F03860C1C43856B00AE9523 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F0386171C43856B00AE9523 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8F0385F11C43856A00AE9523 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F0386001C43856A00AE9523 /* ViewController.m in Sources */,
+				8F0385FD1C43856A00AE9523 /* AppDelegate.m in Sources */,
+				8F0385FA1C43856A00AE9523 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F03860A1C43856B00AE9523 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F0386131C43856B00AE9523 /* EasyLifeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F0386151C43856B00AE9523 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F03861E1C43856B00AE9523 /* EasyLifeUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8F0386101C43856B00AE9523 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F0385F41C43856A00AE9523 /* EasyLife */;
+			targetProxy = 8F03860F1C43856B00AE9523 /* PBXContainerItemProxy */;
+		};
+		8F03861B1C43856B00AE9523 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F0385F41C43856A00AE9523 /* EasyLife */;
+			targetProxy = 8F03861A1C43856B00AE9523 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8F0386011C43856A00AE9523 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F0386021C43856A00AE9523 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8F0386061C43856A00AE9523 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F0386071C43856A00AE9523 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8F0386201C43856B00AE9523 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8F0386211C43856B00AE9523 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8F0386231C43856B00AE9523 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = EasyLife/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLife;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8F0386241C43856B00AE9523 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = EasyLife/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLife;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8F0386261C43856B00AE9523 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = EasyLifeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLifeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasyLife.app/EasyLife";
+			};
+			name = Debug;
+		};
+		8F0386271C43856B00AE9523 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = EasyLifeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLifeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasyLife.app/EasyLife";
+			};
+			name = Release;
+		};
+		8F0386291C43856B00AE9523 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = EasyLifeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLifeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = EasyLife;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		8F03862A1C43856B00AE9523 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = EasyLifeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLifeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = EasyLife;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8F0385F01C43856900AE9523 /* Build configuration list for PBXProject "EasyLife" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F0386201C43856B00AE9523 /* Debug */,
+				8F0386211C43856B00AE9523 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F0386221C43856B00AE9523 /* Build configuration list for PBXNativeTarget "EasyLife" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F0386231C43856B00AE9523 /* Debug */,
+				8F0386241C43856B00AE9523 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8F0386251C43856B00AE9523 /* Build configuration list for PBXNativeTarget "EasyLifeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F0386261C43856B00AE9523 /* Debug */,
+				8F0386271C43856B00AE9523 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8F0386281C43856B00AE9523 /* Build configuration list for PBXNativeTarget "EasyLifeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F0386291C43856B00AE9523 /* Debug */,
+				8F03862A1C43856B00AE9523 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8F0385ED1C43856900AE9523 /* Project object */;
+}
