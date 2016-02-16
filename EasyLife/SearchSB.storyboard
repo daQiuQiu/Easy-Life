@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hmQ-cU-ptF">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home Header View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="HomeHeaderViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PUk-fK-MYu"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1642" y="165"/>
+        </scene>
+        <!--搜索-->
+        <scene sceneID="PN7-9y-cmG">
+            <objects>
+                <viewController storyboardIdentifier="websearchview" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pFA-l6-dvF" customClass="WebSearchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nQv-Ib-740"/>
+                        <viewControllerLayoutGuide type="bottom" id="4jr-mD-z3e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YMz-UM-woj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPJ-gh-BUS">
+                                <rect key="frame" x="-4" y="-64" width="328" height="676"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VPJ-gh-BUS" firstAttribute="top" secondItem="nQv-Ib-740" secondAttribute="bottom" constant="-64" id="PJi-Yj-OFS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VPJ-gh-BUS" secondAttribute="trailing" constant="-20" id="d88-gI-BX1"/>
+                            <constraint firstItem="VPJ-gh-BUS" firstAttribute="leading" secondItem="YMz-UM-woj" secondAttribute="leadingMargin" constant="-20" id="fYH-Z9-HuD"/>
+                            <constraint firstItem="4jr-mD-z3e" firstAttribute="top" secondItem="VPJ-gh-BUS" secondAttribute="bottom" constant="-44" id="oY9-h8-hIA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="搜索" id="H3f-b6-prl"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="searchWebView" destination="VPJ-gh-BUS" id="AJ0-gt-ae3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XYJ-GX-7xy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2159" y="170"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HA3-xV-WRZ">
+            <objects>
+                <navigationController storyboardIdentifier="searchnavi" automaticallyAdjustsScrollViewInsets="NO" id="hmQ-cU-ptF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xh6-TZ-ZHy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="3Oe-3s-yDY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uvu-jg-eQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="830" y="165"/>
+        </scene>
+    </scenes>
+</document>

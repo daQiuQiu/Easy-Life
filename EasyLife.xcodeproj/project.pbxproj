@@ -7,14 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44AB94394211B1D857DAB50E /* libPods-EasyLife.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B211F7AD15B02D82790BD387 /* libPods-EasyLife.a */; };
 		8F0385FA1C43856A00AE9523 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0385F91C43856A00AE9523 /* main.m */; };
 		8F0385FD1C43856A00AE9523 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0385FC1C43856A00AE9523 /* AppDelegate.m */; };
-		8F0386001C43856A00AE9523 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0385FF1C43856A00AE9523 /* ViewController.m */; };
 		8F0386031C43856A00AE9523 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F0386011C43856A00AE9523 /* Main.storyboard */; };
 		8F0386051C43856A00AE9523 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F0386041C43856A00AE9523 /* Assets.xcassets */; };
 		8F0386081C43856A00AE9523 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F0386061C43856A00AE9523 /* LaunchScreen.storyboard */; };
 		8F0386131C43856B00AE9523 /* EasyLifeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0386121C43856B00AE9523 /* EasyLifeTests.m */; };
 		8F03861E1C43856B00AE9523 /* EasyLifeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F03861D1C43856B00AE9523 /* EasyLifeUITests.m */; };
+		8F0386791C43A04F00AE9523 /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0386781C43A04F00AE9523 /* MainTabViewController.m */; };
+		8F03867D1C43B6EB00AE9523 /* VoiceSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F03867C1C43B6EB00AE9523 /* VoiceSB.storyboard */; };
+		8F03867F1C43B6F900AE9523 /* MovieSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F03867E1C43B6F900AE9523 /* MovieSB.storyboard */; };
+		8F0386811C43B70300AE9523 /* NearSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F0386801C43B70300AE9523 /* NearSB.storyboard */; };
+		8F35A2C21C61DBB100A1ED45 /* WebSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2BA1C61DBB100A1ED45 /* WebSearchViewController.m */; };
+		8F35A2C31C61DBB100A1ED45 /* HomeHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2BC1C61DBB100A1ED45 /* HomeHeaderViewController.m */; };
+		8F35A2C41C61DBB100A1ED45 /* DKLiveBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2BE1C61DBB100A1ED45 /* DKLiveBlurView.m */; };
+		8F35A2C51C61DBB100A1ED45 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2C01C61DBB100A1ED45 /* DataModel.m */; };
+		8F35A2C61C61DBB100A1ED45 /* SearchSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F35A2C11C61DBB100A1ED45 /* SearchSB.storyboard */; };
+		8F35A2C81C61DBCC00A1ED45 /* weatherImage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F35A2C71C61DBCC00A1ED45 /* weatherImage.plist */; };
+		8F35A2CA1C61E3C300A1ED45 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F35A2C91C61E3C300A1ED45 /* Info.plist */; };
+		8F35A2D81C61F91300A1ED45 /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2CC1C61F91300A1ED45 /* UIBarButtonItem+Badge.m */; };
+		8F35A2D91C61F91300A1ED45 /* SideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2CE1C61F91300A1ED45 /* SideViewController.m */; };
+		8F35A2DA1C61F91300A1ED45 /* NewsSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F35A2CF1C61F91300A1ED45 /* NewsSB.storyboard */; };
+		8F35A2DB1C61F91300A1ED45 /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2D11C61F91300A1ED45 /* NewsTableViewCell.m */; };
+		8F35A2DC1C61F91300A1ED45 /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2D31C61F91300A1ED45 /* NewsDetailViewController.m */; };
+		8F35A2DD1C61F91300A1ED45 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2D51C61F91300A1ED45 /* TableViewController.m */; };
+		8F35A2DE1C61F91300A1ED45 /* DataLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2D71C61F91300A1ED45 /* DataLoading.m */; };
+		8FD58A0A1C71A40100652009 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A091C71A40100652009 /* Security.framework */; };
+		8FD58A0C1C71A40D00652009 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A0B1C71A40D00652009 /* libicucore.tbd */; };
+		8FD58A0E1C71A41600652009 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A0D1C71A41600652009 /* libz.1.2.5.tbd */; };
+		8FD58A101C71A41D00652009 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A0F1C71A41D00652009 /* CoreTelephony.framework */; };
+		8FD58A121C71A42800652009 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A111C71A42800652009 /* QuartzCore.framework */; };
+		8FD58A141C71A43400652009 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A131C71A43400652009 /* SystemConfiguration.framework */; };
+		8FD58A161C71A43D00652009 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A151C71A43D00652009 /* Accounts.framework */; };
+		8FD58A181C71A4C800652009 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A171C71A4C800652009 /* CoreLocation.framework */; };
+		8FD58A1A1C71A4D300652009 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A191C71A4D300652009 /* AVFoundation.framework */; };
+		8FD58A1C1C71A4DA00652009 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A1B1C71A4DA00652009 /* AddressBook.framework */; };
+		8FD58A1E1C71A4E800652009 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A1D1C71A4E800652009 /* AudioToolbox.framework */; };
+		8FD58A201C71A4F000652009 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A1F1C71A4F000652009 /* UIKit.framework */; };
+		8FD58A221C71A4FA00652009 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A211C71A4FA00652009 /* Foundation.framework */; };
+		8FD58A241C71A52400652009 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A231C71A52400652009 /* CoreGraphics.framework */; };
+		8FD58A261C71A56300652009 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A251C71A56300652009 /* iflyMSC.framework */; };
+		8FD58A291C71A70900652009 /* VoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD58A281C71A70900652009 /* VoiceViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,22 +69,68 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D6FC19495FD1E513916AA70 /* Pods-EasyLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyLife.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyLife/Pods-EasyLife.debug.xcconfig"; sourceTree = "<group>"; };
 		8F0385F51C43856A00AE9523 /* EasyLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F0385F91C43856A00AE9523 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8F0385FB1C43856A00AE9523 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8F0385FC1C43856A00AE9523 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8F0385FE1C43856A00AE9523 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8F0385FF1C43856A00AE9523 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8F0386021C43856A00AE9523 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8F0386041C43856A00AE9523 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8F0386071C43856A00AE9523 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8F0386091C43856A00AE9523 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F03860E1C43856B00AE9523 /* EasyLifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyLifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F0386121C43856B00AE9523 /* EasyLifeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EasyLifeTests.m; sourceTree = "<group>"; };
 		8F0386141C43856B00AE9523 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F0386191C43856B00AE9523 /* EasyLifeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyLifeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F03861D1C43856B00AE9523 /* EasyLifeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EasyLifeUITests.m; sourceTree = "<group>"; };
 		8F03861F1C43856B00AE9523 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F0386771C43A04F00AE9523 /* MainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabViewController.h; sourceTree = "<group>"; };
+		8F0386781C43A04F00AE9523 /* MainTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabViewController.m; sourceTree = "<group>"; };
+		8F03867C1C43B6EB00AE9523 /* VoiceSB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VoiceSB.storyboard; sourceTree = "<group>"; };
+		8F03867E1C43B6F900AE9523 /* MovieSB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MovieSB.storyboard; sourceTree = "<group>"; };
+		8F0386801C43B70300AE9523 /* NearSB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NearSB.storyboard; sourceTree = "<group>"; };
+		8F35A2B91C61DBB100A1ED45 /* WebSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSearchViewController.h; sourceTree = "<group>"; };
+		8F35A2BA1C61DBB100A1ED45 /* WebSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSearchViewController.m; sourceTree = "<group>"; };
+		8F35A2BB1C61DBB100A1ED45 /* HomeHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeHeaderViewController.h; sourceTree = "<group>"; };
+		8F35A2BC1C61DBB100A1ED45 /* HomeHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeHeaderViewController.m; sourceTree = "<group>"; };
+		8F35A2BD1C61DBB100A1ED45 /* DKLiveBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKLiveBlurView.h; sourceTree = "<group>"; };
+		8F35A2BE1C61DBB100A1ED45 /* DKLiveBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKLiveBlurView.m; sourceTree = "<group>"; };
+		8F35A2BF1C61DBB100A1ED45 /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
+		8F35A2C01C61DBB100A1ED45 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
+		8F35A2C11C61DBB100A1ED45 /* SearchSB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchSB.storyboard; sourceTree = "<group>"; };
+		8F35A2C71C61DBCC00A1ED45 /* weatherImage.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = weatherImage.plist; sourceTree = "<group>"; };
+		8F35A2C91C61E3C300A1ED45 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F35A2CB1C61F91300A1ED45 /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
+		8F35A2CC1C61F91300A1ED45 /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
+		8F35A2CD1C61F91300A1ED45 /* SideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideViewController.h; sourceTree = "<group>"; };
+		8F35A2CE1C61F91300A1ED45 /* SideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideViewController.m; sourceTree = "<group>"; };
+		8F35A2CF1C61F91300A1ED45 /* NewsSB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsSB.storyboard; sourceTree = "<group>"; };
+		8F35A2D01C61F91300A1ED45 /* NewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCell.h; sourceTree = "<group>"; };
+		8F35A2D11C61F91300A1ED45 /* NewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCell.m; sourceTree = "<group>"; };
+		8F35A2D21C61F91300A1ED45 /* NewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailViewController.h; sourceTree = "<group>"; };
+		8F35A2D31C61F91300A1ED45 /* NewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailViewController.m; sourceTree = "<group>"; };
+		8F35A2D41C61F91300A1ED45 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		8F35A2D51C61F91300A1ED45 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		8F35A2D61C61F91300A1ED45 /* DataLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLoading.h; sourceTree = "<group>"; };
+		8F35A2D71C61F91300A1ED45 /* DataLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataLoading.m; sourceTree = "<group>"; };
+		8FD58A091C71A40100652009 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		8FD58A0B1C71A40D00652009 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		8FD58A0D1C71A41600652009 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		8FD58A0F1C71A41D00652009 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		8FD58A111C71A42800652009 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8FD58A131C71A43400652009 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8FD58A151C71A43D00652009 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		8FD58A171C71A4C800652009 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		8FD58A191C71A4D300652009 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8FD58A1B1C71A4DA00652009 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		8FD58A1D1C71A4E800652009 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8FD58A1F1C71A4F000652009 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8FD58A211C71A4FA00652009 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8FD58A231C71A52400652009 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8FD58A251C71A56300652009 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
+		8FD58A271C71A70900652009 /* VoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceViewController.h; sourceTree = "<group>"; };
+		8FD58A281C71A70900652009 /* VoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceViewController.m; sourceTree = "<group>"; };
+		B211F7AD15B02D82790BD387 /* libPods-EasyLife.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyLife.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B420ED63A2A916FAF03AF6B8 /* Pods-EasyLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyLife.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyLife/Pods-EasyLife.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +138,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FD58A261C71A56300652009 /* iflyMSC.framework in Frameworks */,
+				8FD58A241C71A52400652009 /* CoreGraphics.framework in Frameworks */,
+				8FD58A221C71A4FA00652009 /* Foundation.framework in Frameworks */,
+				8FD58A201C71A4F000652009 /* UIKit.framework in Frameworks */,
+				8FD58A1E1C71A4E800652009 /* AudioToolbox.framework in Frameworks */,
+				8FD58A1C1C71A4DA00652009 /* AddressBook.framework in Frameworks */,
+				8FD58A1A1C71A4D300652009 /* AVFoundation.framework in Frameworks */,
+				8FD58A181C71A4C800652009 /* CoreLocation.framework in Frameworks */,
+				8FD58A161C71A43D00652009 /* Accounts.framework in Frameworks */,
+				8FD58A141C71A43400652009 /* SystemConfiguration.framework in Frameworks */,
+				8FD58A121C71A42800652009 /* QuartzCore.framework in Frameworks */,
+				8FD58A101C71A41D00652009 /* CoreTelephony.framework in Frameworks */,
+				8FD58A0E1C71A41600652009 /* libz.1.2.5.tbd in Frameworks */,
+				8FD58A0C1C71A40D00652009 /* libicucore.tbd in Frameworks */,
+				8FD58A0A1C71A40100652009 /* Security.framework in Frameworks */,
+				44AB94394211B1D857DAB50E /* libPods-EasyLife.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +181,8 @@
 				8F0386111C43856B00AE9523 /* EasyLifeTests */,
 				8F03861C1C43856B00AE9523 /* EasyLifeUITests */,
 				8F0385F61C43856A00AE9523 /* Products */,
+				C8AEA722875BDBFCE4D03E9C /* Pods */,
+				E9F6798FED9333AC8D29A84A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,12 +201,14 @@
 			children = (
 				8F0385FB1C43856A00AE9523 /* AppDelegate.h */,
 				8F0385FC1C43856A00AE9523 /* AppDelegate.m */,
-				8F0385FE1C43856A00AE9523 /* ViewController.h */,
-				8F0385FF1C43856A00AE9523 /* ViewController.m */,
-				8F0386011C43856A00AE9523 /* Main.storyboard */,
+				8F0386851C43B73A00AE9523 /* SearchView */,
+				8F0386841C43B72700AE9523 /* VoiceView */,
+				8F0386831C43B71C00AE9523 /* MovieView */,
+				8F0386821C43B70900AE9523 /* NearView */,
+				8F03862B1C4392F100AE9523 /* MainView */,
+				8F03862F1C43936800AE9523 /* NewsView */,
 				8F0386041C43856A00AE9523 /* Assets.xcassets */,
-				8F0386061C43856A00AE9523 /* LaunchScreen.storyboard */,
-				8F0386091C43856A00AE9523 /* Info.plist */,
+				8F35A2C91C61E3C300A1ED45 /* Info.plist */,
 				8F0385F81C43856A00AE9523 /* Supporting Files */,
 			);
 			path = EasyLife;
@@ -117,6 +217,7 @@
 		8F0385F81C43856A00AE9523 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8F0386061C43856A00AE9523 /* LaunchScreen.storyboard */,
 				8F0385F91C43856A00AE9523 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -140,6 +241,111 @@
 			path = EasyLifeUITests;
 			sourceTree = "<group>";
 		};
+		8F03862B1C4392F100AE9523 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				8F0386011C43856A00AE9523 /* Main.storyboard */,
+				8F0386771C43A04F00AE9523 /* MainTabViewController.h */,
+				8F0386781C43A04F00AE9523 /* MainTabViewController.m */,
+			);
+			name = MainView;
+			sourceTree = "<group>";
+		};
+		8F03862F1C43936800AE9523 /* NewsView */ = {
+			isa = PBXGroup;
+			children = (
+				8F35A2CB1C61F91300A1ED45 /* UIBarButtonItem+Badge.h */,
+				8F35A2CC1C61F91300A1ED45 /* UIBarButtonItem+Badge.m */,
+				8F35A2CD1C61F91300A1ED45 /* SideViewController.h */,
+				8F35A2CE1C61F91300A1ED45 /* SideViewController.m */,
+				8F35A2CF1C61F91300A1ED45 /* NewsSB.storyboard */,
+				8F35A2D01C61F91300A1ED45 /* NewsTableViewCell.h */,
+				8F35A2D11C61F91300A1ED45 /* NewsTableViewCell.m */,
+				8F35A2D21C61F91300A1ED45 /* NewsDetailViewController.h */,
+				8F35A2D31C61F91300A1ED45 /* NewsDetailViewController.m */,
+				8F35A2D41C61F91300A1ED45 /* TableViewController.h */,
+				8F35A2D51C61F91300A1ED45 /* TableViewController.m */,
+				8F35A2D61C61F91300A1ED45 /* DataLoading.h */,
+				8F35A2D71C61F91300A1ED45 /* DataLoading.m */,
+			);
+			name = NewsView;
+			sourceTree = "<group>";
+		};
+		8F0386821C43B70900AE9523 /* NearView */ = {
+			isa = PBXGroup;
+			children = (
+				8F0386801C43B70300AE9523 /* NearSB.storyboard */,
+			);
+			name = NearView;
+			sourceTree = "<group>";
+		};
+		8F0386831C43B71C00AE9523 /* MovieView */ = {
+			isa = PBXGroup;
+			children = (
+				8F03867E1C43B6F900AE9523 /* MovieSB.storyboard */,
+			);
+			name = MovieView;
+			sourceTree = "<group>";
+		};
+		8F0386841C43B72700AE9523 /* VoiceView */ = {
+			isa = PBXGroup;
+			children = (
+				8F03867C1C43B6EB00AE9523 /* VoiceSB.storyboard */,
+				8FD58A271C71A70900652009 /* VoiceViewController.h */,
+				8FD58A281C71A70900652009 /* VoiceViewController.m */,
+			);
+			name = VoiceView;
+			sourceTree = "<group>";
+		};
+		8F0386851C43B73A00AE9523 /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				8F35A2B91C61DBB100A1ED45 /* WebSearchViewController.h */,
+				8F35A2BA1C61DBB100A1ED45 /* WebSearchViewController.m */,
+				8F35A2BB1C61DBB100A1ED45 /* HomeHeaderViewController.h */,
+				8F35A2BC1C61DBB100A1ED45 /* HomeHeaderViewController.m */,
+				8F35A2BD1C61DBB100A1ED45 /* DKLiveBlurView.h */,
+				8F35A2BE1C61DBB100A1ED45 /* DKLiveBlurView.m */,
+				8F35A2BF1C61DBB100A1ED45 /* DataModel.h */,
+				8F35A2C01C61DBB100A1ED45 /* DataModel.m */,
+				8F35A2C11C61DBB100A1ED45 /* SearchSB.storyboard */,
+				8F35A2C71C61DBCC00A1ED45 /* weatherImage.plist */,
+			);
+			name = SearchView;
+			sourceTree = "<group>";
+		};
+		C8AEA722875BDBFCE4D03E9C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5D6FC19495FD1E513916AA70 /* Pods-EasyLife.debug.xcconfig */,
+				B420ED63A2A916FAF03AF6B8 /* Pods-EasyLife.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E9F6798FED9333AC8D29A84A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8FD58A251C71A56300652009 /* iflyMSC.framework */,
+				8FD58A231C71A52400652009 /* CoreGraphics.framework */,
+				8FD58A211C71A4FA00652009 /* Foundation.framework */,
+				8FD58A1F1C71A4F000652009 /* UIKit.framework */,
+				8FD58A1D1C71A4E800652009 /* AudioToolbox.framework */,
+				8FD58A1B1C71A4DA00652009 /* AddressBook.framework */,
+				8FD58A191C71A4D300652009 /* AVFoundation.framework */,
+				8FD58A171C71A4C800652009 /* CoreLocation.framework */,
+				8FD58A151C71A43D00652009 /* Accounts.framework */,
+				8FD58A131C71A43400652009 /* SystemConfiguration.framework */,
+				8FD58A111C71A42800652009 /* QuartzCore.framework */,
+				8FD58A0F1C71A41D00652009 /* CoreTelephony.framework */,
+				8FD58A0D1C71A41600652009 /* libz.1.2.5.tbd */,
+				8FD58A0B1C71A40D00652009 /* libicucore.tbd */,
+				8FD58A091C71A40100652009 /* Security.framework */,
+				B211F7AD15B02D82790BD387 /* libPods-EasyLife.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +353,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8F0386221C43856B00AE9523 /* Build configuration list for PBXNativeTarget "EasyLife" */;
 			buildPhases = (
+				162EB12831A80C9DD1B66D75 /* Check Pods Manifest.lock */,
 				8F0385F11C43856A00AE9523 /* Sources */,
 				8F0385F21C43856A00AE9523 /* Frameworks */,
 				8F0385F31C43856A00AE9523 /* Resources */,
+				1F6457025E7296AD49FA101D /* Embed Pods Frameworks */,
+				99847AFCA054CF3AE2AC6C5D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -247,8 +456,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F0386081C43856A00AE9523 /* LaunchScreen.storyboard in Resources */,
+				8F0386811C43B70300AE9523 /* NearSB.storyboard in Resources */,
 				8F0386051C43856A00AE9523 /* Assets.xcassets in Resources */,
+				8F03867D1C43B6EB00AE9523 /* VoiceSB.storyboard in Resources */,
+				8F35A2DA1C61F91300A1ED45 /* NewsSB.storyboard in Resources */,
+				8F35A2C61C61DBB100A1ED45 /* SearchSB.storyboard in Resources */,
+				8F35A2C81C61DBCC00A1ED45 /* weatherImage.plist in Resources */,
 				8F0386031C43856A00AE9523 /* Main.storyboard in Resources */,
+				8F35A2CA1C61E3C300A1ED45 /* Info.plist in Resources */,
+				8F03867F1C43B6F900AE9523 /* MovieSB.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,13 +484,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		162EB12831A80C9DD1B66D75 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1F6457025E7296AD49FA101D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EasyLife/Pods-EasyLife-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99847AFCA054CF3AE2AC6C5D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EasyLife/Pods-EasyLife-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8F0385F11C43856A00AE9523 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F0386001C43856A00AE9523 /* ViewController.m in Sources */,
+				8F35A2C41C61DBB100A1ED45 /* DKLiveBlurView.m in Sources */,
+				8F35A2C51C61DBB100A1ED45 /* DataModel.m in Sources */,
 				8F0385FD1C43856A00AE9523 /* AppDelegate.m in Sources */,
+				8F0386791C43A04F00AE9523 /* MainTabViewController.m in Sources */,
+				8F35A2DC1C61F91300A1ED45 /* NewsDetailViewController.m in Sources */,
+				8F35A2C31C61DBB100A1ED45 /* HomeHeaderViewController.m in Sources */,
+				8F35A2D91C61F91300A1ED45 /* SideViewController.m in Sources */,
+				8F35A2DD1C61F91300A1ED45 /* TableViewController.m in Sources */,
+				8F35A2DE1C61F91300A1ED45 /* DataLoading.m in Sources */,
+				8FD58A291C71A70900652009 /* VoiceViewController.m in Sources */,
+				8F35A2C21C61DBB100A1ED45 /* WebSearchViewController.m in Sources */,
+				8F35A2D81C61F91300A1ED45 /* UIBarButtonItem+Badge.m in Sources */,
+				8F35A2DB1C61F91300A1ED45 /* NewsTableViewCell.m in Sources */,
 				8F0385FA1C43856A00AE9523 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,8 +687,13 @@
 		};
 		8F0386231C43856B00AE9523 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D6FC19495FD1E513916AA70 /* Pods-EasyLife.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = EasyLife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLife;
@@ -423,8 +703,13 @@
 		};
 		8F0386241C43856B00AE9523 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B420ED63A2A916FAF03AF6B8 /* Pods-EasyLife.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = EasyLife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLife;
@@ -499,6 +784,7 @@
 				8F0386241C43856B00AE9523 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8F0386251C43856B00AE9523 /* Build configuration list for PBXNativeTarget "EasyLifeTests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +793,7 @@
 				8F0386271C43856B00AE9523 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8F0386281C43856B00AE9523 /* Build configuration list for PBXNativeTarget "EasyLifeUITests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +802,7 @@
 				8F03862A1C43856B00AE9523 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
