@@ -93,7 +93,7 @@
     [IFlySetting setLogFile:LVL_ALL];
     
     //打开输出在console的log开关
-    [IFlySetting showLogcat:YES];
+    [IFlySetting showLogcat:NO];
     
     //设置sdk的工作路径
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);

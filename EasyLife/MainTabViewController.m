@@ -25,6 +25,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initWithControllers];
+    //self.automaticallyAdjustsScrollViewInsets = NO;
+    
 }
 
 
@@ -62,7 +64,7 @@
     
     
     //添加所有控制器
-    self.viewControllers = @[self.SearchController,newsNaviVC];
+    self.viewControllers = @[self.SearchController,newsNaviVC,self.VoiceController];
 
 //    TableViewController *tableVC = newsNaviVC.viewControllers[0];// 拿到tableviewcontroller
 //    SideViewController *sideMenu = [[SideViewController alloc]init];

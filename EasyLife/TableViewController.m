@@ -28,13 +28,22 @@ CGFloat positionY;
 NSDictionary *fontdic;
 int titleTag = 0;
 int timeCount = 0;
+BOOL firstIN = YES;
 @implementation TableViewController
 
 -(void)viewWillAppear:(BOOL)animated {
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.tableView.contentInset = UIEdgeInsetsMake( 224, 0, 0, 0);
     self.navigationController.navigationBarHidden = NO;
-    self.tableView.contentInset = UIEdgeInsetsMake( 160, 0, 0, 0);
+    
+    
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    //self.tabBarController.tabBar.hidden = YES;
     self.tabBarController.tabBar.hidden = NO;
+    
+    
+    NSLog(@"ViewWillAppear");
+    firstIN = NO;
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
@@ -48,6 +57,7 @@ int timeCount = 0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     //TableViewController *table = [TableViewController initWithModel];
     NSLog(@"ViewDidLoad!");
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationToRefresh) name:@"refreshnews" object:nil];
@@ -198,8 +208,8 @@ int timeCount = 0;
     
     positionY= scrollView.contentOffset.y;//获取Y的数据
     CGFloat positionX = scrollView.contentOffset.x;
-    NSLog(@"xxxxxxxxxxxxxxx%f",positionX);
-    //NSLog(@"yyyyyyyyyyyyyyy%f",positionY);
+    //NSLog(@"xxxxxxxxxxxxxxx%f",positionX);
+    NSLog(@"yyyyyyyyyyyyyyy%f",positionY);
     if (positionY != 0){//给navigationbar加颜色
         if (positionY > -224.0 && positionY != -160.0) {
             [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
@@ -393,7 +403,7 @@ int timeCount = 0;
             if (self.timer) {
                 [self.timer invalidate];
             }
-            
+            [self.tableView.mj_header endRefreshing];
             [self creatScrollView];
         });
 
@@ -414,9 +424,12 @@ int timeCount = 0;
         if ([model.imageArray count] > 0) {
         NSLog(@"图片链接数量：%ld",[model.imageArray count]);
         for (int i =0; i< [model.imageArray count] ; i++) {
+            if (image) {
+                
+            
             image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[model.imageArray objectAtIndex:i]]]];
             [model.imagePresentArray addObject:image];
-            
+            }
             //NSLog(@"%ld",[model.imagePresentArray count]);
             //[self.tableView reloadData];
             //[self creatScrollView];
@@ -455,7 +468,7 @@ int timeCount = 0;
                 
                 [self.tableView reloadData];
                 
-                [self.tableView.mj_header endRefreshing];
+                
             });
             
             
@@ -516,7 +529,7 @@ int timeCount = 0;
     NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     DataLoading *model = [DataLoading initWithModel];
-    if ([model.imagePresentArray count] > 0 && indexPath.row < [model.imagePresentArray count]) {
+    if ([model.imagePresentArray count] > 0 && indexPath.row < [model.imagePresentArray count] && [model.newsTitleArray count] != 0) {
         NSLog(@"Title 数量:%lu",(unsigned long)[model.newsTitleArray count]);
         NSLog(@"Image 数量:%lu",(unsigned long)[model.imagePresentArray count]);
 

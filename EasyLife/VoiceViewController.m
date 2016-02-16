@@ -22,6 +22,9 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *cachePath = [paths objectAtIndex:0];
     _pcmFilePath = [[NSString alloc] initWithFormat:@"%@",[cachePath stringByAppendingPathComponent:@"asr.pcm"]];
+    
+    [self.startListen addTarget:self action:@selector(startListening:) forControlEvents:UIControlEventTouchDown];
+    [self.startListen addTarget:self action:@selector(stopListening:)                forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,7 +36,7 @@
 - (IBAction)startListening:(UIButton *)sender {
     self.isCanceled = NO;
     if (self.iflySpeechRecognizer == nil) {
-        [self initRecognizer];
+        self.iflySpeechRecognizer = [IFlySpeechRecognizer sharedInstance];;
     }
     
     [self.iflySpeechRecognizer cancel];
@@ -79,6 +82,13 @@
     
     
 }
+- (void) onVolumeChanged: (int)volume
+{
+    
+    NSString * vol = [NSString stringWithFormat:@"音量：%d",volume];
+    self.displayLabel.text = vol;
+}
+
 
 
 /**
@@ -112,7 +122,9 @@
         [resultString appendFormat:@"%@",key];
     }
     
-    //NSString * resultFromJson =  [ISRDataHelper stringFromJson:resultString];
+    NSString * resultFromJson =  [VoiceViewController stringFromJson:resultString];
+    NSLog(@"JSON解析= %@",resultFromJson);
+    self.resultLabel.text = [NSString stringWithFormat:@"识别结果：%@",resultFromJson];
     
     
 //    if (isLast){
@@ -122,5 +134,34 @@
 //    NSLog(@"resultFromJson=%@",resultFromJson);
     
 }
+
+#pragma mark - Json解析
++ (NSString *)stringFromJson:(NSString*)params
+{
+    if (params == NULL) {
+        return nil;
+    }
+    
+    NSMutableString *tempStr = [[NSMutableString alloc] init];
+    NSDictionary *resultDic  = [NSJSONSerialization JSONObjectWithData:    //返回的格式必须为utf8的,否则发生未知错误
+                                [params dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:nil];
+    
+    if (resultDic!= nil) {
+        NSArray *wordArray = [resultDic objectForKey:@"ws"];
+        
+        for (int i = 0; i < [wordArray count]; i++) {
+            NSDictionary *wsDic = [wordArray objectAtIndex: i];
+            NSArray *cwArray = [wsDic objectForKey:@"cw"];
+            
+            for (int j = 0; j < [cwArray count]; j++) {
+                NSDictionary *wDic = [cwArray objectAtIndex:j];
+                NSString *str = [wDic objectForKey:@"w"];
+                [tempStr appendString: str];
+            }
+        }
+    }
+    return tempStr;
+}
+
 
 @end
