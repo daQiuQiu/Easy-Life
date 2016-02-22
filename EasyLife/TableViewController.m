@@ -428,7 +428,13 @@ BOOL firstIN = YES;
                 
             
             image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[model.imageArray objectAtIndex:i]]]];
-            [model.imagePresentArray addObject:image];
+                if (image) {
+                    [model.imagePresentArray addObject:image];
+                }
+                else {
+                    NSLog(@"图片加载失败");
+                }
+            
             }
             //NSLog(@"%ld",[model.imagePresentArray count]);
             //[self.tableView reloadData];

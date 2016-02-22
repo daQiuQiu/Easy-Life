@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kT1-3t-kKv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yZf-rL-YRO">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -17,32 +17,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Xd-m1-VDt">
-                                <rect key="frame" x="29" y="310" width="142" height="70"/>
-                                <state key="normal" title="Start"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcC-5k-Mnv">
                                 <rect key="frame" x="29" y="94" width="316" height="21"/>
+                                <color key="backgroundColor" red="1" green="0.9131056407" blue="0.31009822619999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqp-kA-fTw">
                                 <rect key="frame" x="29" y="137" width="316" height="21"/>
+                                <color key="backgroundColor" red="1" green="0.57165638008564512" blue="0.92107121213221443" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qF-a9-5ys">
-                                <rect key="frame" x="203" y="310" width="142" height="70"/>
-                                <state key="normal" title="Stop"/>
-                                <connections>
-                                    <action selector="stopListening:" destination="kT1-3t-kKv" eventType="touchUpInside" id="6MP-w2-WR7"/>
-                                </connections>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Xd-m1-VDt">
+                                <rect key="frame" x="116" y="589" width="142" height="70"/>
+                                <color key="backgroundColor" red="0.22819558970000001" green="1" blue="0.9681831957" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="142" id="P4S-UJ-UUe"/>
+                                    <constraint firstAttribute="height" constant="70" id="ohW-3c-IPH"/>
+                                </constraints>
+                                <state key="normal" title="Start"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2Xd-m1-VDt" firstAttribute="centerX" secondItem="hAd-GY-BCg" secondAttribute="centerX" id="3Ky-Av-lkb"/>
+                            <constraint firstItem="cXl-QB-CL8" firstAttribute="top" secondItem="2Xd-m1-VDt" secondAttribute="bottom" constant="8" id="6rp-Np-JMN"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="FlY-pX-Y4O"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="displayLabel" destination="vcC-5k-Mnv" id="uet-Ht-Fxh"/>
@@ -52,7 +62,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahX-bM-pt9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="620.5" y="298.5"/>
+            <point key="canvasLocation" x="1432.5" y="298.5"/>
+        </scene>
+        <!--Voice Search View Controller-->
+        <scene sceneID="oK2-gX-Vi4">
+            <objects>
+                <viewController storyboardIdentifier="voicesearch" useStoryboardIdentifierAsRestorationIdentifier="YES" id="m5q-Nt-YiB" customClass="VoiceSearchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r2z-tC-39H"/>
+                        <viewControllerLayoutGuide type="bottom" id="DNS-pL-aDe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gRr-np-OlG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6gB-cL-ytB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="webView" destination="6gB-cL-ytB" id="Ump-Sb-bz7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zaa-by-ROj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1850.5" y="298.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tnf-vP-sbf">
+            <objects>
+                <navigationController storyboardIdentifier="voicenavi" automaticallyAdjustsScrollViewInsets="NO" id="yZf-rL-YRO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cIF-BL-qCu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kT1-3t-kKv" kind="relationship" relationship="rootViewController" id="gkG-KK-w28"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V8h-Ou-oil" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="934.5" y="298.5"/>
         </scene>
     </scenes>
 </document>

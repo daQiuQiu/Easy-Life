@@ -49,6 +49,7 @@
 		8FD58A241C71A52400652009 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A231C71A52400652009 /* CoreGraphics.framework */; };
 		8FD58A261C71A56300652009 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A251C71A56300652009 /* iflyMSC.framework */; };
 		8FD58A291C71A70900652009 /* VoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD58A281C71A70900652009 /* VoiceViewController.m */; };
+		8FD58A2D1C7A080D00652009 /* VoiceSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD58A2C1C7A080D00652009 /* VoiceSearchViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,8 @@
 		8FD58A251C71A56300652009 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		8FD58A271C71A70900652009 /* VoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceViewController.h; sourceTree = "<group>"; };
 		8FD58A281C71A70900652009 /* VoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceViewController.m; sourceTree = "<group>"; };
+		8FD58A2B1C7A080D00652009 /* VoiceSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceSearchViewController.h; sourceTree = "<group>"; };
+		8FD58A2C1C7A080D00652009 /* VoiceSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceSearchViewController.m; sourceTree = "<group>"; };
 		B211F7AD15B02D82790BD387 /* libPods-EasyLife.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyLife.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B420ED63A2A916FAF03AF6B8 /* Pods-EasyLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyLife.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyLife/Pods-EasyLife.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -291,6 +294,8 @@
 			isa = PBXGroup;
 			children = (
 				8F03867C1C43B6EB00AE9523 /* VoiceSB.storyboard */,
+				8FD58A2B1C7A080D00652009 /* VoiceSearchViewController.h */,
+				8FD58A2C1C7A080D00652009 /* VoiceSearchViewController.m */,
 				8FD58A271C71A70900652009 /* VoiceViewController.h */,
 				8FD58A281C71A70900652009 /* VoiceViewController.m */,
 			);
@@ -538,6 +543,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F35A2C41C61DBB100A1ED45 /* DKLiveBlurView.m in Sources */,
+				8FD58A2D1C7A080D00652009 /* VoiceSearchViewController.m in Sources */,
 				8F35A2C51C61DBB100A1ED45 /* DataModel.m in Sources */,
 				8F0385FD1C43856A00AE9523 /* AppDelegate.m in Sources */,
 				8F0386791C43A04F00AE9523 /* MainTabViewController.m in Sources */,

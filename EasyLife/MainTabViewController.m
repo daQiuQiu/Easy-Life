@@ -57,8 +57,9 @@
     self.SearchController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"home"]  selectedImage:[[UIImage imageNamed:@"homer"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
     //语音识别
-    self.VoiceController = [self initWithSB:@"voiceview" inStoryBoard:@"VoiceSB"];
-    self.VoiceController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"" image:[UIImage imageNamed:@"home"]  selectedImage:[[UIImage imageNamed:@"homer"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    self.VoiceController = [self initWithSB:@"voicenavi" inStoryBoard:@"VoiceSB"];
+    self.VoiceController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"语音" image:[UIImage imageNamed:@"listen"]  selectedImage:[[UIImage imageNamed:@"listenr"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+
     
     
     

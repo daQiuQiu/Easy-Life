@@ -7,7 +7,7 @@
 //
 
 #import "VoiceViewController.h"
-
+#import "VoiceSearchViewController.h"
 
 @interface VoiceViewController ()
 
@@ -32,8 +32,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) viewDidAppear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = YES;
+    self.tabBarController.tabBar.hidden = NO;
+}
+
 #pragma mark - 开始听
 - (IBAction)startListening:(UIButton *)sender {
+    [self recognizerSetting];
+    [self.iflySpeechRecognizer startListening];
+}
+
+- (IBAction)stopListening:(UIButton *)sender {
+    [self.iflySpeechRecognizer stopListening];
+}
+
+-(void) recognizerSetting {
     self.isCanceled = NO;
     if (self.iflySpeechRecognizer == nil) {
         self.iflySpeechRecognizer = [IFlySpeechRecognizer sharedInstance];;
@@ -44,16 +58,12 @@
     [self.iflySpeechRecognizer setParameter:@"1" forKey:@"audio_source"];
     //设置听写结果格式为json
     [self.iflySpeechRecognizer setParameter:@"json" forKey:[IFlySpeechConstant RESULT_TYPE]];
+    [self.iflySpeechRecognizer setParameter:@"60000" forKey:[IFlySpeechConstant SPEECH_TIMEOUT]];
     
     //保存录音文件，保存在sdk工作路径中，如未设置工作路径，则默认保存在library/cache下
     [self.iflySpeechRecognizer setParameter:@"asr.pcm" forKey:[IFlySpeechConstant ASR_AUDIO_PATH]];
     
     [self.iflySpeechRecognizer setDelegate:self];
-    [self.iflySpeechRecognizer startListening];
-}
-
-- (IBAction)stopListening:(UIButton *)sender {
-    [self.iflySpeechRecognizer stopListening];
 }
 //init method
 -(void) initRecognizer {
@@ -123,15 +133,20 @@
     }
     
     NSString * resultFromJson =  [VoiceViewController stringFromJson:resultString];
-    NSLog(@"JSON解析= %@",resultFromJson);
-    self.resultLabel.text = [NSString stringWithFormat:@"识别结果：%@",resultFromJson];
-    
-    
-//    if (isLast){
-//        NSLog(@"听写结果(json)：%@测试",  resultString);
-//    }
-//    NSLog(@"_result=%@",resultString);
-//    NSLog(@"resultFromJson=%@",resultFromJson);
+    if (isLast) {
+        NSLog(@"JSON解析= %@",resultFromJson);
+        self.resultLabel.text = [NSString stringWithFormat:@"识别结果：%@",resultFromJson];
+        
+        //拼接搜索链接
+        resultFromJson = [resultFromJson stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        NSString *searchLink = [NSString stringWithFormat:@"https://www.baidu.com/s?wd=%@",resultFromJson];
+        
+        self.navigationController.navigationBarHidden = NO;
+        VoiceSearchViewController *webVC = [self.storyboard instantiateViewControllerWithIdentifier:@"voicesearch"];
+        webVC.urlString = searchLink;
+        [self.navigationController pushViewController:webVC animated:YES];
+
+    }
     
 }
 
@@ -142,7 +157,7 @@
         return nil;
     }
     
-    NSMutableString *tempStr = [[NSMutableString alloc] init];
+    NSMutableString *tempStr = [[NSMutableString alloc] init];//返回变量
     NSDictionary *resultDic  = [NSJSONSerialization JSONObjectWithData:    //返回的格式必须为utf8的,否则发生未知错误
                                 [params dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:nil];
     
@@ -159,6 +174,8 @@
                 [tempStr appendString: str];
             }
         }
+        NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"!.。！？?"];
+        tempStr = (NSMutableString*)[tempStr stringByTrimmingCharactersInSet:set];//去除结尾标点符号
     }
     return tempStr;
 }

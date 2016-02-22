@@ -48,10 +48,6 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
     
 }
 
--(void)NoGestureSet {
-    
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
