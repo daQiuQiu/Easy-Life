@@ -13,6 +13,7 @@
 
 
 #define screenW [UIScreen mainScreen].bounds.size.width
+#define screenH [UIScreen mainScreen].bounds.size.height
 #define kColor(R,G,B,A) [UIColor colorWithRed:R/255.f green:G/255.f blue:B/255.f alpha:A]
 
 @interface TableViewController ()
@@ -32,11 +33,11 @@ BOOL firstIN = YES;
 @implementation TableViewController
 
 -(void)viewWillAppear:(BOOL)animated {
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.tableView.contentInset = UIEdgeInsetsMake( 224, 0, 0, 0);
+    //self.automaticallyAdjustsScrollViewInsets = NO;
+    //设置自动调整布局用，NO 会使tabbar 挡住最后一行cell
+    
     self.navigationController.navigationBarHidden = NO;
-    
-    
+    //self.edgesForExtendedLayout = UIRectEdgeNone;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     //self.tabBarController.tabBar.hidden = YES;
     self.tabBarController.tabBar.hidden = NO;
@@ -57,7 +58,7 @@ BOOL firstIN = YES;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
     //TableViewController *table = [TableViewController initWithModel];
     NSLog(@"ViewDidLoad!");
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationToRefresh) name:@"refreshnews" object:nil];
@@ -79,7 +80,7 @@ BOOL firstIN = YES;
 //    self.navigationController.navigationBar.shadowImage = image;
 //    self.navigationController.navigationBar.translucent = YES;
     UIColor * color = [UIColor whiteColor];
-    fontdic = [NSDictionary dictionaryWithObject:color forKey:UITextAttributeTextColor];
+    fontdic = [NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
     self.navigationController.navigationBar.titleTextAttributes = fontdic;
 
     //[self chooseCatelogue];
@@ -93,7 +94,7 @@ BOOL firstIN = YES;
 }
 #pragma mark - 通知刷新方法
 -(void) notificationToRefresh {
-    [self removeScrollView];
+    //[self removeScrollView];
     [self pullToRefresh];
 }
 
@@ -104,7 +105,7 @@ BOOL firstIN = YES;
     self.defaultImageArray = [NSMutableArray array];
     if ([model.imageArray count] > 3) {//图片大于3张
         NSLog(@"图片大于3张");
-   self.topScr = [[UIScrollView alloc]initWithFrame:CGRectMake(0, -224, screenW, 224)];
+   self.topScr = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenW, 224)];
     _topScr.contentSize = CGSizeMake(screenW*4, 224);
     _topScr.pagingEnabled = YES;
     _topScr.bounces = NO;
@@ -134,7 +135,7 @@ BOOL firstIN = YES;
         NSLog(@"图片不足3张");
         unsigned long imageNum = [model.imageArray count];
         NSLog(@"imagearray:%ld", imageNum);
-        self.topScr = [[UIScrollView alloc]initWithFrame:CGRectMake(0, -224, screenW, 224)];
+        self.topScr = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenW, 224)];
         _topScr.contentSize = CGSizeMake(screenW*imageNum, 224);
         _topScr.pagingEnabled = YES;
         _topScr.bounces = NO;
@@ -163,8 +164,8 @@ BOOL firstIN = YES;
    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(scrollTimer) userInfo:nil repeats:YES];
 
     
-
-    [self.view addSubview:_topScr];
+    self.tableView.tableHeaderView = self.topScr;
+    //[self.tableView.tableHeaderView addSubview:_topScr];
     [self.view addSubview:self.page];
     [self.tableView reloadData];
     
@@ -211,26 +212,31 @@ BOOL firstIN = YES;
     //NSLog(@"xxxxxxxxxxxxxxx%f",positionX);
     NSLog(@"yyyyyyyyyyyyyyy%f",positionY);
     if (positionY != 0){//给navigationbar加颜色
-        if (positionY > -224.0 && positionY != -160.0) {
+        if (positionY > 0 && positionY != 128) {
             [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
             [self.navigationController.navigationBar setBarTintColor:kColor(23, 144, 211, 1)];
-            [self.navigationController.navigationBar setAlpha:(positionY+224.0)/160.0];
+            [self.navigationController.navigationBar setAlpha:(positionY)/160.0];
             //设置navigationbar title
             
                        // NSLog(@"取消透明");
             //self.navigationController.navigationBar.shadowImage = [UIImage new];
         }
-        else if (positionY <= -224.0 && positionY >= -276.0) {//重新让navigationbar 透明
+        else if (positionY <= 0 && positionY >= -64) {//重新让navigationbar 透明
             [self.navigationController.navigationBar setAlpha:0.9];
             [self.navigationController.navigationBar setBackgroundColor:nil];
             [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
             self.navigationController.navigationBar.shadowImage = [UIImage new];
             self.navigationController.navigationBar.translucent = YES;
+            //self.navigationController.navigationBar.hidden = YES;
+            
             //NSLog(@"需要透明");
         
         }
-        else if (positionY <= -279.0){
-            [self.topScr removeFromSuperview];
+        else if (positionY < 0){
+//            [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+//            [self.navigationController.navigationBar setBarTintColor:kColor(23, 144, 211, 1)];
+//            [self.navigationController.navigationBar setAlpha:1];
+            //self.navigationController.navigationBarHidden = YES;
         }
         else if (positionY == -160.0){
         //[self.topScr removeFromSuperview];
@@ -508,6 +514,12 @@ BOOL firstIN = YES;
         return 5;
     }
 }
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    return 224;
+//}
+
+
 
 
 
@@ -605,6 +617,8 @@ BOOL firstIN = YES;
 -(void)pullToRefresh {
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self getNewsWithChannelID:nil];
+        
+        
         
         //[self.tableView.mj_header endRefreshing];
     }] ;

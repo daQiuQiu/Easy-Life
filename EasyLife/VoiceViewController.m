@@ -131,20 +131,25 @@
     for (NSString *key in dic) {
         [resultString appendFormat:@"%@",key];
     }
+    NSLog(@"result = %@",resultString);
     
     NSString * resultFromJson =  [VoiceViewController stringFromJson:resultString];
     if (isLast) {
         NSLog(@"JSON解析= %@",resultFromJson);
         self.resultLabel.text = [NSString stringWithFormat:@"识别结果：%@",resultFromJson];
+        if ([resultString isEqualToString:@""]) {
+            self.resultLabel.text = @"无法识别";
+        }else {
         
-        //拼接搜索链接
-        resultFromJson = [resultFromJson stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-        NSString *searchLink = [NSString stringWithFormat:@"https://www.baidu.com/s?wd=%@",resultFromJson];
+            //拼接搜索链接
+            resultFromJson = [resultFromJson stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+            NSString *searchLink = [NSString stringWithFormat:@"https://www.baidu.com/s?wd=%@",resultFromJson];
+            self.navigationController.navigationBarHidden = NO;
+            VoiceSearchViewController *webVC = [self.storyboard instantiateViewControllerWithIdentifier:@"voicesearch"];
+            webVC.urlString = searchLink;
+            [self.navigationController pushViewController:webVC animated:YES];
+        }
         
-        self.navigationController.navigationBarHidden = NO;
-        VoiceSearchViewController *webVC = [self.storyboard instantiateViewControllerWithIdentifier:@"voicesearch"];
-        webVC.urlString = searchLink;
-        [self.navigationController pushViewController:webVC animated:YES];
 
     }
     

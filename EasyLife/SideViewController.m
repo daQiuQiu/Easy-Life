@@ -102,6 +102,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:str];
     }
+    //配置cell
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor lightTextColor];
     cell.textLabel.text = model.cateArray[indexPath.row];
@@ -110,6 +111,13 @@
     cell.selectedTextColor = [UIColor whiteColor];
     [tableView setSeparatorColor:[UIColor clearColor]];
     NSLog(@"配置cell");
+    
+    //cell 动画
+    cell.layer.transform = CATransform3DMakeScale(0.1, 1, 1);
+    [UIView animateWithDuration:0.3f animations:^{
+        cell.layer.transform = CATransform3DMakeScale(1, 1, 1);
+    }];
+    
     return cell;
 }
 

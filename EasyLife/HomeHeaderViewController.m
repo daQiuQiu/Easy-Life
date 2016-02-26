@@ -441,9 +441,11 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
     DataModel *model = [DataModel initWithModel];
     number = arc4random() % 20;
 //    self.contentLabel.text = nil;//一定要赋空值，不然会出现覆盖
+    if ([model.relaxArray count] > 0) {
+        _contentLabel.text = model.relaxArray[number];
+        NSLog(@"笑话=%@",self.contentLabel.text);
+    }
     
-    _contentLabel.text = model.relaxArray[number];
-    NSLog(@"笑话=%@",self.contentLabel.text);
     
     self.contentLabel.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
     [UIView animateWithDuration:0.3f animations:^{

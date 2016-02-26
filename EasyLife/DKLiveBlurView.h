@@ -10,7 +10,7 @@
 
 #define kDKBlurredBackgroundDefaultLevel 0.9f
 #define kDKBlurredBackgroundDefaultGlassLevel 0.2f
-#define kDKBlurredBackgroundDefaultGlassColor [UIColor whiteColor]
+#define kDKBlurredBackgroundDefaultGlassColor [UIColor darkGrayColor]//添加底色的
 
 @interface DKLiveBlurView : UIImageView
 

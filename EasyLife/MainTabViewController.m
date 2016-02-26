@@ -25,7 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initWithControllers];
-    //self.automaticallyAdjustsScrollViewInsets = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
 }
 
@@ -45,7 +45,7 @@
     
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0f],
                                                         NSForegroundColorAttributeName : [UIColor colorWithRed:.5 green:.5 blue:.5 alpha:1]
-                                                        } forState:UIControlStateNormal];
+                                                        } forState:UIControlStateNormal];//设置tab字体
     //新闻页面
     UINavigationController *newsNaviVC = (UINavigationController *)[self initWithSB:@"newsnavi" inStoryBoard:@"NewsSB"];
     newsNaviVC.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"新闻" image:[UIImage imageNamed:@"news"] selectedImage:[[UIImage imageNamed:@"newsr"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];//添加新闻页面
@@ -59,17 +59,19 @@
     //语音识别
     self.VoiceController = [self initWithSB:@"voicenavi" inStoryBoard:@"VoiceSB"];
     self.VoiceController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"语音" image:[UIImage imageNamed:@"listen"]  selectedImage:[[UIImage imageNamed:@"listenr"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    
+    //影讯页面
+    self.MovieController = [self initWithSB:@"movienavi" inStoryBoard:@"MovieSB"];
+    self.MovieController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"影讯" image:[UIImage imageNamed:@"movie"]  selectedImage:[[UIImage imageNamed:@"movier"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 
     
     
     
     
     //添加所有控制器
-    self.viewControllers = @[self.SearchController,newsNaviVC,self.VoiceController];
+    self.viewControllers = @[self.SearchController,newsNaviVC,self.VoiceController,self.MovieController];
 
-//    TableViewController *tableVC = newsNaviVC.viewControllers[0];// 拿到tableviewcontroller
-//    SideViewController *sideMenu = [[SideViewController alloc]init];
-//    sideMenu.delegate = tableVC;//设置代理
+
 
     
 }
