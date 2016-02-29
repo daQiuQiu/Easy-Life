@@ -29,6 +29,7 @@
 @property (nonatomic,strong) NSString *selectedName;//选中的电影
 @property (nonatomic,strong) NSString *tag;//类别
 @property (nonatomic,strong) NSString *area;//地区
+@property (nonatomic,strong) NSString *desc;//简要内容
 
 
 +(instancetype) initWithModel; //init方法

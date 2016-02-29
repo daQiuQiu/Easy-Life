@@ -103,7 +103,7 @@ BOOL isOn = YES;//默认显示正在上映
                     //NSLog(@"grade = %@",grade);//拿到评分
                     NSString *movieTitle = [dic objectForKey:@"tvTitle"];
                     //NSLog(@"Movie = %@",movieTitle);//拿到电影名字
-                    
+                    //[self getMovieDetailWithName:movieTitle];
                     NSString *iconAddress = [dic objectForKey:@"iconaddress"];
                     //NSLog(@"pic = %@",iconAddress);//拿到图片地址
                     
@@ -115,11 +115,11 @@ BOOL isOn = YES;//默认显示正在上映
                     
                     NSDictionary *playdate = [dic objectForKey:@"playDate"];
                     NSString *date = [playdate objectForKey:@"data"];
-                    NSLog(@"上映日期 = %@",date);//拿上映日期
+                    //NSLog(@"上映日期 = %@",date);//拿上映日期
                     
                     //分类储存
                     if ([movieStatus isEqualToString:@"正在上映"]) {
-                        NSLog(@"添加正在上映的电影");
+                        //NSLog(@"添加正在上映的电影");
                         [model.directorArray1 addObject: directorName];//导演
                         [model.descArray1 addObject:briefStory];//概述
                         [model.ratingArray1 addObject:grade];//评分
@@ -127,11 +127,12 @@ BOOL isOn = YES;//默认显示正在上映
                         [model.iconUrlArray1 addObject:iconAddress];
                         [model.playDate addObject:date];
                         
+                        
                         NSString *cinemaNumber = [dic objectForKey:@"subHead"];
                         [model.cinemaNumber addObject:cinemaNumber];//上映影院数量
                     }
                     else if ([movieStatus isEqualToString:@"即将上映"]){
-                        NSLog(@"添加即将上映的电影");
+                        //NSLog(@"添加即将上映的电影");
                         
                         [model.ratingArray2 addObject:date];
                         [model.directorArray2 addObject:directorName];
@@ -148,9 +149,11 @@ BOOL isOn = YES;//默认显示正在上映
             
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
+            //[self.tableView reloadData];
             NSLog(@"数据加载完成，重新加载表格");
             [self getMovieImage];
+            
+            //[self getMovieDetailWithName:nil];
         });
     }];
     [datatask resume];
@@ -246,23 +249,15 @@ BOOL isOn = YES;//默认显示正在上映
     if (isOn == YES) {
         MovieDataModel *model = [MovieDataModel initWithModel];
 
-        
-        [self getMovieDetailWithName:model.onMovieTitleArray[indexPath.row]];
         MovieDetailViewController *movieDetailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"moviedetail"];
         movieDetailVC.movieNo = indexPath.row;
 
-        
+        NSLog(@"选择的电影 = %@",model.onMovieTitleArray[indexPath.row]);
+        [self.navigationController pushViewController:movieDetailVC animated:YES];
+        movieDetailVC.movieNo = indexPath.row;
+        NSLog(@"number = %ld",movieDetailVC.movieNo);
+            
        
-        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            MovieDetailViewController *movieDetailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"moviedetail"];
-//            
-//            NSLog(@"选择的电影 = %@",model.onMovieTitleArray[indexPath.row]);
-//            [self.navigationController pushViewController:movieDetailVC animated:YES];
-//            movieDetailVC.movieNo = indexPath.row;
-//            NSLog(@"number = %ld",movieDetailVC.movieNo);
-//            
-//        });
         
     }
 
@@ -298,45 +293,44 @@ BOOL isOn = YES;//默认显示正在上映
 }
 
 #pragma mark - 电影detail搜索接口
--(void) getMovieDetailWithName: (NSString *)movieName {
-    MovieDataModel *model = [MovieDataModel initWithModel];
-    NSString *urlString = [NSString stringWithFormat:@"http://op.juhe.cn/onebox/movie/video?key=a03146c3667f8bb788197a66b622553d&q=%@",movieName];
-    urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];//中文转码
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestReloadRevalidatingCacheData timeoutInterval:20];
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *datatask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"2级ERROR = %@",error);
-        }
-        else {
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSString *reason = [dic objectForKey:@"reason"];
-            //先判断能否查询的到
-            NSDictionary *resultDic = [dic objectForKey:@"result"];
-            if ([reason isEqualToString:@"查询成功"]) {
-                NSString *tag = [resultDic objectForKey:@"tag"];
-                NSString *area = [resultDic objectForKey:@"area"];
-                NSLog(@"tag = %@,area = %@",tag,area);
-                model.tag = tag;
-                model.area = area;
-                
-            }
-            else {
-                NSLog(@"reason = %@",reason);
-            }
-            
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            MovieDetailViewController *movieDetailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"moviedetail"];
-            
-            [self.navigationController pushViewController:movieDetailVC animated:YES];
-            NSLog(@"number = %ld",movieDetailVC.movieNo);
-            
-        });
-
-    }];
-    [datatask resume];
-}
+//-(void) getMovieDetailWithName: (NSString *)movieName {
+//    MovieDataModel *model = [MovieDataModel initWithModel];
+//    model.area = [NSMutableArray array];
+//    model.tag = [NSMutableArray array];
+//    
+//        NSString *urlString = [NSString stringWithFormat:@"http://op.juhe.cn/onebox/movie/video?key=a03146c3667f8bb788197a66b622553d&q=%@",movieName];
+//        urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];//中文转码
+//        NSURL *url = [NSURL URLWithString:urlString];
+//        NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestReloadRevalidatingCacheData timeoutInterval:20];
+//        NSURLSession *session = [NSURLSession sharedSession];
+//        NSURLSessionDataTask *datatask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//            if (error) {
+//                NSLog(@"2级ERROR = %@",error);
+//            }
+//            else {
+//                NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//                NSString *reason = [dic objectForKey:@"reason"];
+//                //先判断能否查询的到
+//                NSDictionary *resultDic = [dic objectForKey:@"result"];
+//                if ([reason isEqualToString:@"查询成功"]) {
+//                    NSString *tag = [resultDic objectForKey:@"tag"];
+//                    NSString *area = [resultDic objectForKey:@"area"];
+//                    
+//                    NSLog(@"tag = %@,area = %@,",tag,area);
+//                    [model.tag addObject:tag];
+//                    [model.area addObject:area];
+//                    
+//                }
+//                else {
+//                    NSLog(@"reason = %@",reason);
+//                }
+//                
+//            }
+//            
+//        }];
+//        [datatask resume];
+//
+//    }
+//
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MovieDetailViewController : UIViewController
+@interface MovieDetailViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UIVisualEffectView *backEffectView;
 @property (strong, nonatomic) IBOutlet UILabel *movieTitleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *movieTagLabel;
@@ -18,5 +18,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *cinemaNumberLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *movieImageView;
 @property (assign,nonatomic) long int movieNo;
+@property (strong, nonatomic) IBOutlet UITableView *infoTableView;
+@property (strong,nonatomic) UILabel *descLabel;
+@property (strong,nonatomic) UIButton *expandButton;
 
 @end

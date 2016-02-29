@@ -620,7 +620,7 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
             }];
             NSLog(@"cell3");
         }
-        
+         
     }//主Table
     else if (tableView == self.hotNewsTable) {
         mainCell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);

@@ -153,13 +153,13 @@
                                                 <constraint firstAttribute="width" constant="115" id="UkY-71-hJ9"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="动作 奇幻" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2be-XA-6hH">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2be-XA-6hH">
                                             <rect key="frame" x="138" y="94" width="188" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日本" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cxf-Ol-d0Q">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cxf-Ol-d0Q">
                                             <rect key="frame" x="138" y="115" width="107" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="107" id="sae-9g-RFO"/>
@@ -229,13 +229,31 @@
                                 </constraints>
                                 <blurEffect style="light"/>
                             </visualEffectView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tle-pX-L0Z">
+                                <rect key="frame" x="0.0" y="187" width="375" height="480"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="120" id="mvp-Oe-UKn">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mvp-Oe-UKn" id="GoA-1c-fpQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Tle-pX-L0Z" firstAttribute="bottom" secondItem="ixG-oS-hSg" secondAttribute="top" id="68b-Gq-zwV"/>
                             <constraint firstAttribute="trailing" secondItem="c0h-vS-C6T" secondAttribute="trailing" id="LAl-LE-z4G"/>
                             <constraint firstItem="ixG-oS-hSg" firstAttribute="top" secondItem="c0h-vS-C6T" secondAttribute="bottom" constant="417" id="Nb9-RS-Jly"/>
                             <constraint firstItem="c0h-vS-C6T" firstAttribute="top" secondItem="V11-dw-s67" secondAttribute="top" id="XUH-zT-2Uy"/>
+                            <constraint firstItem="Tle-pX-L0Z" firstAttribute="top" secondItem="c0h-vS-C6T" secondAttribute="bottom" constant="-63" id="km3-P5-b3Q"/>
                             <constraint firstItem="c0h-vS-C6T" firstAttribute="leading" secondItem="V11-dw-s67" secondAttribute="leading" id="liA-to-gQg"/>
+                            <constraint firstItem="Tle-pX-L0Z" firstAttribute="leading" secondItem="c0h-vS-C6T" secondAttribute="leading" id="qge-ip-rbJ"/>
+                            <constraint firstItem="Tle-pX-L0Z" firstAttribute="trailing" secondItem="c0h-vS-C6T" secondAttribute="trailing" id="yyA-qw-W9n"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -249,6 +267,7 @@
                         <outlet property="areaLabel" destination="Cxf-Ol-d0Q" id="nIC-Lw-vW5"/>
                         <outlet property="backEffectView" destination="c0h-vS-C6T" id="cHE-QI-YUQ"/>
                         <outlet property="cinemaNumberLabel" destination="mDx-xG-ItG" id="78I-0b-5nm"/>
+                        <outlet property="infoTableView" destination="Tle-pX-L0Z" id="odj-av-aZb"/>
                         <outlet property="movieImageView" destination="PGh-ti-hCC" id="uUW-5e-1KG"/>
                         <outlet property="movieTagLabel" destination="2be-XA-6hH" id="1oo-tm-mDe"/>
                         <outlet property="movieTitleLabel" destination="4Gv-j2-9yJ" id="tzI-TJ-ypo"/>

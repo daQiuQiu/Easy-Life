@@ -117,6 +117,8 @@
 		8F35A2D51C61F91300A1ED45 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		8F35A2D61C61F91300A1ED45 /* DataLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLoading.h; sourceTree = "<group>"; };
 		8F35A2D71C61F91300A1ED45 /* DataLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataLoading.m; sourceTree = "<group>"; };
+		8F4259D91C8417E4008E87B7 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		8F4259DA1C841811008E87B7 /* PchHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PchHeader.h; sourceTree = "<group>"; };
 		8F84D1091C7ED2710085AF35 /* MovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailViewController.h; sourceTree = "<group>"; };
 		8F84D10A1C7ED2710085AF35 /* MovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailViewController.m; sourceTree = "<group>"; };
 		8FD58A091C71A40100652009 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -223,6 +225,8 @@
 				8F03862B1C4392F100AE9523 /* MainView */,
 				8F03862F1C43936800AE9523 /* NewsView */,
 				8F0386041C43856A00AE9523 /* Assets.xcassets */,
+				8F4259D91C8417E4008E87B7 /* PrefixHeader.pch */,
+				8F4259DA1C841811008E87B7 /* PchHeader.h */,
 				8F35A2C91C61E3C300A1ED45 /* Info.plist */,
 				8F0385F81C43856A00AE9523 /* Supporting Files */,
 			);
@@ -724,6 +728,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_PREFIX_HEADER = EasyLife/PrefixHeader.pch;
 				INFOPLIST_FILE = EasyLife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLife;
@@ -740,6 +745,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_PREFIX_HEADER = EasyLife/PrefixHeader.pch;
 				INFOPLIST_FILE = EasyLife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLife;
