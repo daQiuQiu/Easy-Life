@@ -31,11 +31,13 @@
 }
 
 -(void)loadWebView {
+    //self.urlstring = @"http://news.qq.com/a/20160301/022342.htm";
     self.searchWebView.delegate = self;
     self.searchWebView.scalesPageToFit = YES;
     NSURL *weburl = [NSURL URLWithString:self.urlstring ];
     NSURLRequest *request = [NSURLRequest requestWithURL:weburl];
     [self.searchWebView loadRequest:request];
+    NSLog(@"loading = %@",self.urlstring);
     
 }
 

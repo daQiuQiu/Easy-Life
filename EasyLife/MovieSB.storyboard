@@ -230,7 +230,7 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tle-pX-L0Z">
-                                <rect key="frame" x="0.0" y="187" width="375" height="480"/>
+                                <rect key="frame" x="0.0" y="185" width="375" height="482"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="120" id="mvp-Oe-UKn">
@@ -250,7 +250,7 @@
                             <constraint firstAttribute="trailing" secondItem="c0h-vS-C6T" secondAttribute="trailing" id="LAl-LE-z4G"/>
                             <constraint firstItem="ixG-oS-hSg" firstAttribute="top" secondItem="c0h-vS-C6T" secondAttribute="bottom" constant="417" id="Nb9-RS-Jly"/>
                             <constraint firstItem="c0h-vS-C6T" firstAttribute="top" secondItem="V11-dw-s67" secondAttribute="top" id="XUH-zT-2Uy"/>
-                            <constraint firstItem="Tle-pX-L0Z" firstAttribute="top" secondItem="c0h-vS-C6T" secondAttribute="bottom" constant="-63" id="km3-P5-b3Q"/>
+                            <constraint firstItem="Tle-pX-L0Z" firstAttribute="top" secondItem="c0h-vS-C6T" secondAttribute="bottom" constant="-65" id="km3-P5-b3Q"/>
                             <constraint firstItem="c0h-vS-C6T" firstAttribute="leading" secondItem="V11-dw-s67" secondAttribute="leading" id="liA-to-gQg"/>
                             <constraint firstItem="Tle-pX-L0Z" firstAttribute="leading" secondItem="c0h-vS-C6T" secondAttribute="leading" id="qge-ip-rbJ"/>
                             <constraint firstItem="Tle-pX-L0Z" firstAttribute="trailing" secondItem="c0h-vS-C6T" secondAttribute="trailing" id="yyA-qw-W9n"/>

@@ -110,7 +110,13 @@ BOOL isExpand = NO;
                 NSLog(@"tag = %@,area = %@,",tag,area);
                 model.tag = tag;
                 model.area = area;
-                model.desc = desc;
+                //model.desc = desc;
+                //这边设置string行间距
+                NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:desc];
+                NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc]init];
+                [paraStyle setLineSpacing:10];
+                [attributedString addAttribute:NSParagraphStyleAttributeName value:paraStyle range:NSMakeRange(0, [desc length])];
+                model.desc = attributedString;
                 UIFont *font = [UIFont fontWithName:@"Arial" size:15];
                 rect = [desc boundingRectWithSize:CGSizeMake(screenW, screenH)//限制最大的宽度和高度
                                                            options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesFontLeading |NSStringDrawingUsesLineFragmentOrigin//采用换行模式
@@ -127,7 +133,9 @@ BOOL isExpand = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
             self.areaLabel.text = model.area;
             self.movieTagLabel.text = model.tag;
-            self.descLabel.text = model.desc;
+            self.descLabel.attributedText = model.desc;
+            [self.descLabel sizeToFit];
+            NSLog(@"frame = %f",(self.descLabel.bounds.size.height));
             NSLog(@"%@",model.desc);
             //[self.infoTableView reloadData];
             NSLog(@"UI Refresh!");
@@ -140,11 +148,10 @@ BOOL isExpand = NO;
 
 #pragma mark - 创建摘要Label
 -(void) creatLabel {
-    MovieDataModel *model = [MovieDataModel initWithModel];
+    //MovieDataModel *model = [MovieDataModel initWithModel];
     _descLabel = [[UILabel alloc]init];
     _descLabel.textColor = [UIColor darkTextColor];
     _descLabel.numberOfLines = 0;
-    _descLabel.text = model.desc;
     //label
     
     _expandButton = [[UIButton alloc]init];
@@ -169,10 +176,10 @@ BOOL isExpand = NO;
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         if (isExpand == NO) {
-            return 50;
+            return 100;
         }
         else {
-            return rect.size.height+50;
+            return (int)self.descLabel.bounds.size.height+40;
         }
     }
     else {
@@ -183,7 +190,7 @@ BOOL isExpand = NO;
 
 #pragma mark - TableView Delegate
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MovieDataModel *model = [MovieDataModel initWithModel];
+    //MovieDataModel *model = [MovieDataModel initWithModel];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
@@ -192,7 +199,7 @@ BOOL isExpand = NO;
         
             
         
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         UIFont *font = [UIFont fontWithName:@"Arial" size:15];
         _descLabel.font = font;
@@ -201,7 +208,9 @@ BOOL isExpand = NO;
         
     
         [_descLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo (cell).with.insets (UIEdgeInsetsMake(0, 15, 30, 15));//设置边距
+            make.edges.equalTo (cell).with.insets (UIEdgeInsetsMake(0, 15, 30, 15));
+            //设置边距
+            
         }];
         [cell addSubview:_expandButton];
         [_expandButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -227,14 +236,13 @@ BOOL isExpand = NO;
 -(void) expandCell {
     if (isExpand == NO) {
         isExpand = YES;
-//        [self.descLabel removeFromSuperview];
-//        [self.expandButton removeFromSuperview];
+        self.descLabel.numberOfLines = 0;
+        [self.descLabel sizeToFit];
         [self.infoTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     }
     else {
         isExpand = NO;
-//        [self.descLabel removeFromSuperview];
-//        [self.expandButton removeFromSuperview];
+        self.descLabel.numberOfLines = 3;
         [self.infoTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
         
     }

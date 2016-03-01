@@ -112,7 +112,7 @@ BOOL firstIN = YES;
     _topScr.delegate = self;
         
     
-    self.page = [[UIPageControl alloc]initWithFrame:CGRectMake((screenW-50)/2.0, -50, 50, 50)];
+    self.page = [[UIPageControl alloc]initWithFrame:CGRectMake((screenW-50)/2.0, 180, 50, 50)];
     self.page.numberOfPages = 4;
     self.page.tag = 201;
     for (int i = 0; i < 4; i++) {
@@ -140,7 +140,7 @@ BOOL firstIN = YES;
         _topScr.pagingEnabled = YES;
         _topScr.bounces = NO;
         _topScr.delegate = self;
-        self.page = [[UIPageControl alloc]initWithFrame:CGRectMake((screenW-50)/2.0, -50, 50, 50)];
+        self.page = [[UIPageControl alloc]initWithFrame:CGRectMake((screenW-50)/2.0, 180, 50, 50)];
         self.page.numberOfPages = imageNum;
         self.page.tag = 201;
         
@@ -407,10 +407,14 @@ BOOL firstIN = YES;
             NSLog(@"123 load");
             [self getImage];
             if (self.timer) {
-                [self.timer invalidate];
+                //[self.timer invalidate];
             }
+            
             [self.tableView.mj_header endRefreshing];
-            [self creatScrollView];
+            if (self.topScr == nil) {
+                [self creatScrollView];
+            }
+            
         });
 
     }];
@@ -442,9 +446,7 @@ BOOL firstIN = YES;
                 }
             
             }
-            //NSLog(@"%ld",[model.imagePresentArray count]);
-            //[self.tableView reloadData];
-            //[self creatScrollView];
+            
         }
         
         }
