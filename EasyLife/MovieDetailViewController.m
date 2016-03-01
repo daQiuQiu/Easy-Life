@@ -176,7 +176,7 @@ BOOL isExpand = NO;
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         if (isExpand == NO) {
-            return 100;
+            return 120;
         }
         else {
             return (int)self.descLabel.bounds.size.height+40;
@@ -224,10 +224,10 @@ BOOL isExpand = NO;
         
     }
     else if (indexPath.section == 1){
-        cell.textLabel.text = @"2";
+        cell.textLabel.text = @"";
     }
     else {
-        cell.textLabel.text = @"3";
+        cell.textLabel.text = @"";
     }
     
     return cell;

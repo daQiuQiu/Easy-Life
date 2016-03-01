@@ -409,8 +409,6 @@ BOOL firstIN = YES;
             if (self.timer) {
                 //[self.timer invalidate];
             }
-            
-            [self.tableView.mj_header endRefreshing];
             if (self.topScr == nil) {
                 [self creatScrollView];
             }
@@ -482,7 +480,7 @@ BOOL firstIN = YES;
                 
                 [self.tableView reloadData];
                 
-                
+                [self.tableView.mj_header endRefreshing];
             });
             
             
