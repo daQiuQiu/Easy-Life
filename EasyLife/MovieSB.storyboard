@@ -298,8 +298,59 @@
             </objects>
             <point key="canvasLocation" x="322" y="450"/>
         </scene>
+        <!--详情-->
+        <scene sceneID="S3K-zz-jFU">
+            <objects>
+                <viewController storyboardIdentifier="moviewebview" id="M85-wI-fMH" customClass="movieWebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JXg-tz-q11"/>
+                        <viewControllerLayoutGuide type="bottom" id="WTf-PN-Ey0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jGc-w4-yWx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PoP-oq-kMW">
+                                <rect key="frame" x="-4" y="524" width="328" height="44"/>
+                                <items>
+                                    <barButtonItem image="News_Navigation_Arrow_Highlight" id="IoS-3P-sgA">
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="backToVC:" destination="M85-wI-fMH" id="fPI-I2-sba"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <webView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAM-Jz-JQI">
+                                <rect key="frame" x="-4" y="-20" width="328" height="544"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WTf-PN-Ey0" firstAttribute="top" secondItem="vAM-Jz-JQI" secondAttribute="bottom" constant="44" id="6jB-wT-jJj"/>
+                            <constraint firstItem="PoP-oq-kMW" firstAttribute="leading" secondItem="jGc-w4-yWx" secondAttribute="leadingMargin" constant="-20" id="6sz-lc-CKX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vAM-Jz-JQI" secondAttribute="trailing" constant="-20" id="NMS-gH-qvc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PoP-oq-kMW" secondAttribute="trailing" constant="-20" id="Nif-O9-68f"/>
+                            <constraint firstItem="WTf-PN-Ey0" firstAttribute="top" secondItem="PoP-oq-kMW" secondAttribute="bottom" id="W8y-fC-IZJ"/>
+                            <constraint firstItem="vAM-Jz-JQI" firstAttribute="top" secondItem="JXg-tz-q11" secondAttribute="bottom" constant="-20" id="l1p-gf-uqv"/>
+                            <constraint firstItem="vAM-Jz-JQI" firstAttribute="leading" secondItem="jGc-w4-yWx" secondAttribute="leadingMargin" constant="-20" id="swL-ii-7bZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="详情" id="r3H-cn-pDm"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="myWeb" destination="vAM-Jz-JQI" id="968-2q-aIL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oU1-g3-cce" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1698" y="400"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="News_Navigation_Arrow_Highlight" width="64" height="43"/>
         <image name="clear_day" width="185" height="185"/>
     </resources>
 </document>

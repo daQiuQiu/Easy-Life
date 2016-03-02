@@ -20,4 +20,12 @@
     // Configure the view for the selected state
 }
 
+-(void)layoutSubviews {
+    [super layoutSubviews];
+    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.imageView.bounds = CGRectMake(0, 0, 50, 65);
+    self.imageView.frame = CGRectMake(0, 0, 50, 65);
+    
+}
+
 @end

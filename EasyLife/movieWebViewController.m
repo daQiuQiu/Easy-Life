@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self loadWebWithUrl:self.urlString];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +25,28 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void) loadWebWithUrl :(NSString *)url {
+    NSLog(@"url:%@",url);
+    self.myWeb.delegate = self;
+    self.myWeb.scalesPageToFit = YES;
+    self.myWeb.scrollView.bounces = NO;
+    
+    NSURL *weburl = [NSURL URLWithString:url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:weburl];
+    [self.myWeb loadRequest:request];
 }
-*/
 
+-(void)webViewDidStartLoad:(UIWebView *)webView {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
+
+
+- (IBAction)backToVC:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

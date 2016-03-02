@@ -75,6 +75,7 @@ BOOL isOn = YES;//默认显示正在上映
             model.iconUrlArray2 = [NSMutableArray array];
             model.playDate = [NSMutableArray array];
             model.cinemaNumber = [NSMutableArray array];
+            model.directorLinkArray = [NSMutableArray array];
             
             //model数组初始化
             
@@ -97,6 +98,7 @@ BOOL isOn = YES;//默认显示正在上映
                     //NSLog(@"状态 = %@",movieStatus);//拿到电影状态
                     
                     NSString *directorName = [dic22 objectForKey:@"name"];
+                    NSString *directorLink = [dic22 objectForKey:@"link"];
                     //NSLog(@"director = %@",directorName);//拿到导演名字
                     
                     NSString *grade = [dic objectForKey:@"grade"];
@@ -126,7 +128,7 @@ BOOL isOn = YES;//默认显示正在上映
                         [model.onMovieTitleArray addObject:movieTitle];//电影名字
                         [model.iconUrlArray1 addObject:iconAddress];
                         [model.playDate addObject:date];
-                        
+                        [model.directorLinkArray addObject:directorLink];//导演信息链接
                         
                         NSString *cinemaNumber = [dic objectForKey:@"subHead"];
                         [model.cinemaNumber addObject:cinemaNumber];//上映影院数量

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface movieWebViewController : UIViewController
-
+@interface movieWebViewController : UIViewController<UIWebViewDelegate>
+@property (strong, nonatomic) IBOutlet UIWebView *myWeb;
+- (IBAction)backToVC:(UIBarButtonItem *)sender;
+@property (strong,nonatomic) NSString *urlString;
 @end

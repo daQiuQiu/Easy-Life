@@ -33,6 +33,8 @@
 #import "MovieDetailViewController.h"
 #import "MovieDataModel.h"
 #import <Masonry.h>
+#import "movieWebViewController.h"
+#import "movieDetailTableViewCell.h"
 
 @interface MovieDetailViewController ()
 
@@ -49,6 +51,8 @@ BOOL isExpand = NO;
     self.navigationController.navigationBar.translucent = YES;
     MovieDataModel *model = [MovieDataModel initWithModel];
     [self getMovieDetailWithName:model.onMovieTitleArray[self.movieNo]];
+    self.tabBarController.tabBar.hidden = NO;
+    self.navigationController.navigationBarHidden = NO;
     
     
 }
@@ -91,7 +95,9 @@ BOOL isExpand = NO;
 #pragma mark - 电影2级接口
 -(void) getMovieDetailWithName: (NSString *)movieName {
     MovieDataModel *model = [MovieDataModel initWithModel];
-    
+    model.star1Array = [NSMutableArray array];
+    model.starImageUrlArray = [NSMutableArray array];
+    model.starLinkArray = [NSMutableArray array];
     NSString *urlString = [NSString stringWithFormat:@"http://op.juhe.cn/onebox/movie/video?key=a03146c3667f8bb788197a66b622553d&q=%@",movieName];
     urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];//中文转码
     NSURL *url = [NSURL URLWithString:urlString];
@@ -111,6 +117,40 @@ BOOL isExpand = NO;
                 NSString *area = [resultDic objectForKey:@"area"];
                 NSString *desc = [resultDic objectForKey:@"desc"];
                 NSLog(@"tag = %@,area = %@,",tag,area);
+                
+                NSArray *starArray = [resultDic objectForKey:@"act_s"];
+                for (NSDictionary *dic in starArray) {
+                    
+                    NSString *starName = [dic objectForKey:@"name"];
+                    
+                    if (starName) {
+                        NSString *starImagrUrl = [dic objectForKey:@"image"];
+                        NSString *starLink = [dic objectForKey:@"url"];
+                        //NSLog(@"star TU = %@",starImagrUrl);
+                        [model.star1Array addObject:starName];
+                        if (starImagrUrl == nil) {
+
+                            NSString *noImageurl = [NSString stringWithFormat:@"http://h.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=05e1074ebf096b63814c56563c03ab7c/8b82b9014a90f6037c2a5c263812b31bb051ed3d.jpg"];
+                            noImageurl = [noImageurl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+                            [model.starImageUrlArray addObject:noImageurl];
+                            
+                        }
+                        else {
+                            [model.starImageUrlArray addObject:starImagrUrl];
+                            
+                        }
+                        [model.starLinkArray addObject:starLink];
+//                        if ([starLink isKindOfClass:[NSNull class]]) {
+//                            NSString *noLink = [NSString stringWithFormat:@"http://baidu.com/"];
+//                            [model.starLinkArray addObject:noLink];
+//                        }
+//                        else {
+//                            [model.starLinkArray addObject:starLink];
+//                        }
+                        
+                    }
+                    
+                }
                 model.tag = tag;
                 model.area = area;
                 //model.desc = desc;
@@ -140,7 +180,7 @@ BOOL isExpand = NO;
             [self.descLabel sizeToFit];
             NSLog(@"frame = %f",(self.descLabel.bounds.size.height));
             NSLog(@"%@",model.desc);
-            //[self.infoTableView reloadData];
+            [self getImage];
             NSLog(@"UI Refresh!");
         });
         
@@ -161,13 +201,49 @@ BOOL isExpand = NO;
     
     [self.expandButton setTitle:@"展开" forState:UIControlStateNormal];
     [self.expandButton setTitleColor:[UIColor colorWithRed:20/255.0 green:143/255.0 blue:250/255.0 alpha:1]forState:UIControlStateNormal];
-    //[_expandButton addTarget:self action:@selector(expandCell) forControlEvents:UIControlEventTouchUpInside];
+    [_expandButton addTarget:self action:@selector(expandCell) forControlEvents:UIControlEventTouchUpInside];
     //button
     
     self.tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(expandCell)];
     self.tap.numberOfTapsRequired = 1;
     self.tap.numberOfTouchesRequired = 1;
     //self.tap.delegate = self;//手势
+}
+
+#pragma mark - 加载图片
+-(void) getImage {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        MovieDataModel *model = [MovieDataModel initWithModel];
+        UIImage *image = [[UIImage alloc]init];
+        model.starPresentImageArray = [NSMutableArray array];
+        NSLog(@"图片链接数量：%ld",[model.starImageUrlArray count]);
+        if ([model.starImageUrlArray count] > 0) {
+            
+            for (int i =0; i< [model.starImageUrlArray count] ; i++) {
+                if (image) {
+                    
+                    
+                    image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[model.starImageUrlArray objectAtIndex:i]]]];
+                    if (image) {
+                        [model.starPresentImageArray addObject:image];
+                    }
+                    else {
+                        NSLog(@"图片加载失败");
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.infoTableView reloadData];
+            NSLog(@"图片加载完成Reload Table!");
+//            [UIView animateWithDuration:0.3f animations:^{
+//                [self.infoTableView layoutIfNeeded];
+//            }];
+        });
+    });
 }
 
 #pragma mark - Table view data source
@@ -178,7 +254,24 @@ BOOL isExpand = NO;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    MovieDataModel *model = [MovieDataModel initWithModel];
+    if (section == 2) {
+        if ([model.star1Array count] > 0) {
+            NSLog(@"%lu",(unsigned long)[model.star1Array count]);
+            return [model.star1Array count];
+            
+        }
+        else {
+            NSLog(@"%lu",(unsigned long)[model.star1Array count]);
+
+            return 1;
+            }
+    }
+    else {
+       return 1;
+    }
+    
+    
     
 }
 
@@ -191,18 +284,23 @@ BOOL isExpand = NO;
             return (int)self.descLabel.bounds.size.height+70;
         }
     }
+    else if (indexPath.section == 1) {
+        return 60;
+    }
     else {
-        return 50;
+        return 80;
     }
 }
 
 
 #pragma mark - TableView Delegate
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //MovieDataModel *model = [MovieDataModel initWithModel];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    MovieDataModel *model = [MovieDataModel initWithModel];
+    
+    movieDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[movieDetailTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     if (indexPath.section == 0) {
         
@@ -233,18 +331,59 @@ BOOL isExpand = NO;
         
     }
     else if (indexPath.section == 1){
-        cell.textLabel.text = @"";
+        cell.textLabel.text = model.directorArray1[self.movieNo];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     else {
-        cell.textLabel.text = @"";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        if ([model.starPresentImageArray count] > 0) {
+            UIImage *icon = model.starPresentImageArray[indexPath.row];
+            CGSize itemSize = CGSizeMake(60, 70);
+            UIGraphicsBeginImageContextWithOptions(itemSize, NO,0.0);
+            CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+            [icon drawInRect:imageRect];
+            
+            cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            cell.textLabel.text = model.star1Array[indexPath.row];
+        }
+        
     }
     
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MovieDataModel *model = [MovieDataModel initWithModel];
+    if (indexPath.section == 1) {
+        movieWebViewController *movieWevVC = [self.storyboard instantiateViewControllerWithIdentifier:@"moviewebview"];
+        movieWevVC.urlString = model.directorLinkArray[self.movieNo];
+        [self.navigationController pushViewController:movieWevVC animated:YES];
+        movieWevVC.navigationController.navigationBarHidden = YES;
+        movieWevVC.tabBarController.tabBar.hidden = YES;//跳转导演链接
+    }
+    if (indexPath.section == 2) {
+        movieWebViewController *movieWevVC = [self.storyboard instantiateViewControllerWithIdentifier:@"moviewebview"];
+        if ([model.starLinkArray[indexPath.row] isKindOfClass:[NSNull class]]) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"暂无信息" message:@"这哥们可能还没这么火" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:nil];
+            [alert addAction:cancelAction];
+            [self presentViewController:alert animated:YES completion:nil];
+        }//无演员信息警告
+        else {
+        movieWevVC.urlString = model.starLinkArray[indexPath.row];
+        [self.navigationController pushViewController:movieWevVC animated:YES];
+        movieWevVC.navigationController.navigationBarHidden = YES;
+        movieWevVC.tabBarController.tabBar.hidden = YES;
+        }//跳转演员信息
+    }
+}
+
 -(void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.textLabel.text = @"";
     cell.imageView.image = nil;
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
