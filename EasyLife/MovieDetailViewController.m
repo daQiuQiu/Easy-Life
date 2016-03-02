@@ -72,7 +72,8 @@ BOOL isExpand = NO;
     self.playdateLabel.text = model.playDate[self.movieNo];
     NSString *rating = [NSString stringWithFormat:@"%@/10.0",model.ratingArray1[self.movieNo]];
     self.ratingLabel.text = rating;
-    self.cinemaNumberLabel.text = model.cinemaNumber[self.movieNo];
+    NSString *cinemaNumber = [NSString stringWithFormat:@"上海%@",model.cinemaNumber[self.movieNo]];
+    self.cinemaNumberLabel.text = cinemaNumber;
     self.movieImageView.image = model.presentImageArray1[self.movieNo];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
@@ -239,9 +240,7 @@ BOOL isExpand = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.infoTableView reloadData];
             NSLog(@"图片加载完成Reload Table!");
-//            [UIView animateWithDuration:0.3f animations:^{
-//                [self.infoTableView layoutIfNeeded];
-//            }];
+            
         });
     });
 }
@@ -336,7 +335,7 @@ BOOL isExpand = NO;
     }
     else {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        if ([model.starPresentImageArray count] > 0) {
+        if ([model.starPresentImageArray count] > 0 && [model.star1Array count] > 0) {
             UIImage *icon = model.starPresentImageArray[indexPath.row];
             CGSize itemSize = CGSizeMake(60, 70);
             UIGraphicsBeginImageContextWithOptions(itemSize, NO,0.0);
@@ -349,6 +348,10 @@ BOOL isExpand = NO;
         }
         
     }
+    
+//    [UIView animateWithDuration:0.3f animations:^{
+//        [self.infoTableView layoutIfNeeded];
+//    }];表格加载动画
     
     return cell;
 }
