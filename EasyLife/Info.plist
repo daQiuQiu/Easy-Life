@@ -69,7 +69,7 @@
 				<key>NSExceptionAllowInsecureHTTPLoads</key>
 				<true/>
 				<key>NSExceptionRequiresForwardSecrecy</key>
-				<false/>
+				<true/>
 				<key>NSIncludesSubdomains</key>
 				<true/>
 			</dict>

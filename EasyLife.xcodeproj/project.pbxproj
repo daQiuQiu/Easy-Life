@@ -33,6 +33,8 @@
 		8F35A2DC1C61F91300A1ED45 /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2D31C61F91300A1ED45 /* NewsDetailViewController.m */; };
 		8F35A2DD1C61F91300A1ED45 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2D51C61F91300A1ED45 /* TableViewController.m */; };
 		8F35A2DE1C61F91300A1ED45 /* DataLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2D71C61F91300A1ED45 /* DataLoading.m */; };
+		8F3A905E1C86CEF200DC4916 /* movieDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A905D1C86CEF200DC4916 /* movieDetailTableViewCell.m */; };
+		8F3A90611C86CF1F00DC4916 /* movieWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A90601C86CF1F00DC4916 /* movieWebViewController.m */; };
 		8F84D10B1C7ED2720085AF35 /* MovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F84D10A1C7ED2710085AF35 /* MovieDetailViewController.m */; };
 		8FD58A0A1C71A40100652009 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A091C71A40100652009 /* Security.framework */; };
 		8FD58A0C1C71A40D00652009 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A0B1C71A40D00652009 /* libicucore.tbd */; };
@@ -117,6 +119,10 @@
 		8F35A2D51C61F91300A1ED45 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		8F35A2D61C61F91300A1ED45 /* DataLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLoading.h; sourceTree = "<group>"; };
 		8F35A2D71C61F91300A1ED45 /* DataLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataLoading.m; sourceTree = "<group>"; };
+		8F3A905C1C86CEF200DC4916 /* movieDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = movieDetailTableViewCell.h; sourceTree = "<group>"; };
+		8F3A905D1C86CEF200DC4916 /* movieDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = movieDetailTableViewCell.m; sourceTree = "<group>"; };
+		8F3A905F1C86CF1F00DC4916 /* movieWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = movieWebViewController.h; sourceTree = "<group>"; };
+		8F3A90601C86CF1F00DC4916 /* movieWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = movieWebViewController.m; sourceTree = "<group>"; };
 		8F4259D91C8417E4008E87B7 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8F4259DA1C841811008E87B7 /* PchHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PchHeader.h; sourceTree = "<group>"; };
 		8F84D1091C7ED2710085AF35 /* MovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailViewController.h; sourceTree = "<group>"; };
@@ -301,6 +307,10 @@
 		8F0386831C43B71C00AE9523 /* MovieView */ = {
 			isa = PBXGroup;
 			children = (
+				8F3A905C1C86CEF200DC4916 /* movieDetailTableViewCell.h */,
+				8F3A905D1C86CEF200DC4916 /* movieDetailTableViewCell.m */,
+				8F3A905F1C86CF1F00DC4916 /* movieWebViewController.h */,
+				8F3A90601C86CF1F00DC4916 /* movieWebViewController.m */,
 				8F03867E1C43B6F900AE9523 /* MovieSB.storyboard */,
 				8F84D1091C7ED2710085AF35 /* MovieDetailViewController.h */,
 				8F84D10A1C7ED2710085AF35 /* MovieDetailViewController.m */,
@@ -569,6 +579,7 @@
 				8F84D10B1C7ED2720085AF35 /* MovieDetailViewController.m in Sources */,
 				8F35A2C41C61DBB100A1ED45 /* DKLiveBlurView.m in Sources */,
 				8FD58A2D1C7A080D00652009 /* VoiceSearchViewController.m in Sources */,
+				8F3A905E1C86CEF200DC4916 /* movieDetailTableViewCell.m in Sources */,
 				8F35A2C51C61DBB100A1ED45 /* DataModel.m in Sources */,
 				8FD58A331C7AF8BA00652009 /* MovieDataModel.m in Sources */,
 				8FD58A361C7AF8E000652009 /* MovieTableViewCell.m in Sources */,
@@ -578,6 +589,7 @@
 				8F35A2C31C61DBB100A1ED45 /* HomeHeaderViewController.m in Sources */,
 				8F35A2D91C61F91300A1ED45 /* SideViewController.m in Sources */,
 				8F35A2DD1C61F91300A1ED45 /* TableViewController.m in Sources */,
+				8F3A90611C86CF1F00DC4916 /* movieWebViewController.m in Sources */,
 				8F35A2DE1C61F91300A1ED45 /* DataLoading.m in Sources */,
 				8FD58A291C71A70900652009 /* VoiceViewController.m in Sources */,
 				8F35A2C21C61DBB100A1ED45 /* WebSearchViewController.m in Sources */,
@@ -731,7 +743,7 @@
 				GCC_PREFIX_HEADER = EasyLife/PrefixHeader.pch;
 				INFOPLIST_FILE = EasyLife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLife;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLife1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -748,7 +760,7 @@
 				GCC_PREFIX_HEADER = EasyLife/PrefixHeader.pch;
 				INFOPLIST_FILE = EasyLife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLife;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLife1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

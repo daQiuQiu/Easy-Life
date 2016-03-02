@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MovieDetailViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface MovieDetailViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIVisualEffectView *backEffectView;
 @property (strong, nonatomic) IBOutlet UILabel *movieTitleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *movieTagLabel;
@@ -21,5 +21,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *infoTableView;
 @property (strong,nonatomic) UILabel *descLabel;
 @property (strong,nonatomic) UIButton *expandButton;
+@property (strong,nonatomic) UITapGestureRecognizer *tap;
 
 @end

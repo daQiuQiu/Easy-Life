@@ -75,7 +75,10 @@ BOOL isExpand = NO;
     //表格
     self.infoTableView.delegate = self;
     self.infoTableView.dataSource = self;
+    self.infoTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self creatLabel];
+    
+    
     
 }
 
@@ -117,11 +120,11 @@ BOOL isExpand = NO;
                 [paraStyle setLineSpacing:10];
                 [attributedString addAttribute:NSParagraphStyleAttributeName value:paraStyle range:NSMakeRange(0, [desc length])];
                 model.desc = attributedString;
-                UIFont *font = [UIFont fontWithName:@"Arial" size:15];
-                rect = [desc boundingRectWithSize:CGSizeMake(screenW, screenH)//限制最大的宽度和高度
-                                                           options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesFontLeading |NSStringDrawingUsesLineFragmentOrigin//采用换行模式
-                                                        attributes:@{NSFontAttributeName:font}//传人的字体字典
-                                                           context:nil];
+//                UIFont *font = [UIFont fontWithName:@"Arial" size:15];
+//                rect = [desc boundingRectWithSize:CGSizeMake(screenW, screenH)//限制最大的宽度和高度
+//                                                           options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesFontLeading |NSStringDrawingUsesLineFragmentOrigin//采用换行模式
+//                                                        attributes:@{NSFontAttributeName:font}//传人的字体字典
+//                                                           context:nil];
 
                 
             }
@@ -156,9 +159,15 @@ BOOL isExpand = NO;
     
     _expandButton = [[UIButton alloc]init];
     
-    [_expandButton setBackgroundImage:[[UIImage imageNamed:@"Dark_News_Navigation_Unnext"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
-    [_expandButton addTarget:self action:@selector(expandCell) forControlEvents:UIControlEventTouchUpInside];
+    [self.expandButton setTitle:@"展开" forState:UIControlStateNormal];
+    [self.expandButton setTitleColor:[UIColor colorWithRed:20/255.0 green:143/255.0 blue:250/255.0 alpha:1]forState:UIControlStateNormal];
+    //[_expandButton addTarget:self action:@selector(expandCell) forControlEvents:UIControlEventTouchUpInside];
     //button
+    
+    self.tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(expandCell)];
+    self.tap.numberOfTapsRequired = 1;
+    self.tap.numberOfTouchesRequired = 1;
+    //self.tap.delegate = self;//手势
 }
 
 #pragma mark - Table view data source
@@ -176,10 +185,10 @@ BOOL isExpand = NO;
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         if (isExpand == NO) {
-            return 120;
+            return 130;
         }
         else {
-            return (int)self.descLabel.bounds.size.height+40;
+            return (int)self.descLabel.bounds.size.height+70;
         }
     }
     else {
@@ -203,12 +212,12 @@ BOOL isExpand = NO;
         
         UIFont *font = [UIFont fontWithName:@"Arial" size:15];
         _descLabel.font = font;
-        
+        [cell addGestureRecognizer:self.tap];
         [cell addSubview:_descLabel];//添加摘要Label
         
     
         [_descLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo (cell).with.insets (UIEdgeInsetsMake(0, 15, 30, 15));
+            make.edges.equalTo (cell).with.insets (UIEdgeInsetsMake(10, 15, 30, 15));
             //设置边距
             
         }];
@@ -218,7 +227,7 @@ BOOL isExpand = NO;
             
             make.centerX.equalTo (cell);
             //make.bottom.equalTo (cell).with.offset (-5);
-            make.top.equalTo (_descLabel.mas_bottom).with.offset (5);
+            make.top.equalTo (_descLabel.mas_bottom).with.offset (0);
         }];
         
         
@@ -233,24 +242,14 @@ BOOL isExpand = NO;
     return cell;
 }
 
--(void) expandCell {
-    if (isExpand == NO) {
-        isExpand = YES;
-        self.descLabel.numberOfLines = 0;
-        [self.descLabel sizeToFit];
-        [self.infoTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    else {
-        isExpand = NO;
-        self.descLabel.numberOfLines = 3;
-        [self.infoTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-        
-    }
+-(void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.textLabel.text = @"";
+    cell.imageView.image = nil;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return @"剧情摘要";
+        return nil;
     }
     else if (section == 1){
         return @"导演";
@@ -259,6 +258,23 @@ BOOL isExpand = NO;
         return @"主要演员";
     }
 
+}
+
+-(void) expandCell {
+    if (isExpand == NO) {
+        isExpand = YES;
+        self.descLabel.numberOfLines = 0;
+        [self.descLabel sizeToFit];
+        [self.expandButton setTitle:@"收起" forState:UIControlStateNormal];
+        [self.infoTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    else {
+        isExpand = NO;
+        [self.expandButton setTitle:@"展开" forState:UIControlStateNormal];
+        self.descLabel.numberOfLines = 3;
+        [self.infoTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+    }
 }
 
 @end

@@ -27,7 +27,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     //UINavigationController *tableViewController = (UINavigationController *)[self initWithSB:@"newsNavi" inStoryBoard:@"Main"];
-    UITabBarController *tabVC = (UITabBarController *)[self initWithSB:@"tabvc" inStoryBoard:@"Main"];
+    //UITabBarController *tabVC = (UITabBarController *)[self initWithSB:@"tabvc" inStoryBoard:@"Main"];
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UITabBarController *tabVC = [storyBoard instantiateViewControllerWithIdentifier:@"tabvc"];
     //UINavigationController *newsNaviVC = (UINavigationController *)[self initWithSB:@"newsnavi" inStoryBoard:@"NewsSB"];
     //TableViewController *tableVC = newsNaviVC.viewControllers[0];// 拿到tableviewcontroller
     
@@ -108,16 +110,16 @@
     return YES;
 }
 
--(instancetype)initWithSB:(NSString *) identifier inStoryBoard:(NSString *) storyboardName {
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-    if (storyBoard) {
-        return [storyBoard instantiateViewControllerWithIdentifier:identifier];
-    }
-    else {
-        NSLog(@"No SB!");
-        return nil;
-    }
-}//封装一下storyBoard调用
+//-(instancetype)initWithSB:(NSString *) identifier inStoryBoard:(NSString *) storyboardName {
+//    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+//    if (storyBoard) {
+//        return [storyBoard instantiateViewControllerWithIdentifier:identifier];
+//    }
+//    else {
+//        NSLog(@"No SB!");
+//        return nil;
+//    }
+//}//封装一下storyBoard调用
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

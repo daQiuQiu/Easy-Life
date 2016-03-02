@@ -269,7 +269,7 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
     self.mainTable.tag = 1;
     
     self.backgroundView = [[DKLiveBlurView alloc]initWithFrame:CGRectMake(0, 0, screenW, screenH)];
-    _backgroundView.originalImage = [UIImage imageNamed:@"blue1"];
+    _backgroundView.originalImage = [UIImage imageNamed:@"blue"];
     _backgroundView.scrollView = self.mainTable;
     _backgroundView.isGlassEffectOn = YES;
 
