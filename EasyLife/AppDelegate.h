@@ -13,5 +13,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong,nonatomic) YRSideViewController *sideController;
 
+@property (assign,nonatomic)BOOL isRotation;
+
 @end
 

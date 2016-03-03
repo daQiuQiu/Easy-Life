@@ -208,7 +208,7 @@ BOOL firstIN = YES;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     positionY= scrollView.contentOffset.y;//获取Y的数据
-    CGFloat positionX = scrollView.contentOffset.x;
+    //CGFloat positionX = scrollView.contentOffset.x;
     //NSLog(@"xxxxxxxxxxxxxxx%f",positionX);
     NSLog(@"yyyyyyyyyyyyyyy%f",positionY);
     if (positionY != 0){//给navigationbar加颜色

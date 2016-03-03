@@ -35,6 +35,7 @@
 		8F35A2DE1C61F91300A1ED45 /* DataLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2D71C61F91300A1ED45 /* DataLoading.m */; };
 		8F3A905E1C86CEF200DC4916 /* movieDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A905D1C86CEF200DC4916 /* movieDetailTableViewCell.m */; };
 		8F3A90611C86CF1F00DC4916 /* movieWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A90601C86CF1F00DC4916 /* movieWebViewController.m */; };
+		8F3A90671C8805CD00DC4916 /* MoviePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A90661C8805CD00DC4916 /* MoviePlayerView.m */; };
 		8F84D10B1C7ED2720085AF35 /* MovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F84D10A1C7ED2710085AF35 /* MovieDetailViewController.m */; };
 		8FD58A0A1C71A40100652009 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A091C71A40100652009 /* Security.framework */; };
 		8FD58A0C1C71A40D00652009 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A0B1C71A40D00652009 /* libicucore.tbd */; };
@@ -123,6 +124,8 @@
 		8F3A905D1C86CEF200DC4916 /* movieDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = movieDetailTableViewCell.m; sourceTree = "<group>"; };
 		8F3A905F1C86CF1F00DC4916 /* movieWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = movieWebViewController.h; sourceTree = "<group>"; };
 		8F3A90601C86CF1F00DC4916 /* movieWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = movieWebViewController.m; sourceTree = "<group>"; };
+		8F3A90651C8805CD00DC4916 /* MoviePlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviePlayerView.h; sourceTree = "<group>"; };
+		8F3A90661C8805CD00DC4916 /* MoviePlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviePlayerView.m; sourceTree = "<group>"; };
 		8F4259D91C8417E4008E87B7 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8F4259DA1C841811008E87B7 /* PchHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PchHeader.h; sourceTree = "<group>"; };
 		8F84D1091C7ED2710085AF35 /* MovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailViewController.h; sourceTree = "<group>"; };
@@ -312,6 +315,8 @@
 				8F3A905F1C86CF1F00DC4916 /* movieWebViewController.h */,
 				8F3A90601C86CF1F00DC4916 /* movieWebViewController.m */,
 				8F03867E1C43B6F900AE9523 /* MovieSB.storyboard */,
+				8F3A90651C8805CD00DC4916 /* MoviePlayerView.h */,
+				8F3A90661C8805CD00DC4916 /* MoviePlayerView.m */,
 				8F84D1091C7ED2710085AF35 /* MovieDetailViewController.h */,
 				8F84D10A1C7ED2710085AF35 /* MovieDetailViewController.m */,
 				8FD58A2E1C7AED8C00652009 /* MovieTableViewController.h */,
@@ -582,6 +587,7 @@
 				8F3A905E1C86CEF200DC4916 /* movieDetailTableViewCell.m in Sources */,
 				8F35A2C51C61DBB100A1ED45 /* DataModel.m in Sources */,
 				8FD58A331C7AF8BA00652009 /* MovieDataModel.m in Sources */,
+				8F3A90671C8805CD00DC4916 /* MoviePlayerView.m in Sources */,
 				8FD58A361C7AF8E000652009 /* MovieTableViewCell.m in Sources */,
 				8F0385FD1C43856A00AE9523 /* AppDelegate.m in Sources */,
 				8F0386791C43A04F00AE9523 /* MainTabViewController.m in Sources */,

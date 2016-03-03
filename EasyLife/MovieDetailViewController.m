@@ -36,12 +36,16 @@
 #import "movieWebViewController.h"
 #import "movieDetailTableViewCell.h"
 
-@interface MovieDetailViewController ()
+
+@interface MovieDetailViewController () {
+    
+}
 
 @end
 
 CGRect rect;
 BOOL isExpand = NO;
+
 @implementation MovieDetailViewController
 -(void)viewWillAppear:(BOOL)animated {
     //[self.navigationController.navigationBar setAlpha:0.9];
@@ -75,6 +79,7 @@ BOOL isExpand = NO;
     NSString *cinemaNumber = [NSString stringWithFormat:@"上海%@",model.cinemaNumber[self.movieNo]];
     self.cinemaNumberLabel.text = cinemaNumber;
     self.movieImageView.image = model.presentImageArray1[self.movieNo];
+    
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
     //表格
@@ -207,8 +212,12 @@ BOOL isExpand = NO;
     
     self.tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(expandCell)];
     self.tap.numberOfTapsRequired = 1;
-    self.tap.numberOfTouchesRequired = 1;
-    //self.tap.delegate = self;//手势
+    self.tap.numberOfTouchesRequired = 1;//cell单击手势
+    
+    self.playTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(playMovie)];
+    self.playTap.numberOfTapsRequired = 1;
+    self.playTap.numberOfTouchesRequired = 1;//cell单击手势
+    [self.backEffectView addGestureRecognizer:self.playTap];
 }
 
 #pragma mark - 加载图片
@@ -401,7 +410,7 @@ BOOL isExpand = NO;
     }
 
 }
-
+#pragma mark - Cell展开方法
 -(void) expandCell {
     if (isExpand == NO) {
         isExpand = YES;
@@ -418,5 +427,66 @@ BOOL isExpand = NO;
         
     }
 }
+
+#pragma mark - 视频播放
+-(void) playMovie {
+    [UIApplication sharedApplication].statusBarHidden = YES;
+    self.navigationController.navigationBarHidden = YES;
+    self.tabBarController.tabBar.hidden = YES;
+    self.playView = [[MoviePlayerView alloc]initWithFrame:CGRectMake(0, 0, screenW, screenH) URL:nil];
+    _playView.transform = CGAffineTransformMakeRotation(M_PI/2.0);
+    _playView.bounds = CGRectMake(0, 0, self.view.bounds.size.height, self.view.bounds.size.width);
+    
+    NSLog(@"playTap Touched!");
+    NSURL *url = [NSURL URLWithString:
+                  @"http://v.jxvdy.com/sendfile/w5bgP3A8JgiQQo5l0hvoNGE2H16WbN09X-ONHPq3P3C1BISgf7C-qVs6_c8oaw3zKScO78I--b0BGFBRxlpw13sf2e54QA"];
+    
+    _moviePlayer =  [[MPMoviePlayerController alloc]
+                     initWithContentURL:url];
+    [_playView addSubview:_moviePlayer.view];
+    self.moviePlayer.view.frame = _playView.bounds;
+    [self.view addSubview:_playView];
+    //    CGAffineTransform landscapeTransform = CGAffineTransformMakeRotation(M_PI/2.0);
+    //    self.moviePlayer.view.transform = landscapeTransform;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moviePlayBackDidFinish:)
+                                                 name:MPMoviePlayerPlaybackDidFinishNotification
+                                               object:_moviePlayer];
+    [_moviePlayer setFullscreen:YES animated:YES];
+    _moviePlayer.controlStyle = MPMovieControlStyleFullscreen;
+    _moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
+    _moviePlayer.shouldAutoplay = YES;
+    
+    
+    
+    
+    
+}
+
+- (void) moviePlayBackDidFinish:(NSNotification*)notification {
+    MPMoviePlayerController *player = [notification object];
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:MPMoviePlayerPlaybackDidFinishNotification
+     object:player];
+    
+    if ([player
+         respondsToSelector:@selector(setFullscreen:animated:)])
+    {
+        [player.view removeFromSuperview];
+        self.navigationController.navigationBarHidden = YES;
+        self.tabBarController.tabBar.hidden = YES;
+        [self.playView removeFromSuperview];//移除播放View
+        [UIApplication sharedApplication].statusBarHidden = NO;
+            }
+    
+    self.navigationController.navigationBarHidden = NO;
+    self.tabBarController.tabBar.hidden = NO;
+    
+}
+
+
+
+
 
 @end

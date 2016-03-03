@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MoviePlayerView.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface MovieDetailViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIVisualEffectView *backEffectView;
@@ -22,5 +24,8 @@
 @property (strong,nonatomic) UILabel *descLabel;
 @property (strong,nonatomic) UIButton *expandButton;
 @property (strong,nonatomic) UITapGestureRecognizer *tap;
+@property (strong,nonatomic) UITapGestureRecognizer *playTap;
+@property (strong,nonatomic) MPMoviePlayerController *moviePlayer;
+@property (strong,nonatomic) MoviePlayerView *playView;
 
 @end
