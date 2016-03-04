@@ -14,6 +14,7 @@
 @interface TableViewController : UITableViewController
 @property (nonatomic,weak)NSTimer *timer;
 - (IBAction)sideMenuShow:(UIBarButtonItem *)sender;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *sideMenuButton;
 
 
 

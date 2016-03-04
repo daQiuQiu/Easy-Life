@@ -481,6 +481,7 @@ BOOL firstIN = YES;
                 [self.tableView reloadData];
                 
                 [self.tableView.mj_header endRefreshing];
+                self.sideMenuButton.enabled = YES;
             });
             
             
@@ -624,7 +625,7 @@ BOOL firstIN = YES;
     }] ;
     
     [self.tableView.mj_header beginRefreshing];
-
+    self.sideMenuButton.enabled = NO;
     
 }
 

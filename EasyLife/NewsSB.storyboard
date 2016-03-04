@@ -71,6 +71,9 @@
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="sideMenuButton" destination="t3s-T1-d6I" id="NlL-v7-hK3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vnf-Jv-5J3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
