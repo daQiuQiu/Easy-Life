@@ -28,6 +28,12 @@
     
     //[self playMovie];
     
+    self.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
+    [UIView animateWithDuration:0.5f animations:^{
+        self.layer.transform = CATransform3DMakeScale(1, 1, 1);
+    }];//启动动画 中间开始渐变出来
+
+    
     return self;
 }
 

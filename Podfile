@@ -13,6 +13,7 @@ pod 'ShareSDK3/ShareSDKUI'
 pod 'ShareSDK3/ShareSDKPlatforms/QQ'
 pod 'ShareSDK3/ShareSDKPlatforms/SinaWeibo'
 pod 'ShareSDK3/ShareSDKPlatforms/WeChat'
+pod 'BaiduMapKit'
 end
 
 target 'EasyLifeTests' do

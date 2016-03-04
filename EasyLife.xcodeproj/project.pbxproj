@@ -36,6 +36,7 @@
 		8F3A905E1C86CEF200DC4916 /* movieDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A905D1C86CEF200DC4916 /* movieDetailTableViewCell.m */; };
 		8F3A90611C86CF1F00DC4916 /* movieWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A90601C86CF1F00DC4916 /* movieWebViewController.m */; };
 		8F3A90671C8805CD00DC4916 /* MoviePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A90661C8805CD00DC4916 /* MoviePlayerView.m */; };
+		8F3A906A1C88344F00DC4916 /* BaiduMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A90691C88344F00DC4916 /* BaiduMapViewController.m */; };
 		8F84D10B1C7ED2720085AF35 /* MovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F84D10A1C7ED2710085AF35 /* MovieDetailViewController.m */; };
 		8FD58A0A1C71A40100652009 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A091C71A40100652009 /* Security.framework */; };
 		8FD58A0C1C71A40D00652009 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A0B1C71A40D00652009 /* libicucore.tbd */; };
@@ -126,6 +127,8 @@
 		8F3A90601C86CF1F00DC4916 /* movieWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = movieWebViewController.m; sourceTree = "<group>"; };
 		8F3A90651C8805CD00DC4916 /* MoviePlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviePlayerView.h; sourceTree = "<group>"; };
 		8F3A90661C8805CD00DC4916 /* MoviePlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviePlayerView.m; sourceTree = "<group>"; };
+		8F3A90681C88344F00DC4916 /* BaiduMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMapViewController.h; sourceTree = "<group>"; };
+		8F3A90691C88344F00DC4916 /* BaiduMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaiduMapViewController.m; sourceTree = "<group>"; };
 		8F4259D91C8417E4008E87B7 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8F4259DA1C841811008E87B7 /* PchHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PchHeader.h; sourceTree = "<group>"; };
 		8F84D1091C7ED2710085AF35 /* MovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailViewController.h; sourceTree = "<group>"; };
@@ -303,6 +306,8 @@
 			isa = PBXGroup;
 			children = (
 				8F0386801C43B70300AE9523 /* NearSB.storyboard */,
+				8F3A90681C88344F00DC4916 /* BaiduMapViewController.h */,
+				8F3A90691C88344F00DC4916 /* BaiduMapViewController.m */,
 			);
 			name = NearView;
 			sourceTree = "<group>";
@@ -590,6 +595,7 @@
 				8F3A90671C8805CD00DC4916 /* MoviePlayerView.m in Sources */,
 				8FD58A361C7AF8E000652009 /* MovieTableViewCell.m in Sources */,
 				8F0385FD1C43856A00AE9523 /* AppDelegate.m in Sources */,
+				8F3A906A1C88344F00DC4916 /* BaiduMapViewController.m in Sources */,
 				8F0386791C43A04F00AE9523 /* MainTabViewController.m in Sources */,
 				8F35A2DC1C61F91300A1ED45 /* NewsDetailViewController.m in Sources */,
 				8F35A2C31C61DBB100A1ED45 /* HomeHeaderViewController.m in Sources */,

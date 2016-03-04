@@ -106,7 +106,13 @@
     NSString *initString = [[NSString alloc] initWithFormat:@"appid=56c148b5"];
     //所有服务启动前，需要确保执行createUtility
     [IFlySpeechUtility createUtility:initString];
-
+    
+    //百度地图
+    self.mapManager = [[BMKMapManager alloc]init];
+    BOOL ret = [self.mapManager start:@"5RFX9KsB0KuNFplQqr1WyeIh" generalDelegate:nil];
+    if (!ret) {
+        NSLog(@"mapManager Start Failed!");
+    }
     return YES;
 }
 

@@ -204,7 +204,7 @@ BOOL isExpand = NO;
     //label
     
     _expandButton = [[UIButton alloc]init];
-    
+    self.expandButton.titleLabel.font = [UIFont systemFontOfSize:16];
     [self.expandButton setTitle:@"展开" forState:UIControlStateNormal];
     [self.expandButton setTitleColor:[UIColor colorWithRed:20/255.0 green:143/255.0 blue:250/255.0 alpha:1]forState:UIControlStateNormal];
     [_expandButton addTarget:self action:@selector(expandCell) forControlEvents:UIControlEventTouchUpInside];
@@ -444,8 +444,10 @@ BOOL isExpand = NO;
     _moviePlayer =  [[MPMoviePlayerController alloc]
                      initWithContentURL:url];
     [_playView addSubview:_moviePlayer.view];
+    
+    
     self.moviePlayer.view.frame = _playView.bounds;
-    [self.view addSubview:_playView];
+    
     //    CGAffineTransform landscapeTransform = CGAffineTransformMakeRotation(M_PI/2.0);
     //    self.moviePlayer.view.transform = landscapeTransform;
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -456,9 +458,8 @@ BOOL isExpand = NO;
     _moviePlayer.controlStyle = MPMovieControlStyleFullscreen;
     _moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
     _moviePlayer.shouldAutoplay = YES;
-    
-    
-    
+    [self.view addSubview:_playView];
+        
     
     
 }
