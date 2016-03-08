@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
-@interface BaiduMapViewController : UIViewController<BMKMapViewDelegate,UITextFieldDelegate>
+#import <BaiduMapAPI_Location/BMKLocationComponent.h>
+@interface BaiduMapViewController : UIViewController<BMKMapViewDelegate,BMKLocationServiceDelegate,UITextFieldDelegate>
 @property (strong,nonatomic) BMKMapView *mapView;
+@property (strong,nonatomic) BMKLocationService *locationService;
 @property (strong,nonatomic) UITextField *searchField;
+@property (strong,nonatomic) UIButton *trafficButton;
+@property (strong,nonatomic) UIButton *locationButton;
 @end

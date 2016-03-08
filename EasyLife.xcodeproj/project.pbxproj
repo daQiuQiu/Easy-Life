@@ -19,6 +19,8 @@
 		8F03867D1C43B6EB00AE9523 /* VoiceSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F03867C1C43B6EB00AE9523 /* VoiceSB.storyboard */; };
 		8F03867F1C43B6F900AE9523 /* MovieSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F03867E1C43B6F900AE9523 /* MovieSB.storyboard */; };
 		8F0386811C43B70300AE9523 /* NearSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F0386801C43B70300AE9523 /* NearSB.storyboard */; };
+		8F1B50B41C8D5A030027F6CC /* ColorCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1B50B31C8D5A030027F6CC /* ColorCollectionViewController.m */; };
+		8F1B50B71C8D627F0027F6CC /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1B50B61C8D627F0027F6CC /* CollectionViewCell.m */; };
 		8F35A2C21C61DBB100A1ED45 /* WebSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2BA1C61DBB100A1ED45 /* WebSearchViewController.m */; };
 		8F35A2C31C61DBB100A1ED45 /* HomeHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2BC1C61DBB100A1ED45 /* HomeHeaderViewController.m */; };
 		8F35A2C41C61DBB100A1ED45 /* DKLiveBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2BE1C61DBB100A1ED45 /* DKLiveBlurView.m */; };
@@ -97,6 +99,10 @@
 		8F03867C1C43B6EB00AE9523 /* VoiceSB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VoiceSB.storyboard; sourceTree = "<group>"; };
 		8F03867E1C43B6F900AE9523 /* MovieSB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MovieSB.storyboard; sourceTree = "<group>"; };
 		8F0386801C43B70300AE9523 /* NearSB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NearSB.storyboard; sourceTree = "<group>"; };
+		8F1B50B21C8D5A030027F6CC /* ColorCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorCollectionViewController.h; sourceTree = "<group>"; };
+		8F1B50B31C8D5A030027F6CC /* ColorCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCollectionViewController.m; sourceTree = "<group>"; };
+		8F1B50B51C8D627F0027F6CC /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		8F1B50B61C8D627F0027F6CC /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		8F35A2B91C61DBB100A1ED45 /* WebSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSearchViewController.h; sourceTree = "<group>"; };
 		8F35A2BA1C61DBB100A1ED45 /* WebSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSearchViewController.m; sourceTree = "<group>"; };
 		8F35A2BB1C61DBB100A1ED45 /* HomeHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeHeaderViewController.h; sourceTree = "<group>"; };
@@ -349,6 +355,10 @@
 		8F0386851C43B73A00AE9523 /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
+				8F1B50B51C8D627F0027F6CC /* CollectionViewCell.h */,
+				8F1B50B61C8D627F0027F6CC /* CollectionViewCell.m */,
+				8F1B50B21C8D5A030027F6CC /* ColorCollectionViewController.h */,
+				8F1B50B31C8D5A030027F6CC /* ColorCollectionViewController.m */,
 				8F35A2B91C61DBB100A1ED45 /* WebSearchViewController.h */,
 				8F35A2BA1C61DBB100A1ED45 /* WebSearchViewController.m */,
 				8F35A2BB1C61DBB100A1ED45 /* HomeHeaderViewController.h */,
@@ -593,6 +603,7 @@
 				8F35A2C51C61DBB100A1ED45 /* DataModel.m in Sources */,
 				8FD58A331C7AF8BA00652009 /* MovieDataModel.m in Sources */,
 				8F3A90671C8805CD00DC4916 /* MoviePlayerView.m in Sources */,
+				8F1B50B41C8D5A030027F6CC /* ColorCollectionViewController.m in Sources */,
 				8FD58A361C7AF8E000652009 /* MovieTableViewCell.m in Sources */,
 				8F0385FD1C43856A00AE9523 /* AppDelegate.m in Sources */,
 				8F3A906A1C88344F00DC4916 /* BaiduMapViewController.m in Sources */,
@@ -606,6 +617,7 @@
 				8FD58A291C71A70900652009 /* VoiceViewController.m in Sources */,
 				8F35A2C21C61DBB100A1ED45 /* WebSearchViewController.m in Sources */,
 				8FD58A301C7AED8D00652009 /* MovieTableViewController.m in Sources */,
+				8F1B50B71C8D627F0027F6CC /* CollectionViewCell.m in Sources */,
 				8F35A2D81C61F91300A1ED45 /* UIBarButtonItem+Badge.m in Sources */,
 				8F35A2DB1C61F91300A1ED45 /* NewsTableViewCell.m in Sources */,
 				8F0385FA1C43856A00AE9523 /* main.m in Sources */,

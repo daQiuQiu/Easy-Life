@@ -27,6 +27,41 @@
     [self initWithControllers];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeIcon) name:@"changecolor" object:nil];//添加监听消息
+}
+
+-(void) changeIcon {
+    int tag = [[[NSUserDefaults standardUserDefaults]objectForKey:@"tag"] intValue];
+    if (tag == 0) {//蓝色图标
+        self.NewsController.tabBarItem.selectedImage = [[UIImage imageNamed:@"newsb"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.NearController.tabBarItem.selectedImage = [[UIImage imageNamed:@"nearb"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.SearchController.tabBarItem.selectedImage = [[UIImage imageNamed:@"homeb"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.VoiceController.tabBarItem.selectedImage = [[UIImage imageNamed:@"listenb"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.MovieController.tabBarItem.selectedImage = [[UIImage imageNamed:@"movieb"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
+    }
+    else if (tag == 1) {//红色
+        self.NewsController.tabBarItem.selectedImage = [[UIImage imageNamed:@"newsr"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.NearController.tabBarItem.selectedImage = [[UIImage imageNamed:@"nearr"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.SearchController.tabBarItem.selectedImage = [[UIImage imageNamed:@"homer"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.VoiceController.tabBarItem.selectedImage = [[UIImage imageNamed:@"listenr"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.MovieController.tabBarItem.selectedImage = [[UIImage imageNamed:@"movier"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    }
+    else if (tag == 2) {//黄色
+        self.NewsController.tabBarItem.selectedImage = [[UIImage imageNamed:@"newsy"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.NearController.tabBarItem.selectedImage = [[UIImage imageNamed:@"neary"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.SearchController.tabBarItem.selectedImage = [[UIImage imageNamed:@"homey"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.VoiceController.tabBarItem.selectedImage = [[UIImage imageNamed:@"listeny"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.MovieController.tabBarItem.selectedImage = [[UIImage imageNamed:@"moviey"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    }
+    else if (tag == 3) {//绿色
+        self.NewsController.tabBarItem.selectedImage = [[UIImage imageNamed:@"newsg"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.NearController.tabBarItem.selectedImage = [[UIImage imageNamed:@"nearg"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.SearchController.tabBarItem.selectedImage = [[UIImage imageNamed:@"homeg"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.VoiceController.tabBarItem.selectedImage = [[UIImage imageNamed:@"listeng"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.MovieController.tabBarItem.selectedImage = [[UIImage imageNamed:@"movieg"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    }
+
 }
 
 
@@ -47,8 +82,8 @@
                                                         NSForegroundColorAttributeName : [UIColor colorWithRed:.5 green:.5 blue:.5 alpha:1]
                                                         } forState:UIControlStateNormal];//设置tab字体
     //新闻页面
-    UINavigationController *newsNaviVC = (UINavigationController *)[self initWithSB:@"newsnavi" inStoryBoard:@"NewsSB"];
-    newsNaviVC.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"新闻" image:[UIImage imageNamed:@"news"] selectedImage:[[UIImage imageNamed:@"newsr"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];//添加新闻页面
+    self.NewsController = [self initWithSB:@"newsnavi" inStoryBoard:@"NewsSB"];
+    self.NewsController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"新闻" image:[UIImage imageNamed:@"news"] selectedImage:[[UIImage imageNamed:@"newsr"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];//添加新闻页面
     
     
     
@@ -69,9 +104,9 @@
     self.NearController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"附近" image:[UIImage imageNamed:@"near"]  selectedImage:[[UIImage imageNamed:@"nearr"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
     
-    
+    [self changeIcon];
     //添加所有控制器
-    self.viewControllers = @[self.SearchController,newsNaviVC,self.VoiceController,self.MovieController,self.NearController];
+    self.viewControllers = @[self.SearchController,self.NewsController,self.VoiceController,self.MovieController,self.NearController];
 
 
 

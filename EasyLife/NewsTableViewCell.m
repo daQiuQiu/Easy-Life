@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [self.cellTitle sizeToFit];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

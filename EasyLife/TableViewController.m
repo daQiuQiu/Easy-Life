@@ -14,7 +14,7 @@
 
 #define screenW [UIScreen mainScreen].bounds.size.width
 #define screenH [UIScreen mainScreen].bounds.size.height
-#define kColor(R,G,B,A) [UIColor colorWithRed:R/255.f green:G/255.f blue:B/255.f alpha:A]
+
 
 @interface TableViewController ()
 @property(nonatomic,strong)UIScrollView *topScr;
@@ -29,7 +29,7 @@ CGFloat positionY;
 NSDictionary *fontdic;
 int titleTag = 0;
 int timeCount = 0;
-BOOL firstIN = YES;
+BOOL isClear = YES;
 @implementation TableViewController
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -41,10 +41,15 @@ BOOL firstIN = YES;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     //self.tabBarController.tabBar.hidden = YES;
     self.tabBarController.tabBar.hidden = NO;
-    
+    if (isClear == YES) {
+        NSLog(@"透明");
+    }
+    else {
+        [self changeColor];//改变主题色
+    }
     
     NSLog(@"ViewWillAppear");
-    firstIN = NO;
+    
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
@@ -105,19 +110,19 @@ BOOL firstIN = YES;
     self.defaultImageArray = [NSMutableArray array];
     if ([model.imageArray count] > 3) {//图片大于3张
         NSLog(@"图片大于3张");
-   self.topScr = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenW, 224)];
-    _topScr.contentSize = CGSizeMake(screenW*4, 224);
+   self.topScr = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenW, 200)];
+    _topScr.contentSize = CGSizeMake(screenW*4, 200);
     _topScr.pagingEnabled = YES;
     _topScr.bounces = NO;
     _topScr.delegate = self;
         
     
-    self.page = [[UIPageControl alloc]initWithFrame:CGRectMake((screenW-50)/2.0, 180, 50, 50)];
+    self.page = [[UIPageControl alloc]initWithFrame:CGRectMake((screenW-50)/2.0, 160, 50, 50)];
     self.page.numberOfPages = 4;
     self.page.tag = 201;
     for (int i = 0; i < 4; i++) {
-        
-        UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(screenW*i, 0, screenW, 224)];
+
+        UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(screenW*i, 0, screenW, 200)];
         image.userInteractionEnabled = YES;
         image.backgroundColor = [UIColor grayColor];
         image.contentMode = UIViewContentModeScaleAspectFill ;
@@ -135,17 +140,17 @@ BOOL firstIN = YES;
         NSLog(@"图片不足3张");
         unsigned long imageNum = [model.imageArray count];
         NSLog(@"imagearray:%ld", imageNum);
-        self.topScr = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenW, 224)];
-        _topScr.contentSize = CGSizeMake(screenW*imageNum, 224);
+        self.topScr = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenW, 200)];
+        _topScr.contentSize = CGSizeMake(screenW*imageNum, 200);
         _topScr.pagingEnabled = YES;
         _topScr.bounces = NO;
         _topScr.delegate = self;
-        self.page = [[UIPageControl alloc]initWithFrame:CGRectMake((screenW-50)/2.0, 180, 50, 50)];
+        self.page = [[UIPageControl alloc]initWithFrame:CGRectMake((screenW-50)/2.0, 160, 50, 50)];
         self.page.numberOfPages = imageNum;
         self.page.tag = 201;
         
         for (int i = 0; i < imageNum; i++) {
-            UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(screenW*i, 0, screenW, 224)];
+            UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(screenW*i, 0, screenW, 200)];
             image.userInteractionEnabled = YES;
             image.backgroundColor = [UIColor grayColor];
             image.contentMode = UIViewContentModeScaleAspectFill ;
@@ -179,7 +184,7 @@ BOOL firstIN = YES;
     if (timeCount == 4) {
         timeCount = 0;
     }
-    [self.topScr scrollRectToVisible:CGRectMake(timeCount * screenW, 0, screenW, 224) animated:YES];
+    [self.topScr scrollRectToVisible:CGRectMake(timeCount * screenW, 0, screenW, 200) animated:YES];
     self.page.currentPage = timeCount;
 }
 
@@ -214,12 +219,13 @@ BOOL firstIN = YES;
     if (positionY != 0){//给navigationbar加颜色
         if (positionY > 0 && positionY != 128) {
             [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-            [self.navigationController.navigationBar setBarTintColor:kColor(23, 144, 211, 1)];
+            [self changeColor];
             [self.navigationController.navigationBar setAlpha:(positionY)/160.0];
             //设置navigationbar title
             
                        // NSLog(@"取消透明");
             //self.navigationController.navigationBar.shadowImage = [UIImage new];
+            isClear = NO;
         }
         else if (positionY <= 0 && positionY >= -64) {//重新让navigationbar 透明
             [self.navigationController.navigationBar setAlpha:0.9];
@@ -228,7 +234,7 @@ BOOL firstIN = YES;
             self.navigationController.navigationBar.shadowImage = [UIImage new];
             self.navigationController.navigationBar.translucent = YES;
             //self.navigationController.navigationBar.hidden = YES;
-            
+            isClear = YES;
             //NSLog(@"需要透明");
         
         }
@@ -249,6 +255,25 @@ BOOL firstIN = YES;
 //        self.tableView.bounces = NO;
 //    }
     }
+
+#pragma mark - 改变导航栏颜色
+-(void) changeColor {
+    int tag = [[[NSUserDefaults standardUserDefaults]objectForKey:@"tag"] intValue];
+    if (tag == 0) {//蓝色图标
+        [self.navigationController.navigationBar setBarTintColor:bColor];
+    }
+    else if (tag == 1) {//红色
+        [self.navigationController.navigationBar setBarTintColor:rColor];
+    }
+    else if (tag == 2) {//黄色
+        [self.navigationController.navigationBar setBarTintColor:yColor];
+            }
+    else if (tag == 3) {//绿色
+        [self.navigationController.navigationBar setBarTintColor:gColor];
+    }
+    
+}
+
 
 
 - (void)didReceiveMemoryWarning {
@@ -554,8 +579,10 @@ BOOL firstIN = YES;
 
         cell.cellImage.image = model.imagePresentArray[indexPath.row];
         cell.cellImage.clipsToBounds = YES;
-        cell.cellTitle.text = model.newsTitleArray[indexPath.row];
+        [cell.cellTitle sizeToFit];
         [cell.cellTitle setNumberOfLines:0];
+        cell.cellTitle.text = model.newsTitleArray[indexPath.row];
+        
         [self.tableView setSeparatorColor:[UIColor grayColor]];
                 // Configure the cell...
         NSLog(@"配置cell");

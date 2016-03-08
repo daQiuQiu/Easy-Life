@@ -18,7 +18,7 @@ BOOL isOn = YES;//默认显示正在上映
 @implementation MovieTableViewController
 -(void)viewWillAppear:(BOOL)animated {
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:231/255.f green:51/255.f blue:49/255.f alpha:1];//设置导航栏颜色
+    [self changeColor];//设置导航栏颜色
     
 }
 
@@ -41,6 +41,25 @@ BOOL isOn = YES;//默认显示正在上映
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - 改变导航栏颜色
+-(void) changeColor {
+    int tag = [[[NSUserDefaults standardUserDefaults]objectForKey:@"tag"] intValue];
+    if (tag == 0) {//蓝色图标
+        [self.navigationController.navigationBar setBarTintColor:bColor];
+    }
+    else if (tag == 1) {//红色
+        [self.navigationController.navigationBar setBarTintColor:rColor];
+    }
+    else if (tag == 2) {//黄色
+        [self.navigationController.navigationBar setBarTintColor:yColor];
+    }
+    else if (tag == 3) {//绿色
+        [self.navigationController.navigationBar setBarTintColor:gColor];
+    }
+    
+}
+
 
 #pragma mark - 设置SegmentControl
 -(void) setSegment {
@@ -124,11 +143,17 @@ BOOL isOn = YES;//默认显示正在上映
                         //NSLog(@"添加正在上映的电影");
                         [model.directorArray1 addObject: directorName];//导演
                         [model.descArray1 addObject:briefStory];//概述
-                        [model.ratingArray1 addObject:grade];//评分
                         [model.onMovieTitleArray addObject:movieTitle];//电影名字
                         [model.iconUrlArray1 addObject:iconAddress];
                         [model.playDate addObject:date];
                         [model.directorLinkArray addObject:directorLink];//导演信息链接
+                        if (grade) {
+                            [model.ratingArray1 addObject:grade];//评分
+                        }
+                        else {
+                            [model.ratingArray1 addObject:@"0.0"];
+                        }
+                        
                         
                         NSString *cinemaNumber = [dic objectForKey:@"subHead"];
                         [model.cinemaNumber addObject:cinemaNumber];//上映影院数量

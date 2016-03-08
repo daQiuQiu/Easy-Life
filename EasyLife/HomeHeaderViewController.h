@@ -17,6 +17,7 @@
 @property (nonatomic,strong) UITableView *historyTable;
 @property (nonatomic,strong) UITableView *hotNewsTable;
 @property (nonatomic,strong) UIButton *searchEngineButton;
+@property (nonatomic,strong) UIButton *changeColorButton;
 @property (nonatomic,strong) NSString *searchLink;
 @property (nonatomic,strong) NSMutableArray *historyArray;
 @property (nonatomic,strong) UIView *weatherView;

@@ -23,6 +23,6 @@
 //@property (nonatomic, strong) PopupView           *popUpView;
 @property (nonatomic, strong) IFlyDataUploader     *uploader;
 @property (nonatomic)         BOOL                 isCanceled;
-
+@property (nonatomic,strong) UIImageView *backImageView;
 
 @end

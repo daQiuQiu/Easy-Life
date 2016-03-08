@@ -14,6 +14,9 @@
 @end
 
 @implementation VoiceViewController
+-(void) viewWillAppear:(BOOL)animated {
+    [self changeBackgroundImage];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,9 +25,12 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *cachePath = [paths objectAtIndex:0];
     _pcmFilePath = [[NSString alloc] initWithFormat:@"%@",[cachePath stringByAppendingPathComponent:@"asr.pcm"]];
-    
+    [self creatBackgroundImage];
     [self.startListen addTarget:self action:@selector(startListening:) forControlEvents:UIControlEventTouchDown];
     [self.startListen addTarget:self action:@selector(stopListening:)                forControlEvents:UIControlEventTouchUpInside];
+    [self.view bringSubviewToFront:self.startListen];
+    [self.view bringSubviewToFront:self.resultLabel];
+    [self.view bringSubviewToFront:self.displayLabel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,6 +42,38 @@
     self.navigationController.navigationBarHidden = YES;
     self.tabBarController.tabBar.hidden = NO;
 }
+
+-(void) creatBackgroundImage {
+    
+    self.backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, screenW, screenH)];
+    
+    [self.view addSubview:self.backImageView];
+}
+
+#pragma mark - 换背景
+-(void) changeBackgroundImage {
+    int tag = [[[NSUserDefaults standardUserDefaults]objectForKey:@"tag"] intValue];
+    
+    
+    if (tag == 0) {//蓝色图标
+        self.backImageView.image = [UIImage imageNamed:@"blue"];
+        
+    }
+    else if (tag == 1) {//红色
+        self.backImageView.image = [UIImage imageNamed:@"red"];
+        
+    }
+    else if (tag == 2) {//黄色
+        self.backImageView.image = [UIImage imageNamed:@"yellow"];
+        
+    }
+    else if (tag == 3) {//绿色
+        self.backImageView.image = [UIImage imageNamed:@"green"];
+        
+    }
+    
+}
+
 
 #pragma mark - 开始听
 - (IBAction)startListening:(UIButton *)sender {

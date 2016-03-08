@@ -19,6 +19,7 @@
 @property (nonatomic,strong) NSString *time;
 @property (nonatomic,strong) NSString *wind;
 @property (nonatomic,strong) NSString *weather;
+@property (nonatomic,assign) int *colorStyle;
 
 
 

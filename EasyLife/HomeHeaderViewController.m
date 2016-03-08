@@ -8,7 +8,7 @@
 
 #import "HomeHeaderViewController.h"
 #import "WebSearchViewController.h"
-
+#import "ColorCollectionViewController.h"
 #import "DataModel.h"
 
 #define screenW [UIScreen mainScreen].bounds.size.width
@@ -38,7 +38,7 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
     [self getHotNews];
     [self addImageAndLabel];
     //[self getRelaxContent];
-    
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeBackgroundImage) name:@"changecolor" object:nil];//添加监听消息
     
     
     //[self getWhetherByLocation:0 withLon:0];
@@ -58,6 +58,7 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
     self.tabBarController.tabBar.hidden = NO;
     [self readHistoryArray];
     [self.historyTable reloadData];
+    [self changeBackgroundImage];
     NSLog(@"History =%@",self.historyArray);
     
 }
@@ -68,6 +69,23 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
 
 -(void)viewWillDisappear:(BOOL)animated {
     
+}
+#pragma mark - 通知方法 
+-(void) changeBackgroundImage {
+    //根据存的tag 改变背景图
+    int tag = [[[NSUserDefaults standardUserDefaults]objectForKey:@"tag"] intValue];
+    if (tag == 0) {
+        self.backgroundView.originalImage = [UIImage imageNamed:@"blue"];
+    }
+    else if (tag == 1) {
+        self.backgroundView.originalImage = [UIImage imageNamed:@"red"];
+    }
+    else if (tag == 2) {
+        self.backgroundView.originalImage = [UIImage imageNamed:@"yellow"];
+    }
+    else if (tag == 3) {
+        self.backgroundView.originalImage = [UIImage imageNamed:@"green"];
+    }
 }
 
 #pragma mark - 读数组和清空
@@ -117,8 +135,8 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
     
     [self.mainTable.tableHeaderView addSubview:self.searchFiled];
     [self.searchFiled mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo (self.mainTable.tableHeaderView).with.offset (80);
-        make.right.equalTo (self.mainTable.tableHeaderView).with.offset (-18);
+        make.left.equalTo (self.mainTable.tableHeaderView).with.offset (60);
+        make.right.equalTo (self.mainTable.tableHeaderView).with.offset (-10);
         make.top.equalTo (self.mainTable.tableHeaderView.mas_bottom).with.offset (-80);
         make.height.equalTo (@50);
     }];
@@ -131,7 +149,7 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
     [self.mainTable.tableHeaderView addSubview:self.searchEngineButton];
     [self.searchEngineButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo (self.searchFiled.mas_left);
-        make.left.equalTo (self.mainTable.tableHeaderView).with.offset (18);
+        make.left.equalTo (self.mainTable.tableHeaderView).with.offset (10);
         make.top.equalTo (self.searchFiled);
         make.height.equalTo (@50);
     }];
@@ -166,7 +184,7 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
             make.top.equalTo (self.mainTable.tableHeaderView).with.offset (20);
             make.left.equalTo (self.mainTable.tableHeaderView).with.offset (10);
             make.height.equalTo (@50);
-            make.right.equalTo (self.mainTable.tableHeaderView).with.offset (-18);
+            make.right.equalTo (self.mainTable.tableHeaderView).with.offset (-10);
         }];
         [self.logoImageView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo (self.searchFiled.mas_top).with.offset (-200);
@@ -194,9 +212,9 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
         self.hotNewsTable.hidden = NO;
         [self.searchFiled mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo (self.mainTable.tableHeaderView.mas_bottom).with.offset (-80);
-            make.left.equalTo (self.mainTable.tableHeaderView).with.offset (90);
+            make.left.equalTo (self.mainTable.tableHeaderView).with.offset (60);
             make.height.equalTo (@50);
-            make.right.equalTo (self.mainTable.tableHeaderView).with.offset (-18);
+            make.right.equalTo (self.mainTable.tableHeaderView).with.offset (-10);
 
             
         }];
@@ -299,9 +317,30 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
     self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenW, screenH/2)];
     self.headerView.backgroundColor = [UIColor clearColor];
     self.mainTable.tableHeaderView = self.headerView;
+    self.changeColorButton = [[UIButton alloc]init];
+    //self.changeColorButton.backgroundColor = [UIColor redColor];
+    [self.changeColorButton setBackgroundImage:[UIImage imageNamed:@"clothes"] forState:UIControlStateNormal];
+    [self.changeColorButton addTarget:self action:@selector(pushToColor) forControlEvents:UIControlEventTouchUpInside];
+    [self.headerView addSubview:self.changeColorButton];
+    [self.changeColorButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo (self.headerView).with.offset (10);
+        make.right.equalTo (self.headerView).with.offset (-10);
+        make.size.mas_equalTo (CGSizeMake(20, 20));
+    }];
     [self creatSearchField];
     [self creatLogoView];
     
+}
+
+-(void) pushToColor {
+    //发送通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"changecolor" object:nil];
+    
+    ColorCollectionViewController *changeColorVC = [self.storyboard instantiateViewControllerWithIdentifier:@"colorvc"];
+    changeColorVC.title = @"皮肤";
+    self.navigationController.navigationBarHidden = NO;
+    [self.navigationController pushViewController:changeColorVC animated:NO];
+   
 }
 
 -(void) creatLogoView {
@@ -431,7 +470,7 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
         make.left.equalTo (self.relaxView).with.offset(15);
         make.bottom.equalTo (self.relaxView).with.offset(-20);
         make.right.equalTo (self.relaxView).with.offset(-10);
-        make.top.equalTo (self.relaxView);
+        make.top.equalTo (self.relaxView).with.offset (10);
     }];
     
 }
@@ -599,13 +638,13 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [mainCell.contentView addSubview:self.hotNewsTable];
         [self.hotNewsTable mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo (mainCell.contentView).with.insets(UIEdgeInsetsMake(0, 18, 0, 18));
+            make.edges.equalTo (mainCell.contentView).with.insets(UIEdgeInsetsMake(0, 10, 0, 10));
         }];
         }//添加热点新闻Table
         else if (indexPath.section == 1){
             [mainCell.contentView addSubview:self.weatherView];
             [self.weatherView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.edges.equalTo (mainCell.contentView).with.insets (UIEdgeInsetsMake(0, 18, 0, 18));
+                make.edges.equalTo (mainCell.contentView).with.insets (UIEdgeInsetsMake(0, 10, 0, 10));
                 
             }];
                         NSLog(@"cell2");
@@ -615,7 +654,7 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
             [self creatRelaxView];
             [mainCell.contentView addSubview:self.relaxView];
             [self.relaxView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.edges.equalTo (mainCell.contentView).with.insets (UIEdgeInsetsMake(0, 18, 0, 18));
+                make.edges.equalTo (mainCell.contentView).with.insets (UIEdgeInsetsMake(0, 10, 0, 10));
                 
             }];
             NSLog(@"cell3");
