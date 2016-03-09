@@ -27,12 +27,27 @@
     [self initWithControllers];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeIcon) name:@"changecolor" object:nil];//添加监听消息
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(delayMethod) name:@"changecolor" object:nil];//添加监听消息
 }
 
+-(void) delayMethod {
+    [self performSelector:@selector(changeIcon) withObject:nil afterDelay:1.8f];
+}//延时方法
+
 -(void) changeIcon {
+    CATransition *transition = [CATransition animation];
+    transition.type = kCATransitionFade;
+    transition.duration = 0.5f;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    [self.tabBar.layer addAnimation:transition forKey:nil];//添加1秒渐变
+    
+    
     int tag = [[[NSUserDefaults standardUserDefaults]objectForKey:@"tag"] intValue];
     if (tag == 0) {//蓝色图标
+        [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Bold" size:12.0f],
+                                                            NSForegroundColorAttributeName : sbColor
+                                                            } forState:UIControlStateSelected];//设置tab字体
+        
         self.NewsController.tabBarItem.selectedImage = [[UIImage imageNamed:@"newsb"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         self.NearController.tabBarItem.selectedImage = [[UIImage imageNamed:@"nearb"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         self.SearchController.tabBarItem.selectedImage = [[UIImage imageNamed:@"homeb"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -41,6 +56,10 @@
 
     }
     else if (tag == 1) {//红色
+        [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Bold" size:12.0f],
+                                                            NSForegroundColorAttributeName : rColor
+                                                            } forState:UIControlStateSelected];//设置tab字体
+        
         self.NewsController.tabBarItem.selectedImage = [[UIImage imageNamed:@"newsr"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         self.NearController.tabBarItem.selectedImage = [[UIImage imageNamed:@"nearr"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         self.SearchController.tabBarItem.selectedImage = [[UIImage imageNamed:@"homer"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -48,6 +67,10 @@
         self.MovieController.tabBarItem.selectedImage = [[UIImage imageNamed:@"movier"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     }
     else if (tag == 2) {//黄色
+        [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Bold" size:12.0f],
+                                                            NSForegroundColorAttributeName : yColor
+                                                            } forState:UIControlStateSelected];//设置tab字体
+        
         self.NewsController.tabBarItem.selectedImage = [[UIImage imageNamed:@"newsy"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         self.NearController.tabBarItem.selectedImage = [[UIImage imageNamed:@"neary"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         self.SearchController.tabBarItem.selectedImage = [[UIImage imageNamed:@"homey"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -55,6 +78,10 @@
         self.MovieController.tabBarItem.selectedImage = [[UIImage imageNamed:@"moviey"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     }
     else if (tag == 3) {//绿色
+        [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Bold" size:12.0f],
+                                                            NSForegroundColorAttributeName : gColor
+                                                            } forState:UIControlStateSelected];//设置tab字体
+        
         self.NewsController.tabBarItem.selectedImage = [[UIImage imageNamed:@"newsg"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         self.NearController.tabBarItem.selectedImage = [[UIImage imageNamed:@"nearg"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         self.SearchController.tabBarItem.selectedImage = [[UIImage imageNamed:@"homeg"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -78,7 +105,7 @@
     self.tabBarController.tabBar.backgroundColor = nil;
     
     
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0f],
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Bold" size:12.0f],
                                                         NSForegroundColorAttributeName : [UIColor colorWithRed:.5 green:.5 blue:.5 alpha:1]
                                                         } forState:UIControlStateNormal];//设置tab字体
     //新闻页面

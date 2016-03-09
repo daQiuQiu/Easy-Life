@@ -19,7 +19,7 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
 @interface HomeHeaderViewController ()
 
 @end
-
+int lastTag;
 @implementation HomeHeaderViewController
 
 - (void)viewDidLoad {
@@ -58,7 +58,17 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
     self.tabBarController.tabBar.hidden = NO;
     [self readHistoryArray];
     [self.historyTable reloadData];
-    [self changeBackgroundImage];
+    int tag = [[[NSUserDefaults standardUserDefaults]objectForKey:@"tag"] intValue];
+    lastTag = tag;
+    if (lastTag == tag) {
+        [self changeBackgroundImage];
+    }
+    else {
+        [self performSelector:@selector(changeBackgroundImage) withObject:nil/*可传任意类型参数*/ afterDelay:1.6f];
+        [UIView animateWithDuration:1 animations:^{
+            [self.backgroundView layoutIfNeeded];
+        }];
+    }
     NSLog(@"History =%@",self.historyArray);
     
 }
@@ -74,18 +84,27 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
 -(void) changeBackgroundImage {
     //根据存的tag 改变背景图
     int tag = [[[NSUserDefaults standardUserDefaults]objectForKey:@"tag"] intValue];
-    if (tag == 0) {
-        self.backgroundView.originalImage = [UIImage imageNamed:@"blue"];
-    }
-    else if (tag == 1) {
-        self.backgroundView.originalImage = [UIImage imageNamed:@"red"];
-    }
-    else if (tag == 2) {
-        self.backgroundView.originalImage = [UIImage imageNamed:@"yellow"];
-    }
-    else if (tag == 3) {
-        self.backgroundView.originalImage = [UIImage imageNamed:@"green"];
-    }
+    NSArray *imageNameArray = @[@"blue",@"red",@"yellow",@"green"];
+    
+    CATransition *transition = [CATransition animation];
+    transition.type = kCATransitionFade;
+    transition.duration = 1.0f;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    [self.backgroundView.layer addAnimation:transition forKey:nil];//添加1秒渐变
+    self.backgroundView.originalImage = [UIImage imageNamed:imageNameArray[tag]];
+    
+//    if (tag == 0) {
+//        self.backgroundView.originalImage = [UIImage imageNamed:@"blue"];
+//    }
+//    else if (tag == 1) {
+//        self.backgroundView.originalImage = [UIImage imageNamed:@"red"];
+//    }
+//    else if (tag == 2) {
+//        self.backgroundView.originalImage = [UIImage imageNamed:@"yellow"];
+//    }
+//    else if (tag == 3) {
+//        self.backgroundView.originalImage = [UIImage imageNamed:@"green"];
+//    }
 }
 
 #pragma mark - 读数组和清空
@@ -307,8 +326,9 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
     self.hotNewsTable.delegate = self;
     self.hotNewsTable.dataSource = self;
     self.hotNewsTable.bounces = NO;
-    [self.hotNewsTable setAlpha:0.6];
-    self.hotNewsTable.backgroundColor = [UIColor blackColor];
+    //[self.hotNewsTable setAlpha:1];
+    self.hotNewsTable.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.15];
+    
     
 }
 
@@ -359,9 +379,9 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
 #pragma mark - 创建Cell2 - 天气cell
 -(void) creatWeatherView {
     self.weatherView = [[UIView alloc]init];
-    [self.weatherView setAlpha:0.6];
-    self.weatherView.backgroundColor = [UIColor blackColor];
-    
+    //[self.weatherView setAlpha:0.6];
+    self.weatherView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.15];
+
     UIButton *refresh = [[UIButton alloc]init];
     [refresh setBackgroundImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
     [self.weatherView addSubview:refresh];
@@ -404,7 +424,8 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
     [self.weatherView addSubview:self.windLabel];
     //创建所有控件
     [self.cityLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.and.left.equalTo (self.weatherView).with.offset (5);
+        make.left.equalTo (self.weatherView).with.offset (12);
+        make.top.equalTo (self.weatherView).with.offset (6);
         make.height.equalTo(@20);
         make.width.equalTo (@40);
         
@@ -437,8 +458,8 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
 #pragma mark - Cell3 - 随机笑话
 -(void) creatRelaxView {
     self.relaxView = [[UIView alloc]init];
-    [self.relaxView setAlpha:0.6];
-    self.relaxView.backgroundColor = [UIColor blackColor];
+    //[self.relaxView setAlpha:0.6];
+    self.relaxView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.15];
     
     UIButton *refresh = [[UIButton alloc]init];
     [refresh setBackgroundImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
@@ -461,7 +482,8 @@ int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
     [self.relaxView addSubview:self.contentLabel];
     
     [self.viewLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.and.left.equalTo (self.relaxView).with.offset (5);
+        make.left.equalTo (self.relaxView).with.offset (12);
+        make.top.equalTo (self.relaxView).with.offset (6);
         make.height.equalTo(@20);
         make.width.equalTo (@100);
     }];

@@ -24,7 +24,8 @@ BOOL isLocated = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self creatMapView];
-    
+    self.locationService.delegate = self;
+    [self locateUserPosition];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,9 +48,10 @@ BOOL isLocated = NO;
     //[self.mapView setTrafficEnabled:YES];
     [self.mapView setBuildingsEnabled:YES];
     [self.mapView setShowMapScaleBar:YES];
-    [self.mapView setShowsUserLocation:YES];
-    [self.mapView setShowsUserLocation:YES];
+    
     [self creatSearchBarAndButtons];
+    
+    
     
 }
 
@@ -115,7 +117,7 @@ BOOL isLocated = NO;
     if (isLocated == NO) {
         isLocated = YES;
         [self.locationService startUserLocationService];
-        [self.mapView setZoomLevel:15];
+        [self.mapView setZoomLevel:20];
         self.mapView.showsUserLocation = NO;
         self.mapView.userTrackingMode = BMKUserTrackingModeFollowWithHeading;
         self.mapView.showsUserLocation = YES;
@@ -164,6 +166,10 @@ BOOL isLocated = NO;
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
+    if (textField.text != nil) {
+        NSLog(@"搜索:%@",textField.text);
+    }
+    
     return YES;
 }
 

@@ -120,7 +120,7 @@ static NSString * const reuseIdentifier = @"collcell";
     NSLog(@"tag存 = %d",tagnumber);
     NSString *tag = [NSString stringWithFormat:@"%d",tagnumber];
     [[NSUserDefaults standardUserDefaults] setObject:tag forKey:@"tag"];
-
+    [[NSUserDefaults standardUserDefaults]synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"changecolor" object:nil];
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -137,6 +137,14 @@ static NSString * const reuseIdentifier = @"collcell";
 
 #pragma mark <UICollectionViewDelegate>
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *tag = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
+    [[NSUserDefaults standardUserDefaults] setObject:tag forKey:@"tag"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    NSLog(@"coll点击tag = %@",tag);
+    [self.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"changecolor" object:nil];
+}
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
