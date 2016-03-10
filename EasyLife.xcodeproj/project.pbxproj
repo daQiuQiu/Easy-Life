@@ -21,6 +21,7 @@
 		8F0386811C43B70300AE9523 /* NearSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F0386801C43B70300AE9523 /* NearSB.storyboard */; };
 		8F1B50B41C8D5A030027F6CC /* ColorCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1B50B31C8D5A030027F6CC /* ColorCollectionViewController.m */; };
 		8F1B50B71C8D627F0027F6CC /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1B50B61C8D627F0027F6CC /* CollectionViewCell.m */; };
+		8F2672AB1C91145A00F2FBE0 /* MyAnimatedAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2672AA1C91145A00F2FBE0 /* MyAnimatedAnnotationView.m */; };
 		8F35A2C21C61DBB100A1ED45 /* WebSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2BA1C61DBB100A1ED45 /* WebSearchViewController.m */; };
 		8F35A2C31C61DBB100A1ED45 /* HomeHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2BC1C61DBB100A1ED45 /* HomeHeaderViewController.m */; };
 		8F35A2C41C61DBB100A1ED45 /* DKLiveBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2BE1C61DBB100A1ED45 /* DKLiveBlurView.m */; };
@@ -103,6 +104,8 @@
 		8F1B50B31C8D5A030027F6CC /* ColorCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCollectionViewController.m; sourceTree = "<group>"; };
 		8F1B50B51C8D627F0027F6CC /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		8F1B50B61C8D627F0027F6CC /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		8F2672A91C91145A00F2FBE0 /* MyAnimatedAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnimatedAnnotationView.h; sourceTree = "<group>"; };
+		8F2672AA1C91145A00F2FBE0 /* MyAnimatedAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnimatedAnnotationView.m; sourceTree = "<group>"; };
 		8F35A2B91C61DBB100A1ED45 /* WebSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSearchViewController.h; sourceTree = "<group>"; };
 		8F35A2BA1C61DBB100A1ED45 /* WebSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSearchViewController.m; sourceTree = "<group>"; };
 		8F35A2BB1C61DBB100A1ED45 /* HomeHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeHeaderViewController.h; sourceTree = "<group>"; };
@@ -312,6 +315,8 @@
 			isa = PBXGroup;
 			children = (
 				8F0386801C43B70300AE9523 /* NearSB.storyboard */,
+				8F2672A91C91145A00F2FBE0 /* MyAnimatedAnnotationView.h */,
+				8F2672AA1C91145A00F2FBE0 /* MyAnimatedAnnotationView.m */,
 				8F3A90681C88344F00DC4916 /* BaiduMapViewController.h */,
 				8F3A90691C88344F00DC4916 /* BaiduMapViewController.m */,
 			);
@@ -608,6 +613,7 @@
 				8F0385FD1C43856A00AE9523 /* AppDelegate.m in Sources */,
 				8F3A906A1C88344F00DC4916 /* BaiduMapViewController.m in Sources */,
 				8F0386791C43A04F00AE9523 /* MainTabViewController.m in Sources */,
+				8F2672AB1C91145A00F2FBE0 /* MyAnimatedAnnotationView.m in Sources */,
 				8F35A2DC1C61F91300A1ED45 /* NewsDetailViewController.m in Sources */,
 				8F35A2C31C61DBB100A1ED45 /* HomeHeaderViewController.m in Sources */,
 				8F35A2D91C61F91300A1ED45 /* SideViewController.m in Sources */,
@@ -767,7 +773,7 @@
 				GCC_PREFIX_HEADER = EasyLife/PrefixHeader.pch;
 				INFOPLIST_FILE = EasyLife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLife1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -784,7 +790,7 @@
 				GCC_PREFIX_HEADER = EasyLife/PrefixHeader.pch;
 				INFOPLIST_FILE = EasyLife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLife1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

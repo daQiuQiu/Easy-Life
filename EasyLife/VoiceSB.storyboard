@@ -31,12 +31,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Xd-m1-VDt">
-                                <rect key="frame" x="138" y="587" width="99" height="80"/>
+                                <rect key="frame" x="147" y="465" width="81" height="81"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="99" id="P4S-UJ-UUe"/>
-                                    <constraint firstAttribute="height" constant="80" id="ohW-3c-IPH"/>
+                                    <constraint firstAttribute="width" constant="81" id="P4S-UJ-UUe"/>
+                                    <constraint firstAttribute="height" constant="81" id="ohW-3c-IPH"/>
                                 </constraints>
-                                <state key="normal" image="listenback"/>
+                                <state key="normal" image="speak1"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="25"/>
@@ -47,7 +47,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2Xd-m1-VDt" firstAttribute="centerX" secondItem="hAd-GY-BCg" secondAttribute="centerX" id="3Ky-Av-lkb"/>
-                            <constraint firstItem="cXl-QB-CL8" firstAttribute="top" secondItem="2Xd-m1-VDt" secondAttribute="bottom" id="6rp-Np-JMN"/>
+                            <constraint firstItem="cXl-QB-CL8" firstAttribute="top" secondItem="2Xd-m1-VDt" secondAttribute="bottom" constant="121" id="6rp-Np-JMN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FlY-pX-Y4O"/>
@@ -111,6 +111,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="listenback" width="59" height="80"/>
+        <image name="speak1" width="117" height="117"/>
     </resources>
 </document>

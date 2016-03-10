@@ -24,5 +24,7 @@
 @property (nonatomic, strong) IFlyDataUploader     *uploader;
 @property (nonatomic)         BOOL                 isCanceled;
 @property (nonatomic,strong) UIImageView *backImageView;
+@property (nonatomic,strong) UIImageView *animatedImageView;
+@property (nonatomic,strong) NSMutableArray *imageArray;
 
 @end

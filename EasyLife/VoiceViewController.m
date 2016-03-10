@@ -8,7 +8,7 @@
 
 #import "VoiceViewController.h"
 #import "VoiceSearchViewController.h"
-
+#import <Masonry.h>
 @interface VoiceViewController ()
 
 @end
@@ -16,6 +16,7 @@
 @implementation VoiceViewController
 -(void) viewWillAppear:(BOOL)animated {
     [self changeBackgroundImage];
+    self.animatedImageView.animationImages = nil;
 }
 
 - (void)viewDidLoad {
@@ -48,6 +49,28 @@
     self.backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, screenW, screenH)];
     
     [self.view addSubview:self.backImageView];
+    
+    [self creatAnimationImageView];
+}
+
+#pragma mark - 动画ImageView
+-(void) creatAnimationImageView {
+     self.imageArray = [NSMutableArray array];
+    UIImage *image = [[UIImage alloc]init];
+    self.animatedImageView = [[UIImageView alloc]init];
+    self.animatedImageView.animationDuration = 1.5f;
+    for (int i = 0; i < 30; i++) {
+        image = [UIImage imageNamed:[NSString stringWithFormat:@"%d",i]];
+        [_imageArray addObject:image];
+    }
+    self.animatedImageView.animationRepeatCount = 0;//infinite
+    self.animatedImageView.animationImages = _imageArray;
+    [self.backImageView addSubview:self.animatedImageView];
+    [self.animatedImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo (CGSizeMake(screenW, screenW));
+        make.center.equalTo (self.startListen);
+    }];
+    
 }
 
 #pragma mark - 换背景
@@ -79,10 +102,14 @@
 - (IBAction)startListening:(UIButton *)sender {
     [self recognizerSetting];
     [self.iflySpeechRecognizer startListening];
+    self.animatedImageView.animationImages = self.imageArray;
+    [self.animatedImageView startAnimating];
 }
 
 - (IBAction)stopListening:(UIButton *)sender {
     [self.iflySpeechRecognizer stopListening];
+    self.animatedImageView.animationImages = nil;
+    [self.animatedImageView stopAnimating];
 }
 
 -(void) recognizerSetting {

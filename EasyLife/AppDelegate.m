@@ -112,6 +112,8 @@
     BOOL ret = [self.mapManager start:@"5RFX9KsB0KuNFplQqr1WyeIh" generalDelegate:nil];
     if (!ret) {
         NSLog(@"mapManager Start Failed!");
+    }else {
+        NSLog(@"BaiduMap 授权成功");
     }
     return YES;
 }
