@@ -15,6 +15,7 @@
 @interface BMKPointAnnotation : BMKShape {
 	@package
     CLLocationCoordinate2D _coordinate;
+    
 }
 ///该点的坐标
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;

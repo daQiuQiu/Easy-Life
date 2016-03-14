@@ -129,7 +129,7 @@
     NSString *newid = model.idArray[indexPath.row];
     [model setValue:[NSString stringWithFormat:@"%@",newid] forKey:@"idKey"];
     model.channelId = [NSMutableString stringWithFormat:@"%@",[model valueForKey:@"idKey"]];
-    
+    model.chosenindex = indexPath.row;
     //发送通知
     [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshnews" object:nil];
 

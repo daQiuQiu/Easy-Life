@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--新闻-->
+        <!--Table View Controller-->
         <scene sceneID="oId-Bb-O1i">
             <objects>
                 <tableViewController id="arQ-0k-XWT" customClass="TableViewController" sceneMemberID="viewController">
@@ -33,8 +33,8 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="204" id="Hwg-vo-gpG"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -72,7 +72,7 @@
                             <outlet property="delegate" destination="arQ-0k-XWT" id="8th-ws-yIB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="新闻" id="vvl-ge-vWr">
+                    <navigationItem key="navigationItem" id="vvl-ge-vWr">
                         <barButtonItem key="leftBarButtonItem" image="Home_Icon" id="t3s-T1-d6I">
                             <connections>
                                 <action selector="sideMenuShow:" destination="arQ-0k-XWT" id="67L-E9-Ink"/>

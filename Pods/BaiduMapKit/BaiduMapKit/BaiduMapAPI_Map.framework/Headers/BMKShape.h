@@ -17,5 +17,9 @@
 @property (copy) NSString *title;
 /// 要显示的副标题
 @property (copy) NSString *subtitle;
+//地址
+@property (copy) NSString *address;
+//电话
+@property (copy) NSString *phone;
 
 @end

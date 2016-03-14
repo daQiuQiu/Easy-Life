@@ -9,12 +9,15 @@
 #import "BaiduMapViewController.h"
 #import <Masonry.h>
 #import "MyAnimatedAnnotationView.h"
+#import "MapDataModel.h"
+#import "NavigationViewController.h"
 
 @interface BaiduMapViewController ()
 
 @end
 BOOL isShow = NO;
 BOOL isLocated = NO;
+BOOL isgoing = NO;//判断是否选中大头针
 @implementation BaiduMapViewController
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -22,14 +25,18 @@ BOOL isLocated = NO;
     self.mapView.delegate = self;
     self.locationService.delegate =  self;
     self.search.delegate = self;
+    self.routeSearch.delegate = self;
+    [self getPinImage];
+    //self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self creatMapView];
-    
-    
+    self.routeSearch = [[BMKRouteSearch alloc]init];
+    [self getPinImage];
     [self locateUserPosition];
+    [self creatLocationDetailView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,8 +48,11 @@ BOOL isLocated = NO;
     [self.mapView viewWillDisappear];
     self.mapView.delegate = nil;
     self.search.delegate = nil;
+    self.routeSearch.delegate = nil;
     self.locationService.delegate = nil;//不用时delegate设置nil
     NSLog(@"WillDisappear");
+    
+    
     
 }
 
@@ -67,12 +77,12 @@ BOOL isLocated = NO;
     self.searchField = [[UITextField alloc]init];
     self.searchField.delegate = self;
     self.searchField.backgroundColor = [UIColor whiteColor];
-    self.searchField.placeholder = @"去哪里 搜地点 查路线";
+    self.searchField.placeholder = @"搜附近 吃喝玩乐";
     
     self.searchField.borderStyle = UITextBorderStyleNone;
     self.searchField.autocorrectionType = UITextAutocorrectionTypeNo;
     self.searchField.clearButtonMode = UITextFieldViewModeAlways;
-    self.searchField.keyboardAppearance = UIKeyboardAppearanceAlert;
+    //self.searchField.keyboardAppearance = UIKeyboardAppearanceAlert;
     self.searchField.returnKeyType = UIReturnKeySearch;
     self.searchField.leftView = leftImage;
     self.searchField.leftViewMode = UITextFieldViewModeAlways;//textfield 设置
@@ -161,6 +171,7 @@ BOOL isLocated = NO;
 {
     NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     [self.mapView updateLocationData:userLocation];
+    self.userCoordinate = userLocation.location.coordinate;
     self.location = userLocation;
     
 }
@@ -218,16 +229,131 @@ BOOL isLocated = NO;
     
 }
 
-#pragma mark - 创建地点详细View
--(void) creatLocationDetailView {
+#pragma mark - 确定大头针图标
+-(void) getPinImage {
+    int tag = [[[NSUserDefaults standardUserDefaults]objectForKey:@"tag"] intValue];
+    NSArray *imageNameArray = @[@"b",@"r",@"y",@"g"];
+    self.pinImage = [UIImage imageNamed:imageNameArray[tag]];//获取大头针样式
+    NSArray *goImageArray = @[@"gothereb",@"gotherer",@"gotherey",@"gothereg"];
+    self.goImage = [UIImage imageNamed:goImageArray[tag]];//获取导航按键样式
+    
+    [self.goButton setImage:self.goImage forState:UIControlStateNormal];
     
 }
 
+#pragma mark - 创建地点详细View
+-(void) creatLocationDetailView {
+    self.detailView = [[UIVisualEffectView alloc]initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+    [self.mapView addSubview:self.detailView];
+    self.goButton = [[UIButton alloc]init];
+    [self.goButton setImage:self.goImage forState:UIControlStateNormal];
+    [self.goButton addTarget:self action:@selector(goForNaviView) forControlEvents:UIControlEventTouchUpInside];
+    [self.mapView addSubview:self.goButton];
+    [self.mapView bringSubviewToFront:self.goButton];
+    //button 布局
+    [self.goButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo (self.detailView.mas_top);
+        make.right.equalTo (self.detailView).with.offset (-30);
+        make.size.mas_equalTo (CGSizeMake(60, 60));
+    }];
+    
+    ///图片和Label
+    self.locationImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"60_2"]];
+    self.locationImageView.contentMode = UIViewContentModeScaleToFill;
+    [self.detailView addSubview:self.locationImageView];
+    [self.locationImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo (self.detailView).with.offset (10);
+        make.size.mas_equalTo (CGSizeMake(60, 60));
+        make.left.equalTo (self.detailView).with.offset (10);
+    }];
+    //图片布局
+    
+    self.nameLabel = [[UILabel alloc]init];
+    self.nameLabel.textColor = [UIColor darkTextColor];
+    self.nameLabel.font = [UIFont systemFontOfSize:18];
+    self.nameLabel.text = @"哈哈哈哈";
+    [self.detailView addSubview:self.nameLabel];
+    [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo (self.locationImageView);
+        make.left.equalTo (self.locationImageView.mas_right).with.offset (5);
+        make.right.equalTo (self.detailView).with.offset (-10);
+        make.height.equalTo (@30);
+    }];
+    //地点名字Label布局
+    
+    self.phoneLabel = [[UILabel alloc]init];
+    self.phoneLabel.textColor = [UIColor darkGrayColor];
+    self.phoneLabel.text = @"111111111111";
+    self.phoneLabel.font = [UIFont systemFontOfSize:15];
+    [self.detailView addSubview:self.phoneLabel];
+    [self.phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo (self.locationImageView);
+        make.left.equalTo (self.locationImageView.mas_right).with.offset (5);
+        make.right.equalTo (self.detailView).with.offset (-10);
+        make.height.equalTo (@20);
+    }];
+    //电话号码Label
+    
+    self.addressLabel = [[UILabel alloc]init];
+    self.addressLabel.text = @"12345611111111111111111111111111111";
+    self.addressLabel.textColor = [UIColor darkGrayColor];
+    self.addressLabel.font = [UIFont systemFontOfSize:15];
+    [self.detailView addSubview:self.addressLabel];
+    [self.addressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo (self.detailView).with.offset (-5);
+        make.left.equalTo (self.locationImageView);
+        make.right.equalTo (self.detailView).with.offset (-10);
+        make.height.equalTo (@20);
+    }];
+}
+
+-(void) goForNaviView {
+    NSLog(@"这是导航页面");
+    NavigationViewController *naviVC = [self.storyboard instantiateViewControllerWithIdentifier:@"navivc"];
+    naviVC.userCoordinate = self.userCoordinate;
+    naviVC.goCoordinate = self.goCoordinate;
+    self.navigationController.navigationBarHidden = NO;
+    naviVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:naviVC animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+}
+
+#pragma mark - 导航路线方法
+//-(void) getRouteFromLocation: (CLLocationCoordinate2D) coordinate {
+//    if (isgoing == YES) {
+//        BMKPlanNode *start = [[BMKPlanNode alloc]init];
+//        start.pt = self.userCoordinate;
+//        //start.name = @"起点";
+//        
+//        BMKPlanNode *end = [[BMKPlanNode alloc]init];
+//        end.pt = self.goCoordinate;
+//        //end.name = @"终点";
+//        
+//        
+//        
+//        
+//        
+//        
+//    }
+//    else {
+//        NSLog(@"无信息");
+//    }
+//    
+//}
+
 #pragma mark - POI Search Delegate
+
+-(void)onGetPoiDetailResult:(BMKPoiSearch *)searcher result:(BMKPoiDetailResult *)poiDetailResult errorCode:(BMKSearchErrorCode)errorCode {
+    
+}
+
 - (void)onGetPoiResult:(BMKPoiSearch*)searcher result:(BMKPoiResult*)poiResultList errorCode:(BMKSearchErrorCode)error
 {
     if (error == BMK_SEARCH_NO_ERROR) {
         //在此处理正常结果
+        self.poiResultInfoList = [[BMKPoiResult alloc]init];
+        self.poiResultInfoList = poiResultList;
+        //储存POI
         [self.mapView setZoomLevel:16];//重新设置地图放大
         for (int i = 0; i < poiResultList.poiInfoList.count; i++)
         {
@@ -237,6 +363,9 @@ BOOL isLocated = NO;
             BMKPointAnnotation *item = [[BMKPointAnnotation alloc]init];
             item.coordinate = poi.pt;
             item.title = poi.name;
+            
+            
+            
             
             if (i == 1) {
                 NSLog(@"地址 = %@, dianhua = %@, city = %@, name = %@", poi.address,poi.phone,poi.city,poi.name);
@@ -261,6 +390,19 @@ BOOL isLocated = NO;
     }
 }
 
+#pragma mark - mapView Delegate方法
+- (BMKOverlayView*)mapView:(BMKMapView *)map viewForOverlay:(id<BMKOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[BMKPolyline class]]) {
+        BMKPolylineView* polylineView = [[BMKPolylineView alloc] initWithOverlay:overlay];
+        polylineView.fillColor = [[UIColor alloc] initWithRed:0 green:1 blue:1 alpha:1];
+        polylineView.strokeColor = [[UIColor alloc] initWithRed:0 green:0 blue:1 alpha:0.7];
+        polylineView.lineWidth = 3.0;
+        return polylineView;
+    }
+    return nil;
+}
+
 -(BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id<BMKAnnotation>)annotation {
     NSString *annotationID = @"myAnnotation";
     //MyAnimatedAnnotationView *annotationView = nil;
@@ -271,16 +413,61 @@ BOOL isLocated = NO;
             annotationView = [[BMKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:annotationID];
             
         }
+        NSLog(@"long = %f, lat = %f",annotation.coordinate.longitude, annotation.coordinate.latitude);
+        //NSLog(@"这里是 = %@",annotation.title);
         //annotationView.pinColor = BMKPinAnnotationColorPurple;
         annotationView.animatesDrop = YES;
         annotationView.annotation = annotation;
-        annotationView.image = [UIImage imageNamed:@"poi_1"];
+        annotationView.image = self.pinImage;
         return annotationView;
     }
     
     return nil;
 }
 
+-(void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view {
+    NSLog(@"选中");
+    
+    //NSLog(@"选中的是 = %@,",view.annotation.title);
+    //NSLog(@"long = %f, lat = %f",view.annotation.coordinate.longitude, view.annotation.coordinate.latitude);
+    [self.detailView mas_makeConstraints:^(MASConstraintMaker *make) {
+        //make.bottom.equalTo (self.mapView).with.offset (100);
+        make.left.and.right.equalTo (self.mapView);
+        make.height.mas_equalTo (100);
+    }];
+    [self.detailView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo (self.mapView);
+    }];//下方信息框
+    [UIView animateWithDuration:0.3f animations:^{
+        [self.mapView layoutIfNeeded];
+    }];
+    
+    //处理选中，获取选中信息
+    for (int i = 0; i < [self.poiResultInfoList.poiInfoList count]; i++) {
+        BMKPoiInfo *poi = [self.poiResultInfoList.poiInfoList objectAtIndex:i];
+        if (poi.pt.latitude == view.annotation.coordinate.latitude) {
+            NSLog(@"选中的是 = %@,dianhua = %@",poi.name,poi.phone);
+            self.nameLabel.text = poi.name;
+            self.phoneLabel.text = poi.phone;
+            self.addressLabel.text = poi.address;
+            self.goCoordinate = poi.pt;
+            isgoing = YES;
+        }
+    }
+    
+}
+
+-(void)mapView:(BMKMapView *)mapView didDeselectAnnotationView:(BMKAnnotationView *)view {
+    NSLog(@"取消选中");
+    isgoing = NO;
+    [self.detailView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo (self.mapView).with.offset (190);
+    }];
+    [UIView animateWithDuration:0.3f animations:^{
+        [self.mapView layoutIfNeeded];
+    }];
+
+}
 
 
 

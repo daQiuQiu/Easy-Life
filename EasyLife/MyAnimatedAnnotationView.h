@@ -7,7 +7,7 @@
 //
 
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
-
+#import <UIKit/UIKit.h>
 @interface MyAnimatedAnnotationView : BMKAnnotationView
 
 @property (nonatomic, strong) NSMutableArray *annotationImages;

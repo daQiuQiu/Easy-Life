@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CXa-fV-ryT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="F8w-Qb-tKu">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Baidu Map View Controller-->
@@ -18,9 +19,114 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="esR-bJ-sTG"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ec5-1d-SNO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1190.5" y="344.5"/>
+        </scene>
+        <!--Navigation View Controller-->
+        <scene sceneID="Hxh-st-NBS">
+            <objects>
+                <viewController storyboardIdentifier="navivc" id="EPT-Pa-JX7" customClass="NavigationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vyC-sl-mQO"/>
+                        <viewControllerLayoutGuide type="bottom" id="J2O-7i-JR7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BCw-np-KTe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KpM-UF-KM1">
+                                <rect key="frame" x="-4" y="20" width="383" height="41"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZE-bo-J7C">
+                                        <rect key="frame" x="147" y="1" width="80" height="40"/>
+                                        <state key="normal" title="驾车">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="driveRoute:" destination="EPT-Pa-JX7" eventType="touchUpInside" id="FHL-7b-MNt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxV-UD-SJL">
+                                        <rect key="frame" x="25" y="0.0" width="80" height="40"/>
+                                        <state key="normal" title="步行">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="walkRoute:" destination="EPT-Pa-JX7" eventType="touchUpInside" id="B63-Tt-vxW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsM-tM-e4c">
+                                        <rect key="frame" x="278" y="1" width="80" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="4pe-hd-yE9"/>
+                                            <constraint firstAttribute="height" constant="40" id="B3V-No-EkH"/>
+                                        </constraints>
+                                        <state key="normal" title="公交">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="busRoute:" destination="EPT-Pa-JX7" eventType="touchUpInside" id="iM3-So-o3n"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="0.93000000000000005" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="cxV-UD-SJL" firstAttribute="leading" secondItem="KpM-UF-KM1" secondAttribute="leading" constant="25" id="04n-lf-Qcz"/>
+                                    <constraint firstItem="vsM-tM-e4c" firstAttribute="height" secondItem="dZE-bo-J7C" secondAttribute="height" id="1g4-rh-ifF"/>
+                                    <constraint firstItem="dZE-bo-J7C" firstAttribute="centerY" secondItem="KpM-UF-KM1" secondAttribute="centerY" id="3yl-iP-h52"/>
+                                    <constraint firstItem="cxV-UD-SJL" firstAttribute="top" secondItem="KpM-UF-KM1" secondAttribute="top" id="Cf4-zD-epX"/>
+                                    <constraint firstItem="vsM-tM-e4c" firstAttribute="width" secondItem="dZE-bo-J7C" secondAttribute="width" id="O6A-DF-BB7"/>
+                                    <constraint firstItem="cxV-UD-SJL" firstAttribute="width" secondItem="dZE-bo-J7C" secondAttribute="width" id="RDB-MK-8Ca"/>
+                                    <constraint firstItem="vsM-tM-e4c" firstAttribute="leading" secondItem="dZE-bo-J7C" secondAttribute="trailing" constant="51" id="fQ2-XA-zYd"/>
+                                    <constraint firstAttribute="height" constant="41" id="hZp-Mm-w6L"/>
+                                    <constraint firstItem="cxV-UD-SJL" firstAttribute="height" secondItem="dZE-bo-J7C" secondAttribute="height" id="o2p-VV-dci"/>
+                                    <constraint firstAttribute="width" constant="375" id="qB2-q1-2Qt"/>
+                                    <constraint firstItem="vsM-tM-e4c" firstAttribute="top" secondItem="KpM-UF-KM1" secondAttribute="top" constant="1" id="rgD-PM-mSR"/>
+                                    <constraint firstAttribute="trailing" secondItem="vsM-tM-e4c" secondAttribute="trailing" constant="25" id="yNr-14-hiU"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="qB2-q1-2Qt"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KpM-UF-KM1" firstAttribute="leading" secondItem="BCw-np-KTe" secondAttribute="leadingMargin" constant="-20" id="04l-eO-G4I"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KpM-UF-KM1" secondAttribute="trailing" constant="-20" id="SKL-JK-tY3"/>
+                            <constraint firstItem="KpM-UF-KM1" firstAttribute="top" secondItem="vyC-sl-mQO" secondAttribute="bottom" id="aIU-lT-iPH"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="topTravelMethodView" destination="KpM-UF-KM1" id="4LT-be-nlB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bql-ab-wAF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1628.5" y="344.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="k9l-B4-KW2">
+            <objects>
+                <navigationController storyboardIdentifier="nearnavi" automaticallyAdjustsScrollViewInsets="NO" id="F8w-Qb-tKu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vlz-MZ-VDE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CXa-fV-ryT" kind="relationship" relationship="rootViewController" id="MsM-35-Lmx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ZD-xt-ieT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="379" y="345"/>
         </scene>

@@ -17,6 +17,7 @@
 -(void) viewWillAppear:(BOOL)animated {
     [self changeBackgroundImage];
     self.animatedImageView.animationImages = nil;
+    self.automaticallyAdjustsScrollViewInsets = YES;
 }
 
 - (void)viewDidLoad {
@@ -41,7 +42,7 @@
 
 -(void) viewDidAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
-    self.tabBarController.tabBar.hidden = NO;
+    //self.tabBarController.tabBar.hidden = NO;
 }
 
 -(void) creatBackgroundImage {
@@ -58,7 +59,7 @@
      self.imageArray = [NSMutableArray array];
     UIImage *image = [[UIImage alloc]init];
     self.animatedImageView = [[UIImageView alloc]init];
-    self.animatedImageView.animationDuration = 1.5f;
+    self.animatedImageView.animationDuration = 1.3f;
     for (int i = 0; i < 30; i++) {
         image = [UIImage imageNamed:[NSString stringWithFormat:@"%d",i]];
         [_imageArray addObject:image];
@@ -207,12 +208,15 @@
         }else {
         
             //拼接搜索链接
+            
             resultFromJson = [resultFromJson stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
             NSString *searchLink = [NSString stringWithFormat:@"https://www.baidu.com/s?wd=%@",resultFromJson];
             self.navigationController.navigationBarHidden = NO;
             VoiceSearchViewController *webVC = [self.storyboard instantiateViewControllerWithIdentifier:@"voicesearch"];
             webVC.urlString = searchLink;
+            webVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:webVC animated:YES];
+            self.hidesBottomBarWhenPushed = NO;
         }
         
 

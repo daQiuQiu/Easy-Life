@@ -88,7 +88,7 @@ enum {
 	int _currPoiNum;			///<当前页的POI结果数
 	int _pageNum;			///<本次POI搜索的总页数
 	int _pageIndex;			///<当前页的索引
-	
+    
 	NSArray* _poiInfoList;	///<POI列表，成员是BMKPoiInfo
 	NSArray* _cityList;		///<城市列表，成员是BMKCityListInfo
 }

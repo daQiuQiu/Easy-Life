@@ -127,7 +127,7 @@
     self.MovieController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"影讯" image:[UIImage imageNamed:@"movie"]  selectedImage:[[UIImage imageNamed:@"movier"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 
     //附近页面
-    self.NearController = [self initWithSB:@"nearvc" inStoryBoard:@"NearSB"];
+    self.NearController = [self initWithSB:@"nearnavi" inStoryBoard:@"NearSB"];
     self.NearController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"附近" image:[UIImage imageNamed:@"near"]  selectedImage:[[UIImage imageNamed:@"nearr"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
     

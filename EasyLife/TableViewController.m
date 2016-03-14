@@ -100,7 +100,14 @@ BOOL isClear = YES;
 #pragma mark - 通知刷新方法
 -(void) notificationToRefresh {
     //[self removeScrollView];
+    DataLoading *model = [DataLoading initWithModel];
     [self pullToRefresh];
+    if (model.chosenindex == 0) {
+        self.navigationItem.title = @"今日热闻";
+    }
+    else {
+        self.navigationItem.title = model.cateArray[model.chosenindex];
+    }
 }
 
 #pragma mark - 创建顶部Scroll
@@ -108,7 +115,7 @@ BOOL isClear = YES;
 -(void)creatScrollView {
     DataLoading *model = [DataLoading initWithModel];
     self.defaultImageArray = [NSMutableArray array];
-    if ([model.imageArray count] > 3) {//图片大于3张
+//    if ([model.imageArray count] ) {//图片大于3张
         NSLog(@"图片大于3张");
    self.topScr = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenW, 200)];
     _topScr.contentSize = CGSizeMake(screenW*4, 200);
@@ -135,36 +142,36 @@ BOOL isClear = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped)];
         [image addGestureRecognizer:tap];
     }
-    }
-    else {//加载图片不足3张
-        NSLog(@"图片不足3张");
-        unsigned long imageNum = [model.imageArray count];
-        NSLog(@"imagearray:%ld", imageNum);
-        self.topScr = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenW, 200)];
-        _topScr.contentSize = CGSizeMake(screenW*imageNum, 200);
-        _topScr.pagingEnabled = YES;
-        _topScr.bounces = NO;
-        _topScr.delegate = self;
-        self.page = [[UIPageControl alloc]initWithFrame:CGRectMake((screenW-50)/2.0, 160, 50, 50)];
-        self.page.numberOfPages = imageNum;
-        self.page.tag = 201;
-        
-        for (int i = 0; i < imageNum; i++) {
-            UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(screenW*i, 0, screenW, 200)];
-            image.userInteractionEnabled = YES;
-            image.backgroundColor = [UIColor grayColor];
-            image.contentMode = UIViewContentModeScaleAspectFill ;
-            image.clipsToBounds = YES;
-            [self.topScr addSubview:image];
-            image.tag = i+200;
-            [self.defaultImageArray addObject:image];
-            NSLog(@"加载图片 %lu",(unsigned long)[self.defaultImageArray count]);
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped)];
-            [image addGestureRecognizer:tap];
-        }
-
-
-    }
+//    }
+//    else {//加载图片不足3张
+//        NSLog(@"图片不足3张");
+//        unsigned long imageNum = [model.imageArray count];
+//        NSLog(@"imagearray:%ld", imageNum);
+//        self.topScr = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenW, 200)];
+//        _topScr.contentSize = CGSizeMake(screenW*imageNum, 200);
+//        _topScr.pagingEnabled = YES;
+//        _topScr.bounces = NO;
+//        _topScr.delegate = self;
+//        self.page = [[UIPageControl alloc]initWithFrame:CGRectMake((screenW-50)/2.0, 160, 50, 50)];
+//        self.page.numberOfPages = imageNum;
+//        self.page.tag = 201;
+//        
+//        for (int i = 0; i < imageNum; i++) {
+//            UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(screenW*i, 0, screenW, 200)];
+//            image.userInteractionEnabled = YES;
+//            image.backgroundColor = [UIColor grayColor];
+//            image.contentMode = UIViewContentModeScaleAspectFill ;
+//            image.clipsToBounds = YES;
+//            [self.topScr addSubview:image];
+//            image.tag = i+200;
+//            [self.defaultImageArray addObject:image];
+//            NSLog(@"加载图片 %lu",(unsigned long)[self.defaultImageArray count]);
+//            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped)];
+//            [image addGestureRecognizer:tap];
+//        }
+//
+//
+//    }
     //设置timer
    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(scrollTimer) userInfo:nil repeats:YES];
 
@@ -402,8 +409,8 @@ BOOL isClear = YES;
                 NSString *title = [dic objectForKey:@"title"];
                 NSString *newsurl = [dic objectForKey:@"link"];
                 
-               // NSLog(@"%@",title);
-                //NSLog(@"%@",newsurl);
+                NSLog(@"%@",title);
+                NSLog(@"%@",newsurl);
                 NSMutableArray *imageurl = [dic objectForKey:@"imageurls"];
 //                if (imageurl == nil) {
 //                    [imageurl addObject:@"x"];

@@ -21,7 +21,7 @@
     self.naviBar.backgroundColor = [UIColor redColor];
     [self loadWebView];
     self.tabBarController.tabBar.hidden = YES;
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
 }
 

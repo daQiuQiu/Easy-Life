@@ -25,6 +25,7 @@
 @property (strong,nonatomic) NSMutableArray *cateArray;
 @property (strong,nonatomic) NSMutableArray *idArray;
 @property (strong,nonatomic) NSString *idKey;
+@property (nonatomic,assign) NSInteger chosenindex;
 
 + (id)initWithModel;
 

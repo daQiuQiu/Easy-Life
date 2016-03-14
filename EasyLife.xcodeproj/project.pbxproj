@@ -22,6 +22,7 @@
 		8F1B50B41C8D5A030027F6CC /* ColorCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1B50B31C8D5A030027F6CC /* ColorCollectionViewController.m */; };
 		8F1B50B71C8D627F0027F6CC /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1B50B61C8D627F0027F6CC /* CollectionViewCell.m */; };
 		8F2672AB1C91145A00F2FBE0 /* MyAnimatedAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2672AA1C91145A00F2FBE0 /* MyAnimatedAnnotationView.m */; };
+		8F34963D1C918B6500317847 /* NavigationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8F34963C1C918B6500317847 /* NavigationViewController.mm */; };
 		8F35A2C21C61DBB100A1ED45 /* WebSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2BA1C61DBB100A1ED45 /* WebSearchViewController.m */; };
 		8F35A2C31C61DBB100A1ED45 /* HomeHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2BC1C61DBB100A1ED45 /* HomeHeaderViewController.m */; };
 		8F35A2C41C61DBB100A1ED45 /* DKLiveBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2BE1C61DBB100A1ED45 /* DKLiveBlurView.m */; };
@@ -40,6 +41,8 @@
 		8F3A90611C86CF1F00DC4916 /* movieWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A90601C86CF1F00DC4916 /* movieWebViewController.m */; };
 		8F3A90671C8805CD00DC4916 /* MoviePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A90661C8805CD00DC4916 /* MoviePlayerView.m */; };
 		8F3A906A1C88344F00DC4916 /* BaiduMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A90691C88344F00DC4916 /* BaiduMapViewController.m */; };
+		8F67730C1C95ABEA003DAA44 /* UIImage+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F67730B1C95ABEA003DAA44 /* UIImage+Rotate.m */; };
+		8F7B5B4D1C9272DB001DE423 /* MapDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7B5B4C1C9272DB001DE423 /* MapDataModel.m */; };
 		8F84D10B1C7ED2720085AF35 /* MovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F84D10A1C7ED2710085AF35 /* MovieDetailViewController.m */; };
 		8FD58A0A1C71A40100652009 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A091C71A40100652009 /* Security.framework */; };
 		8FD58A0C1C71A40D00652009 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A0B1C71A40D00652009 /* libicucore.tbd */; };
@@ -106,6 +109,8 @@
 		8F1B50B61C8D627F0027F6CC /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		8F2672A91C91145A00F2FBE0 /* MyAnimatedAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnimatedAnnotationView.h; sourceTree = "<group>"; };
 		8F2672AA1C91145A00F2FBE0 /* MyAnimatedAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnimatedAnnotationView.m; sourceTree = "<group>"; };
+		8F34963B1C918B6500317847 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
+		8F34963C1C918B6500317847 /* NavigationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NavigationViewController.mm; sourceTree = "<group>"; };
 		8F35A2B91C61DBB100A1ED45 /* WebSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSearchViewController.h; sourceTree = "<group>"; };
 		8F35A2BA1C61DBB100A1ED45 /* WebSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSearchViewController.m; sourceTree = "<group>"; };
 		8F35A2BB1C61DBB100A1ED45 /* HomeHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeHeaderViewController.h; sourceTree = "<group>"; };
@@ -140,6 +145,10 @@
 		8F3A90691C88344F00DC4916 /* BaiduMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaiduMapViewController.m; sourceTree = "<group>"; };
 		8F4259D91C8417E4008E87B7 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8F4259DA1C841811008E87B7 /* PchHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PchHeader.h; sourceTree = "<group>"; };
+		8F67730A1C95ABEA003DAA44 /* UIImage+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotate.h"; sourceTree = "<group>"; };
+		8F67730B1C95ABEA003DAA44 /* UIImage+Rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotate.m"; sourceTree = "<group>"; };
+		8F7B5B4B1C9272DB001DE423 /* MapDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDataModel.h; sourceTree = "<group>"; };
+		8F7B5B4C1C9272DB001DE423 /* MapDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDataModel.m; sourceTree = "<group>"; };
 		8F84D1091C7ED2710085AF35 /* MovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailViewController.h; sourceTree = "<group>"; };
 		8F84D10A1C7ED2710085AF35 /* MovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailViewController.m; sourceTree = "<group>"; };
 		8FD58A091C71A40100652009 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -317,8 +326,14 @@
 				8F0386801C43B70300AE9523 /* NearSB.storyboard */,
 				8F2672A91C91145A00F2FBE0 /* MyAnimatedAnnotationView.h */,
 				8F2672AA1C91145A00F2FBE0 /* MyAnimatedAnnotationView.m */,
+				8F67730A1C95ABEA003DAA44 /* UIImage+Rotate.h */,
+				8F67730B1C95ABEA003DAA44 /* UIImage+Rotate.m */,
+				8F34963B1C918B6500317847 /* NavigationViewController.h */,
+				8F34963C1C918B6500317847 /* NavigationViewController.mm */,
 				8F3A90681C88344F00DC4916 /* BaiduMapViewController.h */,
 				8F3A90691C88344F00DC4916 /* BaiduMapViewController.m */,
+				8F7B5B4B1C9272DB001DE423 /* MapDataModel.h */,
+				8F7B5B4C1C9272DB001DE423 /* MapDataModel.m */,
 			);
 			name = NearView;
 			sourceTree = "<group>";
@@ -609,6 +624,7 @@
 				8FD58A331C7AF8BA00652009 /* MovieDataModel.m in Sources */,
 				8F3A90671C8805CD00DC4916 /* MoviePlayerView.m in Sources */,
 				8F1B50B41C8D5A030027F6CC /* ColorCollectionViewController.m in Sources */,
+				8F34963D1C918B6500317847 /* NavigationViewController.mm in Sources */,
 				8FD58A361C7AF8E000652009 /* MovieTableViewCell.m in Sources */,
 				8F0385FD1C43856A00AE9523 /* AppDelegate.m in Sources */,
 				8F3A906A1C88344F00DC4916 /* BaiduMapViewController.m in Sources */,
@@ -618,10 +634,12 @@
 				8F35A2C31C61DBB100A1ED45 /* HomeHeaderViewController.m in Sources */,
 				8F35A2D91C61F91300A1ED45 /* SideViewController.m in Sources */,
 				8F35A2DD1C61F91300A1ED45 /* TableViewController.m in Sources */,
+				8F7B5B4D1C9272DB001DE423 /* MapDataModel.m in Sources */,
 				8F3A90611C86CF1F00DC4916 /* movieWebViewController.m in Sources */,
 				8F35A2DE1C61F91300A1ED45 /* DataLoading.m in Sources */,
 				8FD58A291C71A70900652009 /* VoiceViewController.m in Sources */,
 				8F35A2C21C61DBB100A1ED45 /* WebSearchViewController.m in Sources */,
+				8F67730C1C95ABEA003DAA44 /* UIImage+Rotate.m in Sources */,
 				8FD58A301C7AED8D00652009 /* MovieTableViewController.m in Sources */,
 				8F1B50B71C8D627F0027F6CC /* CollectionViewCell.m in Sources */,
 				8F35A2D81C61F91300A1ED45 /* UIBarButtonItem+Badge.m in Sources */,
