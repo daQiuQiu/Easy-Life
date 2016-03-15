@@ -79,6 +79,13 @@ BOOL isOn = YES;//默认显示正在上映
     NSURLSessionDataTask *datatask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
             NSLog(@"ERROR = %@",error);
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"网络不给力"
+                                                                           message:@"请稍后再试"
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:nil];
+            [alert addAction:cancelAction];
+            [self presentViewController:alert animated:YES completion:nil];
         }
         else {//JSON解析
             MovieDataModel *model = [MovieDataModel initWithModel];

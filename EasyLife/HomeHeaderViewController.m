@@ -397,6 +397,8 @@ int lastTag;
 
 -(void) refreshWeather {
     [self getWhetherByLocation:self.lat withLon:self.lon];
+    
+    
     NSLog(@"刷新Weather");
 }
 
@@ -669,6 +671,7 @@ int lastTag;
                 make.edges.equalTo (mainCell.contentView).with.insets (UIEdgeInsetsMake(0, 10, 0, 10));
                 
             }];
+            
                         NSLog(@"cell2");
             }
         else if (indexPath.section == 2) {
@@ -882,6 +885,12 @@ int lastTag;
         NSLog(@"plistWeather = %@",model.weather);
         NSString *imageName = [imagedic objectForKey:model.weather];
         self.weatherImageView.image = [UIImage imageNamed:imageName];
+        
+        self.weatherImageView.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
+        [UIView animateWithDuration:1.0f animations:^{
+            self.weatherImageView.layer.transform = CATransform3DMakeScale(1, 1, 1);
+        }];
+
 
         }
 }

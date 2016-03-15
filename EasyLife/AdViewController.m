@@ -35,8 +35,8 @@
 #pragma mark - 广告图片
 -(void) creatAdImageView {
     self.adImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, screenW, screenH)];
-    NSArray *adImageArray = @[@"AD1",@"AD2",@"AD3",@"AD4",@"AD5"];
-    int tag = arc4random() % 5;
+    NSArray *adImageArray = @[@"AD1",@"AD2",@"AD3",@"AD4",@"AD5",@"AD6",@"AD7",@"AD8",@"AD9",@"AD10"];
+    int tag = arc4random() % 10;
     self.adImageView.image = [UIImage imageNamed:adImageArray[tag]];
     [self.view addSubview:self.adImageView];
     
