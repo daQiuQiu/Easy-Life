@@ -289,7 +289,13 @@ BOOL isExpand = NO;
             return 130;
         }
         else {
-            return (int)self.descLabel.bounds.size.height+70;
+            if (self.descLabel.bounds.size.height >10) {
+                return (int)self.descLabel.bounds.size.height+70;
+            }
+            else {
+                return 130;
+            }
+            
         }
     }
     else if (indexPath.section == 1) {
@@ -418,6 +424,7 @@ BOOL isExpand = NO;
         [self.descLabel sizeToFit];
         [self.expandButton setTitle:@"收起" forState:UIControlStateNormal];
         [self.infoTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+        
     }
     else {
         isExpand = NO;

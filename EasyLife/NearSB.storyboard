@@ -42,7 +42,7 @@
                                 <rect key="frame" x="-4" y="20" width="383" height="41"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZE-bo-J7C">
-                                        <rect key="frame" x="147" y="1" width="80" height="40"/>
+                                        <rect key="frame" x="152" y="1" width="80" height="40"/>
                                         <state key="normal" title="驾车">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -91,6 +91,7 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="qB2-q1-2Qt"/>
+                                        <exclude reference="fQ2-XA-zYd"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -98,6 +99,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KpM-UF-KM1" firstAttribute="leading" secondItem="BCw-np-KTe" secondAttribute="leadingMargin" constant="-20" id="04l-eO-G4I"/>
+                            <constraint firstItem="dZE-bo-J7C" firstAttribute="centerX" secondItem="BCw-np-KTe" secondAttribute="centerX" id="Gj7-xl-ujt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KpM-UF-KM1" secondAttribute="trailing" constant="-20" id="SKL-JK-tY3"/>
                             <constraint firstItem="KpM-UF-KM1" firstAttribute="top" secondItem="vyC-sl-mQO" secondAttribute="bottom" id="aIU-lT-iPH"/>
                         </constraints>

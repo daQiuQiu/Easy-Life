@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Masonry.h>
 #import "DKLiveBlurView.h"
-@interface HomeHeaderViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIScrollViewDelegate>
+#import <CoreLocation/CoreLocation.h>
+@interface HomeHeaderViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIScrollViewDelegate,CLLocationManagerDelegate>
 
 @property (nonatomic,strong) UITextField *searchFiled;
 @property (nonatomic,strong) UIView *headerView;
@@ -31,6 +32,11 @@
 @property (nonatomic,strong) UILabel *viewLabel;
 @property (nonatomic,strong) UILabel *contentLabel;
 @property (nonatomic,strong) UIView *relaxView;
+
+@property (nonatomic) double lat;
+@property (nonatomic) double lon;
+
+@property (nonatomic,strong) CLLocationManager* locationManager;
 
 
 @end

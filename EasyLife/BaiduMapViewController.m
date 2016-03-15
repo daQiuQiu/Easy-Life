@@ -28,6 +28,7 @@ BOOL isgoing = NO;//判断是否选中大头针
     self.routeSearch.delegate = self;
     [self getPinImage];
     //self.navigationController.navigationBarHidden = YES;
+    
 }
 
 - (void)viewDidLoad {
@@ -37,6 +38,12 @@ BOOL isgoing = NO;//判断是否选中大头针
     [self getPinImage];
     [self locateUserPosition];
     [self creatLocationDetailView];
+    
+    self.navigationController.navigationBar.translucent = NO;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -164,7 +171,7 @@ BOOL isgoing = NO;//判断是否选中大头针
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
 {
     [self.mapView updateLocationData:userLocation];
-    //NSLog(@"heading is %@",userLocation.heading);
+    NSLog(@"heading is %@",userLocation.heading);
 }
 //处理位置坐标更新
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation

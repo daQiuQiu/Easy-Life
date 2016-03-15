@@ -23,12 +23,12 @@
 		8F1B50B71C8D627F0027F6CC /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1B50B61C8D627F0027F6CC /* CollectionViewCell.m */; };
 		8F2672AB1C91145A00F2FBE0 /* MyAnimatedAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2672AA1C91145A00F2FBE0 /* MyAnimatedAnnotationView.m */; };
 		8F34963D1C918B6500317847 /* NavigationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8F34963C1C918B6500317847 /* NavigationViewController.mm */; };
+		8F3539171C969FC7001521A9 /* AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3539161C969FC7001521A9 /* AdViewController.m */; };
 		8F35A2C21C61DBB100A1ED45 /* WebSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2BA1C61DBB100A1ED45 /* WebSearchViewController.m */; };
 		8F35A2C31C61DBB100A1ED45 /* HomeHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2BC1C61DBB100A1ED45 /* HomeHeaderViewController.m */; };
 		8F35A2C41C61DBB100A1ED45 /* DKLiveBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2BE1C61DBB100A1ED45 /* DKLiveBlurView.m */; };
 		8F35A2C51C61DBB100A1ED45 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2C01C61DBB100A1ED45 /* DataModel.m */; };
 		8F35A2C61C61DBB100A1ED45 /* SearchSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F35A2C11C61DBB100A1ED45 /* SearchSB.storyboard */; };
-		8F35A2C81C61DBCC00A1ED45 /* weatherImage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F35A2C71C61DBCC00A1ED45 /* weatherImage.plist */; };
 		8F35A2CA1C61E3C300A1ED45 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F35A2C91C61E3C300A1ED45 /* Info.plist */; };
 		8F35A2D81C61F91300A1ED45 /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2CC1C61F91300A1ED45 /* UIBarButtonItem+Badge.m */; };
 		8F35A2D91C61F91300A1ED45 /* SideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2CE1C61F91300A1ED45 /* SideViewController.m */; };
@@ -44,6 +44,8 @@
 		8F67730C1C95ABEA003DAA44 /* UIImage+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F67730B1C95ABEA003DAA44 /* UIImage+Rotate.m */; };
 		8F7B5B4D1C9272DB001DE423 /* MapDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7B5B4C1C9272DB001DE423 /* MapDataModel.m */; };
 		8F84D10B1C7ED2720085AF35 /* MovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F84D10A1C7ED2710085AF35 /* MovieDetailViewController.m */; };
+		8FA06BB01C979ABE002C1FAF /* ZWIntroductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA06BAF1C979ABE002C1FAF /* ZWIntroductionViewController.m */; };
+		8FA06BB31C97A6A7002C1FAF /* weatherImage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FA06BB21C97A6A7002C1FAF /* weatherImage.plist */; };
 		8FD58A0A1C71A40100652009 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A091C71A40100652009 /* Security.framework */; };
 		8FD58A0C1C71A40D00652009 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A0B1C71A40D00652009 /* libicucore.tbd */; };
 		8FD58A0E1C71A41600652009 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A0D1C71A41600652009 /* libz.1.2.5.tbd */; };
@@ -111,6 +113,8 @@
 		8F2672AA1C91145A00F2FBE0 /* MyAnimatedAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnimatedAnnotationView.m; sourceTree = "<group>"; };
 		8F34963B1C918B6500317847 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		8F34963C1C918B6500317847 /* NavigationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NavigationViewController.mm; sourceTree = "<group>"; };
+		8F3539151C969FC7001521A9 /* AdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewController.h; sourceTree = "<group>"; };
+		8F3539161C969FC7001521A9 /* AdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdViewController.m; sourceTree = "<group>"; };
 		8F35A2B91C61DBB100A1ED45 /* WebSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSearchViewController.h; sourceTree = "<group>"; };
 		8F35A2BA1C61DBB100A1ED45 /* WebSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSearchViewController.m; sourceTree = "<group>"; };
 		8F35A2BB1C61DBB100A1ED45 /* HomeHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeHeaderViewController.h; sourceTree = "<group>"; };
@@ -120,7 +124,6 @@
 		8F35A2BF1C61DBB100A1ED45 /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
 		8F35A2C01C61DBB100A1ED45 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		8F35A2C11C61DBB100A1ED45 /* SearchSB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchSB.storyboard; sourceTree = "<group>"; };
-		8F35A2C71C61DBCC00A1ED45 /* weatherImage.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = weatherImage.plist; sourceTree = "<group>"; };
 		8F35A2C91C61E3C300A1ED45 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F35A2CB1C61F91300A1ED45 /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
 		8F35A2CC1C61F91300A1ED45 /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
@@ -151,6 +154,9 @@
 		8F7B5B4C1C9272DB001DE423 /* MapDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDataModel.m; sourceTree = "<group>"; };
 		8F84D1091C7ED2710085AF35 /* MovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailViewController.h; sourceTree = "<group>"; };
 		8F84D10A1C7ED2710085AF35 /* MovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailViewController.m; sourceTree = "<group>"; };
+		8FA06BAE1C979ABE002C1FAF /* ZWIntroductionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWIntroductionViewController.h; sourceTree = "<group>"; };
+		8FA06BAF1C979ABE002C1FAF /* ZWIntroductionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWIntroductionViewController.m; sourceTree = "<group>"; };
+		8FA06BB21C97A6A7002C1FAF /* weatherImage.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = weatherImage.plist; sourceTree = "<group>"; };
 		8FD58A091C71A40100652009 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8FD58A0B1C71A40D00652009 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		8FD58A0D1C71A41600652009 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
@@ -248,6 +254,7 @@
 			children = (
 				8F0385FB1C43856A00AE9523 /* AppDelegate.h */,
 				8F0385FC1C43856A00AE9523 /* AppDelegate.m */,
+				8FA06BB11C97A231002C1FAF /* AD+GUIDE */,
 				8F0386851C43B73A00AE9523 /* SearchView */,
 				8F0386841C43B72700AE9523 /* VoiceView */,
 				8F0386831C43B71C00AE9523 /* MovieView */,
@@ -388,9 +395,20 @@
 				8F35A2BF1C61DBB100A1ED45 /* DataModel.h */,
 				8F35A2C01C61DBB100A1ED45 /* DataModel.m */,
 				8F35A2C11C61DBB100A1ED45 /* SearchSB.storyboard */,
-				8F35A2C71C61DBCC00A1ED45 /* weatherImage.plist */,
+				8FA06BB21C97A6A7002C1FAF /* weatherImage.plist */,
 			);
 			name = SearchView;
+			sourceTree = "<group>";
+		};
+		8FA06BB11C97A231002C1FAF /* AD+GUIDE */ = {
+			isa = PBXGroup;
+			children = (
+				8FA06BAE1C979ABE002C1FAF /* ZWIntroductionViewController.h */,
+				8FA06BAF1C979ABE002C1FAF /* ZWIntroductionViewController.m */,
+				8F3539151C969FC7001521A9 /* AdViewController.h */,
+				8F3539161C969FC7001521A9 /* AdViewController.m */,
+			);
+			name = "AD+GUIDE";
 			sourceTree = "<group>";
 		};
 		C8AEA722875BDBFCE4D03E9C /* Pods */ = {
@@ -540,8 +558,8 @@
 				8F03867D1C43B6EB00AE9523 /* VoiceSB.storyboard in Resources */,
 				8F35A2DA1C61F91300A1ED45 /* NewsSB.storyboard in Resources */,
 				8F35A2C61C61DBB100A1ED45 /* SearchSB.storyboard in Resources */,
-				8F35A2C81C61DBCC00A1ED45 /* weatherImage.plist in Resources */,
 				8F0386031C43856A00AE9523 /* Main.storyboard in Resources */,
+				8FA06BB31C97A6A7002C1FAF /* weatherImage.plist in Resources */,
 				8F35A2CA1C61E3C300A1ED45 /* Info.plist in Resources */,
 				8F03867F1C43B6F900AE9523 /* MovieSB.storyboard in Resources */,
 			);
@@ -619,6 +637,7 @@
 				8F84D10B1C7ED2720085AF35 /* MovieDetailViewController.m in Sources */,
 				8F35A2C41C61DBB100A1ED45 /* DKLiveBlurView.m in Sources */,
 				8FD58A2D1C7A080D00652009 /* VoiceSearchViewController.m in Sources */,
+				8F3539171C969FC7001521A9 /* AdViewController.m in Sources */,
 				8F3A905E1C86CEF200DC4916 /* movieDetailTableViewCell.m in Sources */,
 				8F35A2C51C61DBB100A1ED45 /* DataModel.m in Sources */,
 				8FD58A331C7AF8BA00652009 /* MovieDataModel.m in Sources */,
@@ -626,6 +645,7 @@
 				8F1B50B41C8D5A030027F6CC /* ColorCollectionViewController.m in Sources */,
 				8F34963D1C918B6500317847 /* NavigationViewController.mm in Sources */,
 				8FD58A361C7AF8E000652009 /* MovieTableViewCell.m in Sources */,
+				8FA06BB01C979ABE002C1FAF /* ZWIntroductionViewController.m in Sources */,
 				8F0385FD1C43856A00AE9523 /* AppDelegate.m in Sources */,
 				8F3A906A1C88344F00DC4916 /* BaiduMapViewController.m in Sources */,
 				8F0386791C43A04F00AE9523 /* MainTabViewController.m in Sources */,

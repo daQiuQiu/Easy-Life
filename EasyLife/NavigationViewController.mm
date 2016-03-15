@@ -29,12 +29,14 @@
 @interface NavigationViewController ()
 
 @end
-
+bool isLocated1 = NO;
 @implementation NavigationViewController
 -(void)viewWillAppear:(BOOL)animated {
     [self.mapView viewWillAppear];
     self.mapView.delegate = self;
     self.routeSearch.delegate = self;
+    self.locationService.delegate =  self;
+    [self changeColor];
 }
 
 - (void)viewDidLoad {
@@ -42,6 +44,20 @@
     // Do any additional setup after loading the view.
     self.routeSearch = [[BMKRouteSearch alloc]init];
     [self creatMapView];
+    [self locateUserPosition];
+    [self walkRoute:nil];
+    [self creatDetailBlurView];
+    
+    //导航样式
+    self.title = @"出发";
+    UIColor * color = [UIColor whiteColor];
+    NSDictionary *fontdic = [NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
+    self.navigationController.navigationBar.titleTextAttributes = fontdic;//设置导航栏字体
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];//取消分割线
+    
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,20 +69,127 @@
     [self.mapView viewWillDisappear];
     self.mapView.delegate = nil;
     self.routeSearch.delegate = nil;
+    self.locationService.delegate = nil;
+    isLocated1 = NO;
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
 }
 
+#pragma mark - 创建底部信息View
+-(void) creatDetailBlurView {
+    __weak typeof(self) weakSelf = self;
+    self.detailBlurView = [[UIVisualEffectView alloc]initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+    self.detailBlurView.backgroundColor = self.currentColor;
+    [self.view addSubview:self.detailBlurView];
+    [self.detailBlurView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo (weakSelf.view);
+        make.right.equalTo (weakSelf.view);
+        make.left.equalTo (weakSelf.view);
+        make.height.equalTo (@50);
+    }];
+    
+    self.distanceLabel = [[UILabel alloc]init];
+    self.distanceLabel.text = self.distance;
+    self.distanceLabel.contentMode = UIViewContentModeCenter;
+    [self.detailBlurView addSubview:self.distanceLabel];
+    [self.distanceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo (self.detailBlurView).with.offset(50);
+        make.top.equalTo (self.detailBlurView);
+        make.bottom.equalTo (self.detailBlurView);
+        make.right.equalTo (self.detailBlurView.mas_centerX).with.offset(-50);
+    }];//显示距离
+    
+    self.durationLabel = [[UILabel alloc]init];
+    self.durationLabel.text = self.duration;
+    self.durationLabel.contentMode = UIViewContentModeCenter;
+    [self.detailBlurView addSubview:self.durationLabel];
+    [self.durationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo (self.detailBlurView.mas_centerX).with.offset(50);
+        make.top.equalTo (self.detailBlurView);
+        make.bottom.equalTo (self.detailBlurView);
+        make.right.equalTo (self.detailBlurView).with.offset(-50);
+    }];//显示时间
+}
+
+#pragma mark - 定位方法
+-(void) locateUserPosition {
+    if (self.locationService == nil) {
+        self.locationService = [[BMKLocationService alloc]init];
+        self.locationService.delegate = self;
+    }
+    if (isLocated1 == NO) {
+        isLocated1 = YES;
+        [self.locationService startUserLocationService];
+        //[self.mapView setZoomLevel:20];
+        self.mapView.showsUserLocation = NO;
+        self.mapView.userTrackingMode = BMKUserTrackingModeFollowWithHeading;
+        self.mapView.showsUserLocation = YES;
+        
+    }
+    else if(isLocated1 == YES) {
+        isLocated1 = NO;
+        [self.locationService stopUserLocationService];
+        self.mapView.showsUserLocation = NO;
+    }
+    
+}
+
+#pragma mark - 改变导航栏颜色
+-(void) changeColor {
+    int tag = [[[NSUserDefaults standardUserDefaults]objectForKey:@"tag"] intValue];
+    if (tag == 0) {//蓝色图标
+        [self.navigationController.navigationBar setBarTintColor:sbColor];
+        self.topTravelMethodView.backgroundColor = sbColor;
+        self.currentColor = bColor;
+    }
+    else if (tag == 1) {//红色
+        [self.navigationController.navigationBar setBarTintColor:rColor];
+        self.topTravelMethodView.backgroundColor = rColor;
+        self.currentColor = rColor;
+    }
+    else if (tag == 2) {//黄色
+        [self.navigationController.navigationBar setBarTintColor:yColor];
+        self.topTravelMethodView.backgroundColor = yColor;
+        self.currentColor = yColor;
+    }
+    else if (tag == 3) {//绿色
+        [self.navigationController.navigationBar setBarTintColor:gColor];
+        self.topTravelMethodView.backgroundColor = gColor;
+        self.currentColor = gColor;
+    }
+    
+}
+
+#pragma mark - location Delegate
+//处理方向变更信息
+- (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
+{
+    [self.mapView updateLocationData:userLocation];
+    //NSLog(@"heading is %@",userLocation.heading);
+}
+//处理位置坐标更新
+- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
+{
+    NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+    [self.mapView updateLocationData:userLocation];
+    self.userCoordinate = userLocation.location.coordinate;
+    
+    
+}
+
 #pragma mark - 创建MapView
 -(void) creatMapView {
     self.mapView = [[BMKMapView alloc]init];
+    self.mapView.scrollEnabled = NO;
     [self.view addSubview:self.mapView];
     [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo (CGSizeMake(screenW, screenH-200));
+        make.size.mas_equalTo (CGSizeMake(screenW, screenH-100));
         make.top.equalTo (self.topTravelMethodView.mas_bottom);
     }];
+    
+    //[self creatDetailBlurView];
 }
 
 #pragma mark - MapView Delegate
@@ -81,8 +204,8 @@
 {
     if ([overlay isKindOfClass:[BMKPolyline class]]) {
         BMKPolylineView* polylineView = [[BMKPolylineView alloc] initWithOverlay:overlay];
-        polylineView.fillColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
-        polylineView.strokeColor = bColor;
+        polylineView.fillColor = rColor;
+        polylineView.strokeColor = btColor;
         polylineView.lineWidth = 9.0;
         return polylineView;
     }
@@ -103,6 +226,9 @@
     if (error == BMK_SEARCH_NO_ERROR) {
         BMKTransitRouteLine* plan = (BMKTransitRouteLine*)[result.routes objectAtIndex:0];
         // 计算路线方案中的路段数目
+        NSLog(@"info = %@",plan);
+        
+        NSLog(@"dache = %d",result.taxiInfo.totalPrice);
         NSInteger size = [plan.steps count];
         int planPointCounts = 0;
         for (int i = 0; i < size; i++) {
@@ -162,6 +288,15 @@
     if (error == BMK_SEARCH_NO_ERROR) {
         BMKDrivingRouteLine* plan = (BMKDrivingRouteLine*)[result.routes objectAtIndex:0];
         // 计算路线方案中的路段数目
+        self.duration = [NSString stringWithFormat:@"%d米",plan.distance];
+        self.durationLabel.text = self.duration;
+        self.distance = [NSString stringWithFormat:@"%d分",plan.duration.minutes];
+        self.distanceLabel.text = self.distance;
+        NSLog(@"%d",plan.duration.minutes);
+        NSLog(@"路程全长：%d",plan.distance);
+        NSLog(@"info = %@",plan);
+        
+        NSLog(@"dache = %d",result.taxiInfo.totalPrice);
         NSInteger size = [plan.steps count];
         int planPointCounts = 0;
         for (int i = 0; i < size; i++) {
@@ -232,6 +367,13 @@
     if (error == BMK_SEARCH_NO_ERROR) {
         BMKWalkingRouteLine* plan = (BMKWalkingRouteLine*)[result.routes objectAtIndex:0];
         NSInteger size = [plan.steps count];
+        NSLog(@"%d",plan.duration.minutes);
+        NSLog(@"路程全长：%d",plan.distance);
+        self.duration = [NSString stringWithFormat:@"%d米",plan.distance];
+        self.distance = [NSString stringWithFormat:@"%d分",plan.duration.minutes];
+        self.durationLabel.text = self.duration;
+        self.distanceLabel.text = self.distance;
+        NSLog(@"dache = %d,shijian = %d",result.taxiInfo.totalPrice,result.taxiInfo.duration);
         int planPointCounts = 0;
         for (int i = 0; i < size; i++) {
             BMKWalkingStep* transitStep = [plan.steps objectAtIndex:i];
@@ -398,26 +540,31 @@
 
 #pragma mark - 触发路线搜索
 - (IBAction)busRoute:(UIButton *)sender {
-    BMKPlanNode *start = [[BMKPlanNode alloc]init];
-    start.pt = self.userCoordinate;
-    
-    BMKPlanNode *end = [[BMKPlanNode alloc]init];
-    end.pt = self.goCoordinate;
-    
-    BMKTransitRoutePlanOption *transitRouteSearchOption = [[BMKTransitRoutePlanOption alloc]init];
-    //transitRouteSearchOption.city= @"北京市";
-    transitRouteSearchOption.from = start;
-    transitRouteSearchOption.to = end;
-    BOOL flag = [_routeSearch transitSearch:transitRouteSearchOption];
-    
-    if(flag)
-    {
-        NSLog(@"bus检索发送成功");
-    }
-    else
-    {
-        NSLog(@"bus检索发送失败");
-    }
+//    BMKPlanNode *start = [[BMKPlanNode alloc]init];
+//    start.pt = self.userCoordinate;
+//    
+//    BMKPlanNode *end = [[BMKPlanNode alloc]init];
+//    end.pt = self.goCoordinate;
+//    
+//    BMKTransitRoutePlanOption *transitRouteSearchOption = [[BMKTransitRoutePlanOption alloc]init];
+//    //transitRouteSearchOption.city= @"北京市";
+//    transitRouteSearchOption.from = start;
+//    transitRouteSearchOption.to = end;
+//    BOOL flag = [_routeSearch transitSearch:transitRouteSearchOption];
+//    
+//    if(flag)
+//    {
+//        NSLog(@"bus检索发送成功");
+//    }
+//    else
+//    {
+//        NSLog(@"bus检索发送失败");
+//    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"暂未开放" message:@"请使用其他交通方式" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
+
 
 }
 

@@ -10,6 +10,7 @@
 #define PchHeader_h
 #define screenW [UIScreen mainScreen].bounds.size.width
 #define screenH [UIScreen mainScreen].bounds.size.height
+#define btColor [UIColor colorWithRed:80/255.f green:209/255.f blue:248/255.f alpha:1]
 #define bColor [UIColor colorWithRed:23/255.f green:144/255.f blue:211/255.f alpha:1]
 #define rColor [UIColor colorWithRed:255/255.f green:79/255.f blue:108/255.f alpha:1]
 #define gColor [UIColor colorWithRed:127/255.f green:177/255.f blue:115/255.f alpha:1]

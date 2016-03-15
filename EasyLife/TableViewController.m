@@ -30,6 +30,7 @@ NSDictionary *fontdic;
 int titleTag = 0;
 int timeCount = 0;
 BOOL isClear = YES;
+BOOL isLoading = NO;
 @implementation TableViewController
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -87,26 +88,41 @@ BOOL isClear = YES;
     UIColor * color = [UIColor whiteColor];
     fontdic = [NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
     self.navigationController.navigationBar.titleTextAttributes = fontdic;
-
-    //[self chooseCatelogue];
-    //[self creatScrollView];
-//    sleep(2);
-    //[self getNewsWithChannelID:nil];
-    [self pullToRefresh];
+    [self notificationToRefresh];//默认载入新闻
     
-//    sleep(2);
-//    [self.tableView reloadData];
+
 }
+
+#pragma mark - 添加滑动手势 
+//-(void) creatGesture {
+//    UISwipeGestureRecognizer *swipeRight;
+//    swipeRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(showSideMenu)];
+//    [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+//    
+//    [self.tableView addGestureRecognizer:swipeRight];
+//}
+//
+//-(void) showSideMenu {
+//    AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+//    YRSideViewController *sideViewController=[delegate sideController];
+//    [sideViewController showLeftViewController:true];
+//}
+
 #pragma mark - 通知刷新方法
 -(void) notificationToRefresh {
     //[self removeScrollView];
     DataLoading *model = [DataLoading initWithModel];
     [self pullToRefresh];
+    self.navigationItem.title = @"今日热闻";
+
     if (model.chosenindex == 0) {
         self.navigationItem.title = @"今日热闻";
     }
-    else {
+    else if (model.chosenindex > 0){
         self.navigationItem.title = model.cateArray[model.chosenindex];
+    }
+    else {
+        self.navigationItem.title = @"今日热闻";
     }
 }
 
@@ -263,6 +279,12 @@ BOOL isClear = YES;
 //    }
     }
 
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 #pragma mark - 改变导航栏颜色
 -(void) changeColor {
     int tag = [[[NSUserDefaults standardUserDefaults]objectForKey:@"tag"] intValue];
@@ -274,7 +296,7 @@ BOOL isClear = YES;
     }
     else if (tag == 2) {//黄色
         [self.navigationController.navigationBar setBarTintColor:yColor];
-            }
+    }
     else if (tag == 3) {//绿色
         [self.navigationController.navigationBar setBarTintColor:gColor];
     }
@@ -283,10 +305,6 @@ BOOL isClear = YES;
 
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - 拿新闻类别
 -(void) chooseCatelogue {
@@ -411,7 +429,23 @@ BOOL isClear = YES;
                 
                 NSLog(@"%@",title);
                 NSLog(@"%@",newsurl);
+                [model.newsTitleArray addObject:title];
+                [model.urlArray addObject:newsurl];
+
                 NSMutableArray *imageurl = [dic objectForKey:@"imageurls"];
+                
+                if ([imageurl count] == 0) {
+                    
+                    NSString *noImageurl = [NSString stringWithFormat:@"http://pic21.nipic.com/20120606/8671112_194118074339_2.jpg"];
+                    noImageurl = [noImageurl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+                    [model.imageArray addObject:noImageurl];
+                }
+                else {
+                    NSDictionary *imagedic = imageurl[0];
+                    NSString *imageurlstring = [imagedic objectForKey:@"url"];
+                    [model.imageArray addObject:imageurlstring];
+                }//取第一张图片，如果没有  自动使用备用图
+                
 //                if (imageurl == nil) {
 //                    [imageurl addObject:@"x"];
 //                }
@@ -421,11 +455,7 @@ BOOL isClear = YES;
 //                [model.imageArray addObjectsFromArray:imageurl];
 //                NSLog(@"%ld",[model.imageArray count]);
                 for (NSDictionary *imagedic in imageurl) {
-                    NSString *imageurl = [imagedic objectForKey:@"url"];
-                                        //NSLog(@"imageurl is %@",imageurl);
-                    [model.newsTitleArray addObject:title];
-                    [model.urlArray addObject:newsurl];
-                    [model.imageArray addObject:imageurl];
+                    
                     //NSLog(@"arrar is%@",model.imageArray);
                 }
             }

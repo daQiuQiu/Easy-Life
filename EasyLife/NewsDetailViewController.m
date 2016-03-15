@@ -10,7 +10,7 @@
 #import "DataLoading.h"
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDKUI.h>
-#import "UIBarButtonItem+Badge.h"
+
 
 @interface NewsDetailViewController ()
 @property (nonatomic,assign) BOOL isVoted;
@@ -88,15 +88,14 @@
     ;
     if (self.isVoted == NO) {
         self.isVoted = YES;
-        self.voteButton.tintColor = [UIColor blueColor];
-        self.voteButton.badgeValue = @"2";
+        self.voteButton.tintColor = bColor;
+        
         
     }
     else if (self.isVoted == YES) {
         self.isVoted = NO;
         self.voteButton.tintColor = [UIColor darkGrayColor];
-        self.voteButton.badgeValue = @"1";
-        self.voteButton.badge.text = @"4";
+        
     }
 }
 

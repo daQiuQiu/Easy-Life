@@ -29,7 +29,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bj-Pc-Lp8">
-                                            <rect key="frame" x="14" y="8" width="210" height="43"/>
+                                            <rect key="frame" x="14" y="8" width="210" height="48"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="204" id="Hwg-vo-gpG"/>
                                             </constraints>
@@ -44,7 +44,7 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="0Bj-Pc-Lp8" secondAttribute="bottom" constant="36" id="0rJ-eF-Dk7"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="0Bj-Pc-Lp8" secondAttribute="bottom" constant="31" id="0rJ-eF-Dk7"/>
                                         <constraint firstItem="0NV-aq-hhM" firstAttribute="leading" secondItem="0Bj-Pc-Lp8" secondAttribute="trailing" constant="8" id="3v4-CT-Xz2"/>
                                         <constraint firstAttribute="topMargin" secondItem="0Bj-Pc-Lp8" secondAttribute="top" id="Bcq-d3-UqZ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="0NV-aq-hhM" secondAttribute="trailing" id="Beb-E4-YQb"/>

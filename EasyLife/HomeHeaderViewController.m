@@ -15,7 +15,7 @@
 #define screenH [UIScreen mainScreen].bounds.size.height
 int number;//随机笑话index
 int searchTag = 0;//0 Baidu, 1 Sougou, 2 Bing.
-
+BOOL isFinishLocation = NO;
 @interface HomeHeaderViewController ()
 
 @end
@@ -40,8 +40,8 @@ int lastTag;
     //[self getRelaxContent];
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeBackgroundImage) name:@"changecolor" object:nil];//添加监听消息
     
+    [self creatLocationManager];
     
-    //[self getWhetherByLocation:0 withLon:0];
     
     
     
@@ -78,7 +78,7 @@ int lastTag;
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
-    
+    isFinishLocation = NO;
 }
 #pragma mark - 通知方法 
 -(void) changeBackgroundImage {
@@ -396,13 +396,13 @@ int lastTag;
 }
 
 -(void) refreshWeather {
-    //[self getWhetherByLocation:0 withLon:0];
+    [self getWhetherByLocation:self.lat withLon:self.lon];
     NSLog(@"刷新Weather");
 }
 
 -(void) addImageAndLabel {
     self.cityLabel = [[UILabel alloc]init];
-    self.cityLabel.text = @"北京";
+    self.cityLabel.text = @"实时天气";
     self.cityLabel.textColor = [UIColor whiteColor];
     self.tempLabel = [[UILabel alloc]init];
     self.tempLabel.textColor = [UIColor whiteColor];
@@ -438,7 +438,7 @@ int lastTag;
     
     [self.tempLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo (self.weatherImageView).with.offset(0);
-        make.size.mas_equalTo (CGSizeMake(80, 50));
+        make.size.mas_equalTo (CGSizeMake(100, 50));
         make.left.equalTo (self.weatherImageView.mas_right).with.offset (10);
     }];//温度label
     [self.windLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -801,9 +801,19 @@ int lastTag;
 
 #pragma mark - 天气接口
 -(void)getWhetherByLocation:(double)lat withLon:(double)lng {
-    lat = 121.48;
-    lng = 31.41;
-    NSString *urlString = [NSString stringWithFormat:@"http://v.juhe.cn/weather/geo?lon=%.2f&lat=%.2f&format=&dtype=&key=47f2f60002fd87ee842d22be302dad06",lat,lng];
+    if (self.lat == 0) {
+        lat = 31.19;
+        lng = 121.48;
+        NSLog(@"没有定位 默认坐标");
+    }
+    else {
+        lat = self.lat;
+        lng = self.lon;
+    }
+//    lat = self.lat;
+//    lng = self.lon;
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://v.juhe.cn/weather/geo?lon=%.2f&lat=%.2f&format=&dtype=&key=2852b2fe885c94430ecf5aa5d85b693b",lng,lat];
     NSURL *dataurl = [NSURL URLWithString:urlString];
     NSLog(@"url = %@",urlString);
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:dataurl cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10];
@@ -908,6 +918,46 @@ int lastTag;
         
     }];
     [datatask resume];
+}
+
+#pragma mark - 创建定位
+-(void) creatLocationManager {
+    self.locationManager = [[CLLocationManager alloc] init];
+    //delegate
+    self.locationManager.delegate = self;
+    //The desired location accuracy.
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    //Specifies the minimum update distance in meters.
+    
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    
+    //self.locationManager.purpose = @"To provide functionality based on user‘s current location.";
+    [self.locationManager startUpdatingLocation];
+    
+
+}
+
+#pragma mark - 定位委托方法用于实现位置的更新
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    // 设备的当前位置
+    CLLocation *currLocation = [locations lastObject];
+    
+    self.lat = currLocation.coordinate.latitude;
+    self.lon = currLocation.coordinate.longitude;
+    NSLog(@"%f",self.lat);
+    NSLog(@"lon = %f",self.lon);
+    
+    if (isFinishLocation == NO) {
+        [self getWhetherByLocation:self.lat withLon:self.lon];
+        isFinishLocation = YES;
+    }
+   
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"error : %@",error.localizedDescription);
 }
 
 

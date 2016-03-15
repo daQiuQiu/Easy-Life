@@ -1,3 +1,5 @@
+
+
 //
 //  AppDelegate.m
 //  EasyLife
@@ -16,9 +18,10 @@
 #import <TencentOpenAPI/TencentOAuth.h>
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <iflyMSC/IFlyMSC.h>
-
+#import "AdViewController.h"
+#import "ZWIntroductionViewController.h"
 @interface AppDelegate ()
-
+@property (nonatomic,strong) ZWIntroductionViewController *guideVC;
 @end
 
 @implementation AppDelegate
@@ -26,13 +29,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    //UINavigationController *tableViewController = (UINavigationController *)[self initWithSB:@"newsNavi" inStoryBoard:@"Main"];
-    //UITabBarController *tabVC = (UITabBarController *)[self initWithSB:@"tabvc" inStoryBoard:@"Main"];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *tabVC = [storyBoard instantiateViewControllerWithIdentifier:@"tabvc"];
-    //UINavigationController *newsNaviVC = (UINavigationController *)[self initWithSB:@"newsnavi" inStoryBoard:@"NewsSB"];
-    //TableViewController *tableVC = newsNaviVC.viewControllers[0];// 拿到tableviewcontroller
-    
     SideViewController *sideMenu = [[SideViewController alloc]init];
     //sideMenu.delegate = tableVC;//设置代理
     sideMenu.view.backgroundColor = [UIColor darkGrayColor];
@@ -48,8 +46,44 @@
         rootView.frame=CGRectMake(xoffset, orginFrame.origin.y, orginFrame.size.width, orginFrame.size.height);
     }];//设置水平移动
     
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    self.window.rootViewController = nil;
     self.window.rootViewController = self.sideController;
+    
     [self.window makeKeyAndVisible];
+    
+    if (![[NSUserDefaults standardUserDefaults]valueForKey:@"first"]) {
+        NSArray *imagearray = @[@"YISHENGHUO-1",@"YISHENGHUO-2",@"YISHENGHUO-3",@"YISHENGHUO-4"];
+        //判断第一次进入
+        self.guideVC = [[ZWIntroductionViewController alloc]initWithCoverImageNames:imagearray];
+        //加载引导页
+        [self.window addSubview:self.guideVC.view];
+        
+        __weak AppDelegate *weakSelf = self;
+        self.guideVC.didSelectedEnter = ^() {
+            //加载主页面
+            weakSelf.guideVC = nil;
+        };
+
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"first"];
+    }
+    else {
+        
+        AdViewController *adVC = [[AdViewController alloc]init];
+        self.window.rootViewController = adVC;
+        
+        [self.window makeKeyAndVisible];
+        [self performSelector:@selector(delayLoad) withObject:nil afterDelay:3.0];
+    }
+
+    
+    
+//    self.window.rootViewController = self.sideController;
+//    
+//    [self.window makeKeyAndVisible];
     //启动前侧滑和跟视图配置
     //分享！！！
     [ShareSDK registerApp:@"eef78a7b9c62" activePlatforms:
@@ -140,6 +174,41 @@
 //    }
 //    
 //}
+
+-(void) creatScrollView {
+    UIScrollView *scroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenW, screenH)];
+    scroll.contentSize = CGSizeMake(screenW*4, screenH);
+    scroll.delegate = self;
+    [self.window addSubview:scroll];
+    [scroll setPagingEnabled:YES];
+    
+    
+    NSArray *imagearray = @[@"YISHENGHUO-01",@"YISHENGHUO-02",@"YISHENGHUO-03",@"YISHENGHUO-04"];
+    for (int i =0; i<4; i++) {
+        UIImage *image = [UIImage imageNamed:imagearray[i]];
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(screenW*i, 0, screenW, screenH)];
+        imageView.image = image;
+        [scroll addSubview:imageView];
+    }
+}
+
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView.contentOffset.x > screenW*4+30) {
+        [UIView animateWithDuration:0.3 animations:^{
+            scrollView.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            [scrollView removeFromSuperview];
+        }];
+    }
+}
+
+-(void) delayLoad {
+    self.window.rootViewController = nil;
+    self.window.rootViewController = self.sideController;
+    
+    [self.window makeKeyAndVisible];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

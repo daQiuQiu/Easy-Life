@@ -17,21 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcC-5k-Mnv">
-                                <rect key="frame" x="29" y="285" width="316" height="21"/>
-                                <color key="backgroundColor" red="1" green="0.9131056407" blue="0.31009822619999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqp-kA-fTw">
-                                <rect key="frame" x="29" y="328" width="316" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Xd-m1-VDt">
-                                <rect key="frame" x="147" y="465" width="81" height="81"/>
+                                <rect key="frame" x="147" y="455" width="81" height="81"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="81" id="P4S-UJ-UUe"/>
                                     <constraint firstAttribute="height" constant="81" id="ohW-3c-IPH"/>
@@ -47,14 +34,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2Xd-m1-VDt" firstAttribute="centerX" secondItem="hAd-GY-BCg" secondAttribute="centerX" id="3Ky-Av-lkb"/>
-                            <constraint firstItem="cXl-QB-CL8" firstAttribute="top" secondItem="2Xd-m1-VDt" secondAttribute="bottom" constant="121" id="6rp-Np-JMN"/>
+                            <constraint firstItem="cXl-QB-CL8" firstAttribute="top" secondItem="2Xd-m1-VDt" secondAttribute="bottom" constant="131" id="6rp-Np-JMN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FlY-pX-Y4O"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="displayLabel" destination="vcC-5k-Mnv" id="uet-Ht-Fxh"/>
-                        <outlet property="resultLabel" destination="Dqp-kA-fTw" id="5ux-7R-tvL"/>
                         <outlet property="startListen" destination="2Xd-m1-VDt" id="5T4-2w-9aL"/>
                     </connections>
                 </viewController>

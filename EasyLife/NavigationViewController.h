@@ -20,9 +20,16 @@
 - (IBAction)busRoute:(UIButton *)sender;
 - (IBAction)driveRoute:(UIButton *)sender;
 - (IBAction)walkRoute:(UIButton *)sender;
+@property (strong,nonatomic) BMKLocationService *locationService;
 @property (weak, nonatomic) IBOutlet UIView *topTravelMethodView;
 @property (strong,nonatomic) BMKMapView *mapView;
 @property (strong,nonatomic) BMKRouteSearch *routeSearch;
 @property (nonatomic,assign) CLLocationCoordinate2D userCoordinate;
 @property (nonatomic,assign) CLLocationCoordinate2D goCoordinate;
+@property (strong,nonatomic) UIVisualEffectView *detailBlurView;//显示路线信息
+@property (nonatomic) UIColor *currentColor;
+@property (strong,nonatomic) UILabel *durationLabel;//显示时间
+@property (strong,nonatomic) UILabel *distanceLabel;//显示距离
+@property (strong,nonatomic) NSString *duration;
+@property (strong,nonatomic) NSString *distance;
 @end

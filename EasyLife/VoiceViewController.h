@@ -12,7 +12,8 @@
 
 @interface VoiceViewController : UIViewController<IFlySpeechRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *displayLabel;//文字显示label
-@property (strong, nonatomic) IBOutlet UILabel *resultLabel;
+
+@property (strong, nonatomic) UILabel *resultLabel;
 @property (strong, nonatomic) IBOutlet UIButton *startListen;
 - (IBAction)startListening:(UIButton *)sender;
 - (IBAction)stopListening:(UIButton *)sender;

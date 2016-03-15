@@ -29,10 +29,21 @@
     _pcmFilePath = [[NSString alloc] initWithFormat:@"%@",[cachePath stringByAppendingPathComponent:@"asr.pcm"]];
     [self creatBackgroundImage];
     [self.startListen addTarget:self action:@selector(startListening:) forControlEvents:UIControlEventTouchDown];
-    [self.startListen addTarget:self action:@selector(stopListening:)                forControlEvents:UIControlEventTouchUpInside];
+    [self.startListen addTarget:self action:@selector(stopListening:)                forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
     [self.view bringSubviewToFront:self.startListen];
     [self.view bringSubviewToFront:self.resultLabel];
     [self.view bringSubviewToFront:self.displayLabel];
+    
+    __weak typeof(self) weakSelf = self;
+    self.resultLabel = [[UILabel alloc]init];
+    self.resultLabel.numberOfLines = 0;
+    self.resultLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.resultLabel];
+    [self.resultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo (CGSizeMake(200, 50));
+        make.centerX.equalTo (weakSelf.view).with.offset (-200);
+        make.centerY.equalTo (weakSelf.view.mas_centerY).with.offset (0);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,6 +83,21 @@
         make.center.equalTo (self.startListen);
     }];
     
+}
+
+#pragma mark - Label动画
+-(void) labelAnimationIn {
+    __weak typeof(self) weakSelf = self;
+    
+
+    [self.resultLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(weakSelf.view).with.offset (0);
+    }];
+    
+    
+    [UIView animateWithDuration:1.0f animations:^{
+        [self.view layoutIfNeeded];
+    }];
 }
 
 #pragma mark - 换背景
@@ -202,11 +228,13 @@
     NSString * resultFromJson =  [VoiceViewController stringFromJson:resultString];
     if (isLast) {
         NSLog(@"JSON解析= %@",resultFromJson);
-        self.resultLabel.text = [NSString stringWithFormat:@"识别结果：%@",resultFromJson];
-        if ([resultString isEqualToString:@""]) {
-            self.resultLabel.text = @"无法识别";
-        }else {
         
+        if (results == nil) {
+            self.resultLabel.text = @"无法识别";
+            [self labelAnimationIn];
+        }else {
+            self.resultLabel.text = [NSString stringWithFormat:@"识别结果：%@",resultFromJson];
+            [self labelAnimationIn];
             //拼接搜索链接
             
             resultFromJson = [resultFromJson stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
