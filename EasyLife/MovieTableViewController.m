@@ -24,8 +24,7 @@ BOOL isOn = YES;//默认显示正在上映
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self pullToRefresh];
-    [self setSegment];
+        [self setSegment];
     self.title = @"电影";
     
     UIBarButtonItem *backbutton = [[UIBarButtonItem alloc]init];
@@ -33,7 +32,8 @@ BOOL isOn = YES;//默认显示正在上映
     [backbutton setTintColor:[UIColor whiteColor]];
     backbutton.title = @"";
     self.navigationItem.backBarButtonItem = backbutton;
-    
+    [self pullToRefresh];
+
     
 }
 
@@ -46,7 +46,7 @@ BOOL isOn = YES;//默认显示正在上映
 -(void) changeColor {
     int tag = [[[NSUserDefaults standardUserDefaults]objectForKey:@"tag"] intValue];
     if (tag == 0) {//蓝色图标
-        [self.navigationController.navigationBar setBarTintColor:bColor];
+        [self.navigationController.navigationBar setBarTintColor:sbColor];
     }
     else if (tag == 1) {//红色
         [self.navigationController.navigationBar setBarTintColor:rColor];
@@ -273,7 +273,7 @@ BOOL isOn = YES;//默认显示正在上映
     }
     else {
         NSLog(@"数据加载不成功");
-        [self.tableView.mj_header endRefreshing];
+        //[self.tableView.mj_header endRefreshing];
     }
     
     // Configure the cell...

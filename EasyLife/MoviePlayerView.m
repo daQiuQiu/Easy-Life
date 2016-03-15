@@ -36,12 +36,13 @@
     
     return self;
 }
-
+//http://vfx.mtime.cn/Video/2016/03/02/flv/160302100642743915.flv
+//http://v.jxvdy.com/sendfile/w5bgP3A8JgiQQo5l0hvoNGE2H16WbN09X-ONHPq3P3C1BISgf7C-qVs6_c8oaw3zKScO78I--b0BGFBRxlpw13sf2e54QA
 #pragma mark - 视频播放
 -(void) playMovie {
     NSLog(@"playTap Touched!");
     NSURL *url = [NSURL URLWithString:
-                  @"http://v.jxvdy.com/sendfile/w5bgP3A8JgiQQo5l0hvoNGE2H16WbN09X-ONHPq3P3C1BISgf7C-qVs6_c8oaw3zKScO78I--b0BGFBRxlpw13sf2e54QA"];
+                  @"http://vfx.mtime.cn/Video/2016/03/02/flv/160302100642743915.flv"];
     
     _moviePlayer =  [[MPMoviePlayerController alloc]
                      initWithContentURL:url];

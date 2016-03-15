@@ -22,6 +22,7 @@
 #import "ZWIntroductionViewController.h"
 @interface AppDelegate ()
 @property (nonatomic,strong) ZWIntroductionViewController *guideVC;
+@property (nonatomic,strong) AdViewController *adVC;
 @end
 
 @implementation AppDelegate
@@ -80,9 +81,9 @@
     }
     else {
         
-        AdViewController *adVC = [[AdViewController alloc]init];
-        self.window.rootViewController = adVC;
-        
+        self.adVC = [[AdViewController alloc]init];
+        //self.window.rootViewController = adVC;
+        [self.window addSubview:self.adVC.view];
         [self.window makeKeyAndVisible];
         [self performSelector:@selector(delayLoad) withObject:nil afterDelay:3.0];
     }
@@ -212,10 +213,14 @@
 //}
 
 -(void) delayLoad {
-    self.window.rootViewController = nil;
-    self.window.rootViewController = self.sideController;
-    
-    [self.window makeKeyAndVisible];
+    //加载主页面
+    __weak AppDelegate *weakSelf = self;
+    [UIView animateWithDuration:1 animations:^{
+        weakSelf.adVC.view.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [weakSelf.adVC.view removeFromSuperview];
+    }];//alpha 1 - 0 渐变消失
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
