@@ -65,7 +65,15 @@
         __weak AppDelegate *weakSelf = self;
         self.guideVC.didSelectedEnter = ^() {
             //加载主页面
-            weakSelf.guideVC = nil;
+            [UIView animateWithDuration:1 animations:^{
+                weakSelf.guideVC.view.alpha = 0.0;
+            } completion:^(BOOL finished) {
+                [weakSelf.guideVC.view removeFromSuperview];
+            }];
+            
+            
+            
+            
         };
 
         [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"first"];
@@ -175,33 +183,33 @@
 //    
 //}
 
--(void) creatScrollView {
-    UIScrollView *scroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenW, screenH)];
-    scroll.contentSize = CGSizeMake(screenW*4, screenH);
-    scroll.delegate = self;
-    [self.window addSubview:scroll];
-    [scroll setPagingEnabled:YES];
-    
-    
-    NSArray *imagearray = @[@"YISHENGHUO-01",@"YISHENGHUO-02",@"YISHENGHUO-03",@"YISHENGHUO-04"];
-    for (int i =0; i<4; i++) {
-        UIImage *image = [UIImage imageNamed:imagearray[i]];
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(screenW*i, 0, screenW, screenH)];
-        imageView.image = image;
-        [scroll addSubview:imageView];
-    }
-}
-
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView.contentOffset.x > screenW*4+30) {
-        [UIView animateWithDuration:0.3 animations:^{
-            scrollView.alpha = 0.0;
-        } completion:^(BOOL finished) {
-            [scrollView removeFromSuperview];
-        }];
-    }
-}
+//-(void) creatScrollView {
+//    UIScrollView *scroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenW, screenH)];
+//    scroll.contentSize = CGSizeMake(screenW*4, screenH);
+//    scroll.delegate = self;
+//    [self.window addSubview:scroll];
+//    [scroll setPagingEnabled:YES];
+//    
+//    
+//    NSArray *imagearray = @[@"YISHENGHUO-01",@"YISHENGHUO-02",@"YISHENGHUO-03",@"YISHENGHUO-04"];
+//    for (int i =0; i<4; i++) {
+//        UIImage *image = [UIImage imageNamed:imagearray[i]];
+//        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(screenW*i, 0, screenW, screenH)];
+//        imageView.image = image;
+//        [scroll addSubview:imageView];
+//    }
+//}
+//
+//
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    if (scrollView.contentOffset.x > screenW*4+30) {
+//        [UIView animateWithDuration:0.3 animations:^{
+//            scrollView.alpha = 0.0;
+//        } completion:^(BOOL finished) {
+//            [scrollView removeFromSuperview];
+//        }];
+//    }
+//}
 
 -(void) delayLoad {
     self.window.rootViewController = nil;

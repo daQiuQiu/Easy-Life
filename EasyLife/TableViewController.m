@@ -543,6 +543,7 @@ BOOL isLoading = NO;
                 [self.tableView reloadData];
                 
                 [self.tableView.mj_header endRefreshing];
+                self.tableView.userInteractionEnabled = YES;
                 self.sideMenuButton.enabled = YES;
             });
             
@@ -569,7 +570,8 @@ BOOL isLoading = NO;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     DataLoading *model = [DataLoading initWithModel];
     if ([model.imageArray count] > 0) {
-        return [model.imageArray count];
+        return [model.newsTitleArray count];
+        
         
         
     }
@@ -689,6 +691,7 @@ BOOL isLoading = NO;
     }] ;
     
     [self.tableView.mj_header beginRefreshing];
+    self.tableView.userInteractionEnabled = NO;
     self.sideMenuButton.enabled = NO;
     
 }
