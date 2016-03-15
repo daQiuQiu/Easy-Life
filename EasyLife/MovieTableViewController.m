@@ -212,6 +212,7 @@ BOOL isOn = YES;//默认显示正在上映
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
     });
 }
 
@@ -268,10 +269,11 @@ BOOL isOn = YES;//默认显示正在上映
         cell.ratingLabel.text = model.ratingArray2[indexPath.row];
         cell.movieImage.image = model.presentImageArray2[indexPath.row];
         }
-        [self.tableView.mj_header endRefreshing];
+        
     }
     else {
         NSLog(@"数据加载不成功");
+        [self.tableView.mj_header endRefreshing];
     }
     
     // Configure the cell...
