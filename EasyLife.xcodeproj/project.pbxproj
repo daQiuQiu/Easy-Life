@@ -21,7 +21,6 @@
 		8F0386811C43B70300AE9523 /* NearSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F0386801C43B70300AE9523 /* NearSB.storyboard */; };
 		8F1B50B41C8D5A030027F6CC /* ColorCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1B50B31C8D5A030027F6CC /* ColorCollectionViewController.m */; };
 		8F1B50B71C8D627F0027F6CC /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1B50B61C8D627F0027F6CC /* CollectionViewCell.m */; };
-		8F2672AB1C91145A00F2FBE0 /* MyAnimatedAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2672AA1C91145A00F2FBE0 /* MyAnimatedAnnotationView.m */; };
 		8F34963D1C918B6500317847 /* NavigationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8F34963C1C918B6500317847 /* NavigationViewController.mm */; };
 		8F3539171C969FC7001521A9 /* AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3539161C969FC7001521A9 /* AdViewController.m */; };
 		8F35A2C21C61DBB100A1ED45 /* WebSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35A2BA1C61DBB100A1ED45 /* WebSearchViewController.m */; };
@@ -109,8 +108,6 @@
 		8F1B50B31C8D5A030027F6CC /* ColorCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCollectionViewController.m; sourceTree = "<group>"; };
 		8F1B50B51C8D627F0027F6CC /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		8F1B50B61C8D627F0027F6CC /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
-		8F2672A91C91145A00F2FBE0 /* MyAnimatedAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnimatedAnnotationView.h; sourceTree = "<group>"; };
-		8F2672AA1C91145A00F2FBE0 /* MyAnimatedAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnimatedAnnotationView.m; sourceTree = "<group>"; };
 		8F34963B1C918B6500317847 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		8F34963C1C918B6500317847 /* NavigationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NavigationViewController.mm; sourceTree = "<group>"; };
 		8F3539151C969FC7001521A9 /* AdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewController.h; sourceTree = "<group>"; };
@@ -331,8 +328,6 @@
 			isa = PBXGroup;
 			children = (
 				8F0386801C43B70300AE9523 /* NearSB.storyboard */,
-				8F2672A91C91145A00F2FBE0 /* MyAnimatedAnnotationView.h */,
-				8F2672AA1C91145A00F2FBE0 /* MyAnimatedAnnotationView.m */,
 				8F67730A1C95ABEA003DAA44 /* UIImage+Rotate.h */,
 				8F67730B1C95ABEA003DAA44 /* UIImage+Rotate.m */,
 				8F34963B1C918B6500317847 /* NavigationViewController.h */,
@@ -649,7 +644,6 @@
 				8F0385FD1C43856A00AE9523 /* AppDelegate.m in Sources */,
 				8F3A906A1C88344F00DC4916 /* BaiduMapViewController.m in Sources */,
 				8F0386791C43A04F00AE9523 /* MainTabViewController.m in Sources */,
-				8F2672AB1C91145A00F2FBE0 /* MyAnimatedAnnotationView.m in Sources */,
 				8F35A2DC1C61F91300A1ED45 /* NewsDetailViewController.m in Sources */,
 				8F35A2C31C61DBB100A1ED45 /* HomeHeaderViewController.m in Sources */,
 				8F35A2D91C61F91300A1ED45 /* SideViewController.m in Sources */,

@@ -8,7 +8,6 @@
 
 #import "BaiduMapViewController.h"
 #import <Masonry.h>
-#import "MyAnimatedAnnotationView.h"
 #import "MapDataModel.h"
 #import "NavigationViewController.h"
 

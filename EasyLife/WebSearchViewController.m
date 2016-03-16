@@ -31,7 +31,8 @@
 }
 
 -(void)loadWebView {
-    //self.urlstring = @"http://news.qq.com/a/20160301/022342.htm";
+    //self.urlstring = @"http://news.qq.com/a/20160301/022342.htm"
+    //QQ新闻所有连接都不能打开;
     self.searchWebView.delegate = self;
     self.searchWebView.scalesPageToFit = YES;
     NSURL *weburl = [NSURL URLWithString:self.urlstring ];
