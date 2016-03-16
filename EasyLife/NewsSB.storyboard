@@ -10,7 +10,7 @@
         <scene sceneID="oId-Bb-O1i">
             <objects>
                 <tableViewController id="arQ-0k-XWT" customClass="TableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="96" sectionHeaderHeight="28" sectionFooterHeight="28" id="PJn-GR-YDi">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="96" sectionHeaderHeight="28" sectionFooterHeight="28" id="PJn-GR-YDi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -33,7 +33,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="204" id="Hwg-vo-gpG"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="16"/>
+                                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
@@ -42,17 +42,39 @@
                                                 </mask>
                                             </variation>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfy-Ul-hNI">
+                                            <rect key="frame" x="14" y="66" width="60" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="oqO-2D-8Ld"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zb-mJ-Id4">
+                                            <rect key="frame" x="72" y="66" width="42" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="y6R-ln-y69"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="0Bj-Pc-Lp8" secondAttribute="bottom" constant="31" id="0rJ-eF-Dk7"/>
                                         <constraint firstItem="0NV-aq-hhM" firstAttribute="leading" secondItem="0Bj-Pc-Lp8" secondAttribute="trailing" constant="8" id="3v4-CT-Xz2"/>
                                         <constraint firstAttribute="topMargin" secondItem="0Bj-Pc-Lp8" secondAttribute="top" id="Bcq-d3-UqZ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="0NV-aq-hhM" secondAttribute="trailing" id="Beb-E4-YQb"/>
+                                        <constraint firstItem="0zb-mJ-Id4" firstAttribute="leading" secondItem="qfy-Ul-hNI" secondAttribute="trailing" constant="5" id="HOP-8s-uh5"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="0zb-mJ-Id4" secondAttribute="bottom" id="Ikf-z5-rxk"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="qfy-Ul-hNI" secondAttribute="bottom" id="RFt-U4-lYv"/>
                                         <constraint firstItem="0NV-aq-hhM" firstAttribute="leading" secondItem="0Bj-Pc-Lp8" secondAttribute="trailing" constant="8" id="T9R-v1-aNc"/>
                                         <constraint firstItem="0NV-aq-hhM" firstAttribute="top" secondItem="sWO-IF-EPV" secondAttribute="topMargin" constant="5" id="W90-C5-9Jh"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="0NV-aq-hhM" secondAttribute="bottom" constant="5" id="fmo-DX-R7J"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="0Bj-Pc-Lp8" secondAttribute="leading" constant="-6" id="hae-fD-SLh"/>
                                         <constraint firstItem="0NV-aq-hhM" firstAttribute="leading" secondItem="0Bj-Pc-Lp8" secondAttribute="trailing" constant="8" id="lcw-ey-c59"/>
+                                        <constraint firstItem="qfy-Ul-hNI" firstAttribute="leading" secondItem="sWO-IF-EPV" secondAttribute="leadingMargin" constant="6" id="raY-9h-2lb"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
@@ -64,6 +86,8 @@
                                 <connections>
                                     <outlet property="cellImage" destination="0NV-aq-hhM" id="QpK-yt-Xz1"/>
                                     <outlet property="cellTitle" destination="0Bj-Pc-Lp8" id="dm5-XC-GjF"/>
+                                    <outlet property="commentTitle" destination="0zb-mJ-Id4" id="zQm-3b-Qrz"/>
+                                    <outlet property="tagTitle" destination="qfy-Ul-hNI" id="oAR-wd-YMV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

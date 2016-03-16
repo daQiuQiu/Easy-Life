@@ -65,7 +65,7 @@ BOOL isLoading = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
-    //TableViewController *table = [TableViewController initWithModel];
+    self.tableView.showsVerticalScrollIndicator = NO;//不显示滑动条
     NSLog(@"ViewDidLoad!");
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationToRefresh) name:@"refreshnews" object:nil];
     self.tableView.delegate = self;
@@ -133,7 +133,8 @@ BOOL isLoading = NO;
     self.defaultImageArray = [NSMutableArray array];
 //    if ([model.imageArray count] ) {//图片大于3张
         NSLog(@"图片大于3张");
-   self.topScr = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenW, 200)];
+    self.topScr = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, screenW, 200)];
+    self.topScr.showsHorizontalScrollIndicator = NO;
     _topScr.contentSize = CGSizeMake(screenW*4, 200);
     _topScr.pagingEnabled = YES;
     _topScr.bounces = NO;
@@ -423,10 +424,20 @@ BOOL isLoading = NO;
             model.newsTitleArray = [NSMutableArray array];
             model.imageArray = [NSMutableArray array];
             model.urlArray = [NSMutableArray array];
+            model.tagArray = [NSMutableArray array];
             for (NSDictionary *dic in array) {
                 NSString *title = [dic objectForKey:@"title"];
                 NSString *newsurl = [dic objectForKey:@"link"];
-                
+                NSDictionary *tagDic = [dic objectForKey:@"sentiment_tag"];
+                if (tagDic) {
+                    NSString *tag = [tagDic objectForKey:@"name"];
+                    [model.tagArray addObject:tag];
+                    //NSLog(@"tag = %@",tag);
+                }
+                else {
+                    NSString *notag = @" ";
+                    [model.tagArray addObject:notag];
+                }
                 NSLog(@"%@",title);
                 NSLog(@"%@",newsurl);
                 [model.newsTitleArray addObject:title];
@@ -608,20 +619,26 @@ BOOL isLoading = NO;
 //    if (cell == nil) {
 //        cell = [[NewsTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellidentifier];
 //    }
-    
+   
     NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     DataLoading *model = [DataLoading initWithModel];
     if ([model.imagePresentArray count] > 0 && indexPath.row < [model.imagePresentArray count] && [model.newsTitleArray count] != 0) {
         NSLog(@"Title 数量:%lu",(unsigned long)[model.newsTitleArray count]);
         NSLog(@"Image 数量:%lu",(unsigned long)[model.imagePresentArray count]);
-
+        
+        int tag = (arc4random() % 900) + 100;
+        NSString *comment = [NSString stringWithFormat:@"%d评",tag];
+        //评论数随机
         cell.cellImage.image = model.imagePresentArray[indexPath.row];
         cell.cellImage.clipsToBounds = YES;
         [cell.cellTitle sizeToFit];
+        [cell.tagTitle sizeToFit];
+        [cell.commentTitle sizeToFit];
         [cell.cellTitle setNumberOfLines:0];
         cell.cellTitle.text = model.newsTitleArray[indexPath.row];
-        
+        cell.tagTitle.text = model.tagArray[indexPath.row];
+        cell.commentTitle.text = comment;
         [self.tableView setSeparatorColor:[UIColor grayColor]];
                 // Configure the cell...
         NSLog(@"配置cell");

@@ -47,19 +47,19 @@
         rootView.frame=CGRectMake(xoffset, orginFrame.origin.y, orginFrame.size.width, orginFrame.size.height);
     }];//设置水平移动
     
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen]bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
     self.window.rootViewController = nil;
     self.window.rootViewController = self.sideController;
-    
     [self.window makeKeyAndVisible];
     
     if (![[NSUserDefaults standardUserDefaults]valueForKey:@"first"]) {
         NSArray *imagearray = @[@"YISHENGHUO-1",@"YISHENGHUO-2",@"YISHENGHUO-3",@"YISHENGHUO-4"];
         //判断第一次进入
         self.guideVC = [[ZWIntroductionViewController alloc]initWithCoverImageNames:imagearray];
+        
         //加载引导页
         [self.window addSubview:self.guideVC.view];
         

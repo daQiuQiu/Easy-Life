@@ -27,6 +27,7 @@ BOOL isgoing = NO;//判断是否选中大头针
     self.search.delegate = self;
     self.routeSearch.delegate = self;
     [self getPinImage];
+    [self changeColor];
     //self.navigationController.navigationBarHidden = YES;
     
 }
@@ -77,10 +78,36 @@ BOOL isgoing = NO;//判断是否选中大头针
     
 }
 
+#pragma mark - 改变颜色
+-(void) changeColor {
+    int tag = [[[NSUserDefaults standardUserDefaults]objectForKey:@"tag"] intValue];
+    if (tag == 0) {//蓝色图标
+        self.searchImage = [UIImage imageNamed:@"searchb"];
+        self.leftImageView.image = self.searchImage;
+    }
+    else if (tag == 1) {//红色
+        self.searchImage = [UIImage imageNamed:@"searchr"];
+        self.leftImageView.image = self.searchImage;
+    }
+    else if (tag == 2) {//黄色
+        self.searchImage = [UIImage imageNamed:@"searchy"];
+      self.leftImageView.image = self.searchImage;
+    }
+    else if (tag == 3) {//绿色
+        self.searchImage = [UIImage imageNamed:@"searchg"];
+        self.leftImageView.image = self.searchImage;
+    }
+    
+}
+
+
 #pragma mark - 创建搜索条和工具栏 
 -(void) creatSearchBarAndButtons {
-    UIImageView *leftImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"60_2"]];
-    //leftImage.frame = CGRectMake(0, 0, 50, 50);
+    self.searchImage = [UIImage imageNamed:@"searchb"];
+    self.leftImageView = [[UIImageView alloc]initWithImage:self.searchImage];
+    self.leftImageView.frame = CGRectMake(0, 0, 34, 34);
+    self.leftImageView.contentMode = UIViewContentModeScaleToFill;
+    
     self.searchField = [[UITextField alloc]init];
     self.searchField.delegate = self;
     self.searchField.backgroundColor = [UIColor whiteColor];
@@ -91,7 +118,7 @@ BOOL isgoing = NO;//判断是否选中大头针
     self.searchField.clearButtonMode = UITextFieldViewModeAlways;
     //self.searchField.keyboardAppearance = UIKeyboardAppearanceAlert;
     self.searchField.returnKeyType = UIReturnKeySearch;
-    self.searchField.leftView = leftImage;
+    self.searchField.leftView = self.leftImageView;
     self.searchField.leftViewMode = UITextFieldViewModeAlways;//textfield 设置
     
     [self.view addSubview:self.searchField];
@@ -241,7 +268,7 @@ BOOL isgoing = NO;//判断是否选中大头针
     int tag = [[[NSUserDefaults standardUserDefaults]objectForKey:@"tag"] intValue];
     NSArray *imageNameArray = @[@"b",@"r",@"y",@"g"];
     self.pinImage = [UIImage imageNamed:imageNameArray[tag]];//获取大头针样式
-    NSArray *goImageArray = @[@"gothereb",@"gotherer",@"gotherey",@"gothereg"];
+    NSArray *goImageArray = @[@"roadb",@"roadr",@"roady",@"roadg"];
     self.goImage = [UIImage imageNamed:goImageArray[tag]];//获取导航按键样式
     
     [self.goButton setImage:self.goImage forState:UIControlStateNormal];
@@ -265,8 +292,10 @@ BOOL isgoing = NO;//判断是否选中大头针
     }];
     
     ///图片和Label
-    self.locationImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"60_2"]];
+    self.locationImageView = [[UIImageView alloc]init];
     self.locationImageView.contentMode = UIViewContentModeScaleToFill;
+    self.locationImageView.layer.masksToBounds = YES;
+    self.locationImageView.layer.cornerRadius = 7.0;
     [self.detailView addSubview:self.locationImageView];
     [self.locationImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo (self.detailView).with.offset (10);
@@ -448,6 +477,10 @@ BOOL isgoing = NO;//判断是否选中大头针
     [UIView animateWithDuration:0.3f animations:^{
         [self.mapView layoutIfNeeded];
     }];
+    
+    NSArray *array = @[@"JJ1",@"JJ2",@"JJ3",@"JJ4",@"JJ5",@"JJ6",@"JJ7"];
+    int tag = arc4random() % 7;
+    self.locationImageView.image = [UIImage imageNamed:array[tag]];
     
     //处理选中，获取选中信息
     for (int i = 0; i < [self.poiResultInfoList.poiInfoList count]; i++) {

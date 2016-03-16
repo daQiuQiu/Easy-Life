@@ -33,7 +33,7 @@ BOOL isOn = YES;//默认显示正在上映
     backbutton.title = @"";
     self.navigationItem.backBarButtonItem = backbutton;
     [self pullToRefresh];
-
+    
     
 }
 
@@ -239,7 +239,9 @@ BOOL isOn = YES;//默认显示正在上映
 
 #pragma mark - TableView Delegate
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     MovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     MovieDataModel *model = [MovieDataModel initWithModel];
     if (cell == nil) {
         cell = [[MovieTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];

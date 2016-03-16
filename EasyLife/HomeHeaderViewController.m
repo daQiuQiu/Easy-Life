@@ -429,7 +429,7 @@ int lastTag;
         make.left.equalTo (self.weatherView).with.offset (12);
         make.top.equalTo (self.weatherView).with.offset (6);
         make.height.equalTo(@20);
-        make.width.equalTo (@40);
+        make.width.equalTo (@80);
         
     }];//城市名
     [self.weatherImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -494,7 +494,7 @@ int lastTag;
         make.left.equalTo (self.relaxView).with.offset(15);
         make.bottom.equalTo (self.relaxView).with.offset(-20);
         make.right.equalTo (self.relaxView).with.offset(-10);
-        make.top.equalTo (self.relaxView).with.offset (10);
+        make.top.equalTo (self.viewLabel.mas_bottom).with.offset (5);
     }];
     
 }
@@ -917,6 +917,7 @@ int lastTag;
             for (NSDictionary* dic1 in resArray) {
                 NSString *content = [dic1 objectForKey:@"content"];
                 [model.relaxArray addObject:content];
+                NSLog(@"笑话 = %@",content);
             }
             
         }
@@ -954,8 +955,7 @@ int lastTag;
     
     self.lat = currLocation.coordinate.latitude;
     self.lon = currLocation.coordinate.longitude;
-    NSLog(@"%f",self.lat);
-    NSLog(@"lon = %f",self.lon);
+    
     
     if (isFinishLocation == NO) {
         [self getWhetherByLocation:self.lat withLon:self.lon];

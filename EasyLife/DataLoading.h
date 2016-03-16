@@ -24,6 +24,7 @@
 @property (strong,nonatomic) NSMutableArray *imagePresentArray;
 @property (strong,nonatomic) NSMutableArray *cateArray;
 @property (strong,nonatomic) NSMutableArray *idArray;
+@property (strong,nonatomic) NSMutableArray *tagArray;
 @property (strong,nonatomic) NSString *idKey;
 @property (nonatomic,assign) NSInteger chosenindex;
 

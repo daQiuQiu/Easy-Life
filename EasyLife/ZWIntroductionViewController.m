@@ -27,6 +27,7 @@
 {
     if (self = [super init]) {
         [self initSelfWithCoverNames:coverNames backgroundImageNames:nil];
+        self.view.frame = [UIScreen mainScreen].bounds;
     }
     return self;
 }
@@ -59,11 +60,11 @@
     
     [self addBackgroundViews];
     
-    self.pagingScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    self.pagingScrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen]bounds]];
     self.pagingScrollView.delegate = self;
     self.pagingScrollView.pagingEnabled = YES;
     self.pagingScrollView.showsHorizontalScrollIndicator = NO;
-    
+    self.pagingScrollView.bounces = NO;
     [self.view addSubview:self.pagingScrollView];
     
     self.pageControl = [[UIPageControl alloc] initWithFrame:[self frameOfPageControl]];
@@ -121,7 +122,7 @@
     
     // fix ScrollView can not scrolling if it have only one page
     if (self.pagingScrollView.contentSize.width == self.pagingScrollView.frame.size.width) {
-        self.pagingScrollView.contentSize = CGSizeMake(self.pagingScrollView.contentSize.width + 1, self.pagingScrollView.contentSize.height);
+        self.pagingScrollView.contentSize = CGSizeMake(self.pagingScrollView.contentSize.width , self.pagingScrollView.contentSize.height);
     }
 }
 
@@ -219,6 +220,7 @@
 - (UIImageView*)scrollViewPage:(NSString*)imageName
 {
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+    imageView.frame = [UIScreen mainScreen].bounds;
     CGSize size = {[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height};
     imageView.frame = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y, size.width, size.height);
     return imageView;
@@ -238,6 +240,7 @@
     [self.coverImageNames enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         
         UIImageView *v = [self scrollViewPage:obj];
+        v.contentMode = UIViewContentModeScaleToFill;
         [tmpArray addObject:v];
         
     }];
