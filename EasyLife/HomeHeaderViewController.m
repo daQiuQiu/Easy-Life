@@ -288,7 +288,7 @@ int lastTag;
     self.historyTable.dataSource = self;
     self.historyTable.hidden = YES;
     self.historyTable.backgroundColor = [UIColor clearColor];
-    
+    [self.historyTable setTableFooterView:[[UIView alloc]initWithFrame:CGRectZero]];//table去掉多余的线
     [self.mainTable.tableHeaderView addSubview:self.historyTable];
     [self.historyTable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo (self.searchFiled.mas_bottom).with.offset (10);
@@ -764,10 +764,10 @@ int lastTag;
         }
         else {
             
-            NSError *jerror;
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jerror];
+            //NSError *jerror;
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
             //NSLog(@"data= %@",data);
-            //NSLog(@"JSON%@",dic);
+            NSLog(@"JSON%@",dic);
             if (dic != nil) {
                 
             
@@ -815,6 +815,7 @@ int lastTag;
     }
 //    lat = self.lat;
 //    lng = self.lon;
+    //key=2852b2fe885c94430ecf5aa5d85b693b
     
     NSString *urlString = [NSString stringWithFormat:@"http://v.juhe.cn/weather/geo?lon=%.2f&lat=%.2f&format=&dtype=&key=2852b2fe885c94430ecf5aa5d85b693b",lng,lat];
     NSURL *dataurl = [NSURL URLWithString:urlString];
@@ -958,7 +959,7 @@ int lastTag;
     
     
     if (isFinishLocation == NO) {
-        [self getWhetherByLocation:self.lat withLon:self.lon];
+        //[self getWhetherByLocation:self.lat withLon:self.lon];
         isFinishLocation = YES;
     }
    

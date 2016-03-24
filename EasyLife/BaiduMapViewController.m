@@ -306,7 +306,7 @@ BOOL isgoing = NO;//判断是否选中大头针
     self.nameLabel = [[UILabel alloc]init];
     self.nameLabel.textColor = [UIColor darkTextColor];
     self.nameLabel.font = [UIFont systemFontOfSize:18];
-    self.nameLabel.text = @"哈哈哈哈";
+    self.nameLabel.text = @"";
     [self.detailView addSubview:self.nameLabel];
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo (self.locationImageView);
@@ -318,7 +318,7 @@ BOOL isgoing = NO;//判断是否选中大头针
     
     self.phoneLabel = [[UILabel alloc]init];
     self.phoneLabel.textColor = [UIColor darkGrayColor];
-    self.phoneLabel.text = @"111111111111";
+    self.phoneLabel.text = @"";
     self.phoneLabel.font = [UIFont systemFontOfSize:15];
     [self.detailView addSubview:self.phoneLabel];
     [self.phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -330,7 +330,7 @@ BOOL isgoing = NO;//判断是否选中大头针
     //电话号码Label
     
     self.addressLabel = [[UILabel alloc]init];
-    self.addressLabel.text = @"12345611111111111111111111111111111";
+    self.addressLabel.text = @"";
     self.addressLabel.textColor = [UIColor darkGrayColor];
     self.addressLabel.font = [UIFont systemFontOfSize:15];
     [self.detailView addSubview:self.addressLabel];

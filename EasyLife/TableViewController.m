@@ -10,7 +10,7 @@
 #import "DataLoading.h"
 #import "NewsDetailViewController.h"
 #import "AppDelegate.h"
-
+#import "PeekViewController.h"
 
 #define screenW [UIScreen mainScreen].bounds.size.width
 #define screenH [UIScreen mainScreen].bounds.size.height
@@ -64,6 +64,9 @@ BOOL isLoading = NO;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self registerForPreviewingWithDelegate:self sourceView:self.view];//注册3dtouch方法
+    self.tableView.showsVerticalScrollIndicator = NO;
+    
     self.tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
     self.tableView.showsVerticalScrollIndicator = NO;//不显示滑动条
     NSLog(@"ViewDidLoad!");
@@ -239,7 +242,7 @@ BOOL isLoading = NO;
     positionY= scrollView.contentOffset.y;//获取Y的数据
     //CGFloat positionX = scrollView.contentOffset.x;
     //NSLog(@"xxxxxxxxxxxxxxx%f",positionX);
-    NSLog(@"yyyyyyyyyyyyyyy%f",positionY);
+    //NSLog(@"yyyyyyyyyyyyyyy%f",positionY);
     if (positionY != 0){//给navigationbar加颜色
         if (positionY > 0 && positionY != 128) {
             [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
@@ -337,7 +340,7 @@ BOOL isLoading = NO;
                     NSString *name = [dicc valueForKey:@"name"];
                     //NSLog(@"%@",name);
                     if ([name isEqualToString:@"体育焦点"]) {
-                        NSString *channelId = [dicc valueForKey:@"channelId"];
+                        NSMutableString *channelId = [dicc valueForKey:@"channelId"];
                         NSLog(@"ID is %@",channelId);
                         DataLoading *model = [DataLoading initWithModel];
                         model.channelId = channelId;
@@ -465,10 +468,10 @@ BOOL isLoading = NO;
 //                NSLog(@"%ld",[imageurl count]);
 //                [model.imageArray addObjectsFromArray:imageurl];
 //                NSLog(@"%ld",[model.imageArray count]);
-                for (NSDictionary *imagedic in imageurl) {
-                    
-                    //NSLog(@"arrar is%@",model.imageArray);
-                }
+//                for (NSDictionary *imagedic in imageurl) {
+//                    
+//                    //NSLog(@"arrar is%@",model.imageArray);
+//                }
             }
             
             
@@ -675,17 +678,19 @@ BOOL isLoading = NO;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NewsDetailViewController *newsD = [self.storyboard instantiateViewControllerWithIdentifier:@"webview"];
-    [self.navigationController pushViewController:newsD animated:YES];
-    newsD.navigationController.navigationBarHidden = YES;
     DataLoading *model = [DataLoading initWithModel];
     if (indexPath.row < [model.urlArray count]) {
-    
-    newsD.url = model.urlArray[indexPath.row];
-    newsD.newsTag = indexPath.row;
+        
+        newsD.url = model.urlArray[indexPath.row];
+        newsD.newsTag = indexPath.row;
         newsD.image = model.imagePresentArray[indexPath.row];
         newsD.newsTitle = model.newsTitleArray[indexPath.row];
-    NSLog(@"%ld",indexPath.row);
+        NSLog(@"%ld",indexPath.row);
     }
+
+    [self.navigationController pushViewController:newsD animated:YES];
+    newsD.navigationController.navigationBarHidden = YES;
+    
 }
 
 
@@ -741,5 +746,36 @@ BOOL isLoading = NO;
     NSLog(@"timer expired");
 }
 
+#pragma mark - previewingDelegate
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if ([segue.identifier  isEqual: @"showdetail"]) {
+//        //PeekViewController *peekVC  = [[PeekViewController alloc]init];
+//        
+//        //[self.navigationController popToViewController:peekVC animated:YES];
+//    }
+//}
+
+-(UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
+    PeekViewController *childVC = [[PeekViewController alloc] init];
+    childVC.preferredContentSize = CGSizeMake(0.0f,screenH-100.0f);
+    [self getShouldShowRectAndIndexPathWithLocation:location];
+    DataLoading *model = [DataLoading initWithModel];
+    childVC.url = model.urlArray[self.indexPath.row];
+    CGRect rect = self.sourceRect;
+    previewingContext.sourceRect = rect;
+    return childVC;
+}
+
+- (void)previewingContext:(id <UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
+    [self tableView:self.tableView didSelectRowAtIndexPath:self.indexPath];
+}
+
+- (BOOL)getShouldShowRectAndIndexPathWithLocation:(CGPoint)location {
+    NSInteger row = (location.y -200)/96;
+    self.sourceRect = CGRectMake(0, row * 96+200 , screenW, 96);
+    self.indexPath = [NSIndexPath indexPathForItem:row inSection:0];
+    NSLog(@"%ld",self.indexPath.row);
+    return  YES;
+}
 
 @end

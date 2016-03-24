@@ -135,9 +135,8 @@
     //添加所有控制器
     self.viewControllers = @[self.SearchController,self.NewsController,self.VoiceController,self.MovieController,self.NearController];
 
-
-
-    
+    self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:2];
+    self.tabBarController.selectedViewController = self.NewsController;
 }
 
 -(instancetype)initWithSB:(NSString *) identifier inStoryBoard:(NSString *) storyboardName {
@@ -151,14 +150,16 @@
     }
 }//封装一下storyBoard调用
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    CATransition *animation =[CATransition animation];
+    [animation setDuration:0.6f];
+    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
+    [animation setType:kCATransitionFade];
+    //[animation setSubtype:kCATransitionFromRight];
+    [self.view.layer addAnimation:animation forKey:@"reveal"];
+    
+    NSLog(@"tab动画");
+}//tabbar 页面切换动画
 
 @end

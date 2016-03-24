@@ -23,6 +23,7 @@
 @interface AppDelegate ()
 @property (nonatomic,strong) ZWIntroductionViewController *guideVC;
 @property (nonatomic,strong) AdViewController *adVC;
+@property (nonatomic,strong) UITabBarController *tabVC;
 @end
 
 @implementation AppDelegate
@@ -31,13 +32,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UITabBarController *tabVC = [storyBoard instantiateViewControllerWithIdentifier:@"tabvc"];
+    self.tabVC = [storyBoard instantiateViewControllerWithIdentifier:@"tabvc"];
+    
     SideViewController *sideMenu = [[SideViewController alloc]init];
     //sideMenu.delegate = tableVC;//设置代理
     sideMenu.view.backgroundColor = [UIColor darkGrayColor];
     
     self.sideController = [[YRSideViewController alloc]init];
-    self.sideController.rootViewController = tabVC;
+    self.sideController.rootViewController = self.tabVC;
     self.sideController.leftViewController = sideMenu;
     //self.sideController.needSwipeShowMenu = false;
     [self.sideController setNeedSwipeShowMenu:NO];
@@ -158,7 +160,43 @@
     }else {
         NSLog(@"BaiduMap 授权成功");
     }
+    
+    //添加桌面3Dtouch 图标
+    UIApplicationShortcutIcon *newsIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"news60-1"];
+    UIApplicationShortcutItem *news = [[UIApplicationShortcutItem alloc]initWithType:@"news" localizedTitle:@"实事新闻" localizedSubtitle:nil icon:newsIcon userInfo:nil];
+    //新闻
+    UIApplicationShortcutIcon *searchIcon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeSearch];
+    UIApplicationShortcutItem *search = [[UIApplicationShortcutItem alloc]initWithType:@"search" localizedTitle:@"搜一搜" localizedSubtitle:nil icon:searchIcon userInfo:nil];
+    //搜索
+    UIApplicationShortcutIcon *movieIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"movie60-1"];
+    UIApplicationShortcutItem *movie = [[UIApplicationShortcutItem alloc]initWithType:@"movie" localizedTitle:@"电影" localizedSubtitle:nil icon:movieIcon userInfo:nil];
+    
+    //电影
+    UIApplicationShortcutIcon *nearIcon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeLocation];
+    UIApplicationShortcutItem *near = [[UIApplicationShortcutItem alloc]initWithType:@"near" localizedTitle:@"搜附近" localizedSubtitle:nil icon:nearIcon userInfo:nil];
+    
+    application.shortcutItems = @[search,news,movie,near];
+    
     return YES;
+}
+
+#pragma mark -  3D touch 代理方法
+- (void)application:(UIApplication *)application performActionForShortcutItem:(nonnull UIApplicationShortcutItem *)shortcutItem completionHandler:(nonnull void (^)(BOOL))completionHandler
+{
+    /** 不同跳转 */
+    if ([shortcutItem.type isEqualToString:@"news"])
+    {
+        self.tabVC.selectedIndex = 1;
+    }
+    else if ([shortcutItem.type isEqualToString:@"search"]) {
+        self.tabVC.selectedIndex = 0;
+    }
+    else if ([shortcutItem.type isEqualToString:@"movie"]) {
+        self.tabVC.selectedIndex = 3;
+    }
+    else if ([shortcutItem.type isEqualToString:@"near"]) {
+        self.tabVC.selectedIndex = 4;
+    }
 }
 
 //-(instancetype)initWithSB:(NSString *) identifier inStoryBoard:(NSString *) storyboardName {

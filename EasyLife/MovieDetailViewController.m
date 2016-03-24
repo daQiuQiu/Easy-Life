@@ -85,6 +85,7 @@ BOOL isExpand = NO;
     //表格
     self.infoTableView.delegate = self;
     self.infoTableView.dataSource = self;
+    
     self.infoTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self creatLabel];
     
@@ -383,7 +384,7 @@ BOOL isExpand = NO;
     if (indexPath.section == 2) {
         movieWebViewController *movieWevVC = [self.storyboard instantiateViewControllerWithIdentifier:@"moviewebview"];
         if ([model.starLinkArray[indexPath.row] isKindOfClass:[NSNull class]]) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"暂无信息" message:@"这哥们可能还没这么火" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"暂无信息" message:@"该演员信息暂无，看看其他的吧:)" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:nil];
             [alert addAction:cancelAction];
             [self presentViewController:alert animated:YES completion:nil];

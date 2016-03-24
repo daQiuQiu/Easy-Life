@@ -24,9 +24,9 @@ BOOL isOn = YES;//默认显示正在上映
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        [self setSegment];
+    [self setSegment];
     self.title = @"电影";
-    
+    self.tableView.showsVerticalScrollIndicator = NO;
     UIBarButtonItem *backbutton = [[UIBarButtonItem alloc]init];
     backbutton.tintColor = [UIColor whiteColor];
     [backbutton setTintColor:[UIColor whiteColor]];
