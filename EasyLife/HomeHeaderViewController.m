@@ -209,6 +209,10 @@ int lastTag;
             make.bottom.equalTo (self.searchFiled.mas_top).with.offset (-200);
         }];
         
+        [self.changeColorButton mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo (self.headerView).with.offset (-150);
+        }];
+        
         [self.backgroundView setBlurLevel:1.0];
         self.hotNewsTable.hidden = YES;
         
@@ -240,6 +244,11 @@ int lastTag;
         [self.logoImageView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo (self.searchFiled.mas_top).with.offset (-30);
         }];
+        
+        [self.changeColorButton mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo (self.headerView).with.offset (10);
+        }];
+        
         [self.backgroundView setBlurLevel:0.1];
         [UIView animateWithDuration:0.3f animations:^{
             [self.mainTable.tableHeaderView layoutIfNeeded];

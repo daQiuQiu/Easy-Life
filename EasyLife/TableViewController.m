@@ -760,11 +760,15 @@ BOOL isLoading = NO;
     childVC.preferredContentSize = CGSizeMake(0.0f,screenH-100.0f);
     [self getShouldShowRectAndIndexPathWithLocation:location];
     DataLoading *model = [DataLoading initWithModel];
-    childVC.url = model.urlArray[self.indexPath.row];
-    CGRect rect = self.sourceRect;
-    previewingContext.sourceRect = rect;
+    if (self.indexPath.row >= 0) {
+        childVC.url = model.urlArray[self.indexPath.row];
+        CGRect rect = self.sourceRect;
+        previewingContext.sourceRect = rect;
+    }
+    
     return childVC;
 }
+
 
 - (void)previewingContext:(id <UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
     [self tableView:self.tableView didSelectRowAtIndexPath:self.indexPath];
@@ -772,7 +776,7 @@ BOOL isLoading = NO;
 
 - (BOOL)getShouldShowRectAndIndexPathWithLocation:(CGPoint)location {
     NSInteger row = (location.y -200)/96;
-    self.sourceRect = CGRectMake(0, row * 96+200 , screenW, 96);
+    self.sourceRect = CGRectMake(0, row * 96+200 , screenW, 94);
     self.indexPath = [NSIndexPath indexPathForItem:row inSection:0];
     NSLog(@"%ld",self.indexPath.row);
     return  YES;

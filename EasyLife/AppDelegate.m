@@ -162,13 +162,13 @@
     }
     
     //添加桌面3Dtouch 图标
-    UIApplicationShortcutIcon *newsIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"news60-1"];
+    UIApplicationShortcutIcon *newsIcon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeDate];
     UIApplicationShortcutItem *news = [[UIApplicationShortcutItem alloc]initWithType:@"news" localizedTitle:@"实事新闻" localizedSubtitle:nil icon:newsIcon userInfo:nil];
     //新闻
     UIApplicationShortcutIcon *searchIcon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeSearch];
     UIApplicationShortcutItem *search = [[UIApplicationShortcutItem alloc]initWithType:@"search" localizedTitle:@"搜一搜" localizedSubtitle:nil icon:searchIcon userInfo:nil];
     //搜索
-    UIApplicationShortcutIcon *movieIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"movie60-1"];
+    UIApplicationShortcutIcon *movieIcon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeCaptureVideo];
     UIApplicationShortcutItem *movie = [[UIApplicationShortcutItem alloc]initWithType:@"movie" localizedTitle:@"电影" localizedSubtitle:nil icon:movieIcon userInfo:nil];
     
     //电影
