@@ -39,6 +39,7 @@
     NSURL *weburl = [NSURL URLWithString:url];
     NSURLRequest *request = [NSURLRequest requestWithURL:weburl];
     [self.peekWebView loadRequest:request];
+    
 }
 
 -(NSArray<id<UIPreviewActionItem>> *)previewActionItems

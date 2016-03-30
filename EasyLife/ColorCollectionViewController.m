@@ -124,7 +124,7 @@ static NSString * const reuseIdentifier = @"collcell";
     [[NSNotificationCenter defaultCenter] postNotificationName:@"changecolor" object:nil];
     
     [self.navigationController popViewControllerAnimated:YES];
-
+    
     
 }
 
