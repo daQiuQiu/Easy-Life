@@ -776,7 +776,7 @@ int lastTag;
             //NSError *jerror;
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
             //NSLog(@"data= %@",data);
-            NSLog(@"JSON%@",dic);
+            //NSLog(@"JSON%@",dic);
             if (dic != nil) {
                 
             

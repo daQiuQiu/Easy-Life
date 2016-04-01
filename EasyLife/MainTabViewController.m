@@ -155,10 +155,10 @@
     CATransition *animation =[CATransition animation];
     [animation setDuration:1.0f];
     [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
-    //[animation setType:kCATransitionFade];
-    animation.type = @"cube";
-    animation.subtype = @"fromLeft";
-    //[animation setSubtype:kCATransitionFromRight];
+    [animation setType:kCATransitionFade];
+//    animation.type = @"cube";
+//    animation.subtype = @"fromLeft";
+    [animation setSubtype:kCATransitionFromRight];
     [self.view.layer addAnimation:animation forKey:@"reveal"];
     
     NSLog(@"tab动画");

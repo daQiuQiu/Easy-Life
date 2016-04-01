@@ -314,8 +314,10 @@ BOOL isExpand = NO;
     
     movieDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.userInteractionEnabled = NO;
     if (cell == nil) {
         cell = [[movieDetailTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell.userInteractionEnabled = NO;
     }
     if (indexPath.section == 0) {
         
@@ -364,7 +366,7 @@ BOOL isExpand = NO;
         }
         
     }
-    
+    cell.userInteractionEnabled = YES;
 //    [UIView animateWithDuration:0.3f animations:^{
 //        [self.infoTableView layoutIfNeeded];
 //    }];表格加载动画
@@ -383,6 +385,9 @@ BOOL isExpand = NO;
     }
     if (indexPath.section == 2) {
         movieWebViewController *movieWevVC = [self.storyboard instantiateViewControllerWithIdentifier:@"moviewebview"];
+        if ([model.starLinkArray count] > 0) {
+            
+        
         if ([model.starLinkArray[indexPath.row] isKindOfClass:[NSNull class]]) {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"暂无信息" message:@"该演员信息暂无，看看其他的吧:)" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:nil];
@@ -395,6 +400,7 @@ BOOL isExpand = NO;
         movieWevVC.navigationController.navigationBarHidden = YES;
         movieWevVC.tabBarController.tabBar.hidden = YES;
         }//跳转演员信息
+        }
     }
 }
 
