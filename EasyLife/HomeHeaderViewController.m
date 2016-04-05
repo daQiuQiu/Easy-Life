@@ -337,7 +337,8 @@ int lastTag;
     self.hotNewsTable.bounces = NO;
     //[self.hotNewsTable setAlpha:1];
     self.hotNewsTable.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.15];
-    
+    self.hotNewsTable.layer.masksToBounds = YES;
+    self.hotNewsTable.layer.cornerRadius = 10;
     
 }
 
@@ -390,6 +391,9 @@ int lastTag;
     self.weatherView = [[UIView alloc]init];
     //[self.weatherView setAlpha:0.6];
     self.weatherView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.15];
+    
+    self.weatherView.layer.masksToBounds = YES;
+    self.weatherView.layer.cornerRadius = 10;
 
     UIButton *refresh = [[UIButton alloc]init];
     [refresh setBackgroundImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
@@ -471,6 +475,8 @@ int lastTag;
     self.relaxView = [[UIView alloc]init];
     //[self.relaxView setAlpha:0.6];
     self.relaxView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.15];
+    self.relaxView.layer.masksToBounds = YES;
+    self.relaxView.layer.cornerRadius = 10;
     
     UIButton *refresh = [[UIButton alloc]init];
     [refresh setBackgroundImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
@@ -669,6 +675,8 @@ int lastTag;
         if (indexPath.section == 0) {
             
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+            
+            
         [mainCell.contentView addSubview:self.hotNewsTable];
         [self.hotNewsTable mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo (mainCell.contentView).with.insets(UIEdgeInsetsMake(0, 10, 0, 10));
