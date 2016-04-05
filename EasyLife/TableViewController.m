@@ -450,8 +450,8 @@ BOOL isLoading = NO;
                 
                 if ([imageurl count] == 0) {
                     
-                    NSString *noImageurl = [NSString stringWithFormat:@"http://pic21.nipic.com/20120606/8671112_194118074339_2.jpg"];
-                    noImageurl = [noImageurl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+                    NSString *noImageurl = [NSString stringWithFormat:@"http://n10.cmsfile.pg0.cn/group2/M00/31/8B/Cgqg2lbcv02AEuYKAADcSqN9jCc982.jpg"];
+                    //noImageurl = [noImageurl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
                     [model.imageArray addObject:noImageurl];
                 }
                 else {
