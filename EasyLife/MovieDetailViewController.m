@@ -55,7 +55,7 @@ BOOL isExpand = NO;
     self.navigationController.navigationBar.translucent = YES;
     MovieDataModel *model = [MovieDataModel initWithModel];
     [self getMovieDetailWithName:model.onMovieTitleArray[self.movieNo]];
-    self.tabBarController.tabBar.hidden = NO;
+    self.tabBarController.tabBar.hidden = YES;
     self.navigationController.navigationBarHidden = NO;
     
     
@@ -64,6 +64,8 @@ BOOL isExpand = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = [UIColor darkGrayColor];
     MovieDataModel *model = [MovieDataModel initWithModel];
     UIImageView *backImageView = [[UIImageView alloc]initWithImage:model.presentImageArray1[self.movieNo]];
     backImageView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 250);
@@ -165,6 +167,7 @@ BOOL isExpand = NO;
                 NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:desc];
                 NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc]init];
                 [paraStyle setLineSpacing:10];
+                
                 [attributedString addAttribute:NSParagraphStyleAttributeName value:paraStyle range:NSMakeRange(0, [desc length])];
                 model.desc = attributedString;
 //                UIFont *font = [UIFont fontWithName:@"Arial" size:15];
@@ -318,7 +321,9 @@ BOOL isExpand = NO;
     if (cell == nil) {
         cell = [[movieDetailTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         cell.userInteractionEnabled = NO;
+        
     }
+    cell.textLabel.textColor = [UIColor darkGrayColor];
     if (indexPath.section == 0) {
         
             
@@ -349,11 +354,12 @@ BOOL isExpand = NO;
     }
     else if (indexPath.section == 1){
         cell.textLabel.text = model.directorArray1[self.movieNo];
+        //cell.textLabel.textColor = [UIColor redColor];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     else {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        if ([model.starPresentImageArray count] > 0 && [model.star1Array count] > 0) {
+        if ([model.starPresentImageArray count] > indexPath.row && [model.star1Array count] > 0) {
             UIImage *icon = model.starPresentImageArray[indexPath.row];
             CGSize itemSize = CGSizeMake(60, 70);
             UIGraphicsBeginImageContextWithOptions(itemSize, NO,0.0);
@@ -362,6 +368,8 @@ BOOL isExpand = NO;
             
             cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
+            //强改cell.imageview大小
+            //cell.textLabel.textColor = [UIColor redColor];
             cell.textLabel.text = model.star1Array[indexPath.row];
         }
         

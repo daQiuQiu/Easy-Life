@@ -143,6 +143,10 @@
 		<string>rain</string>
 		<key>晴转小雨</key>
 		<string>rain</string>
+		<key>阴转中雨</key>
+		<string>rain</string>
+		<key>中雨转阴</key>
+		<string>rain</string>
 		<key>小雨转晴</key>
 		<string>rain</string>
 		<key>阴转小雨</key>

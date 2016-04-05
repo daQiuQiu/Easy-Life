@@ -730,7 +730,7 @@ int lastTag;
         [self.navigationController pushViewController:webVC animated:YES];
         webVC.urlstring = model.urlArray[indexPath.row];
         webVC.title = @"热点";
-        self.tabBarController.hidesBottomBarWhenPushed = YES;
+        //self.tabBarController.hidesBottomBarWhenPushed = YES;
 
         
     }
@@ -920,7 +920,9 @@ int lastTag;
         }
         else {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+            
             NSDictionary *resultDic = [dic objectForKey:@"result"];
+            if  ([resultDic count] != 0){
             NSArray *resArray = [resultDic objectForKey:@"data"];
             DataModel *model = [DataModel initWithModel];
             model.relaxArray = [NSMutableArray array];
@@ -929,7 +931,7 @@ int lastTag;
                 [model.relaxArray addObject:content];
                 NSLog(@"笑话 = %@",content);
             }
-            
+        }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self refreshRelaxContent];

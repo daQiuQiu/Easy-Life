@@ -19,6 +19,7 @@ BOOL isOn = YES;//默认显示正在上映
 -(void)viewWillAppear:(BOOL)animated {
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     [self changeColor];//设置导航栏颜色
+    self.tabBarController.tabBar.hidden = NO;
     
 }
 
@@ -289,9 +290,10 @@ BOOL isOn = YES;//默认显示正在上映
 
         MovieDetailViewController *movieDetailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"moviedetail"];
         movieDetailVC.movieNo = indexPath.row;
-
+        self.tabBarController.hidesBottomBarWhenPushed = YES;
         NSLog(@"选择的电影 = %@",model.onMovieTitleArray[indexPath.row]);
         [self.navigationController pushViewController:movieDetailVC animated:YES];
+        
         movieDetailVC.movieNo = indexPath.row;
         NSLog(@"number = %ld",movieDetailVC.movieNo);
             
