@@ -10,6 +10,8 @@
 #import "WebSearchViewController.h"
 #import "ColorCollectionViewController.h"
 #import "DataModel.h"
+#import "DataLoading.h"
+#import "TableViewController.h"
 
 #define screenW [UIScreen mainScreen].bounds.size.width
 #define screenH [UIScreen mainScreen].bounds.size.height
@@ -42,7 +44,7 @@ int lastTag;
     
     [self creatLocationManager];
     
-    
+    [self preloadNews];
     
     
     
@@ -51,6 +53,29 @@ int lastTag;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) preloadNews {
+    dispatch_async(dispatch_get_main_queue(), ^{
+//        TableViewController *newsVC = [[TableViewController alloc]init];
+//        [newsVC preloadData];
+        
+        
+       
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *homeDictionary = NSHomeDirectory();//获取根目录
+            NSString *homePath  = [homeDictionary stringByAppendingPathComponent:@"newsModel.archiver"];//添加储存的文件名
+            NSData *data = [[NSMutableData alloc] initWithContentsOfFile:homePath];
+            NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+            DataLoading *model = [unarchiver decodeObjectForKey:@"kmodel"];
+            [unarchiver finishDecoding];
+            NSLog(@"jiedang = %@",model.newsTitleArray);
+        });
+        
+    });
+    
+    
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -704,7 +729,9 @@ int lastTag;
          
     }//主Table
     else if (tableView == self.hotNewsTable) {
-        mainCell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
+        
+        mainCell.layer.transform = CATransform3DMakeScale(0.5, 1, 1);
+        
         [UIView animateWithDuration:1.0f animations:^{
             mainCell.layer.transform = CATransform3DMakeScale(1, 1, 1);
         }];

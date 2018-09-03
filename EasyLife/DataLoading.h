@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DataLoading : NSObject
+@interface DataLoading : NSObject<NSCoding>
 //@property (strong,nonatomic) NSString *title;
 //@property (strong,nonatomic) NSString *imageUrl;
 //@property (strong,nonatomic) NSArray *images;

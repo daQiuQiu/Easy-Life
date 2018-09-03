@@ -46,6 +46,8 @@
 		8F84D10B1C7ED2720085AF35 /* MovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F84D10A1C7ED2710085AF35 /* MovieDetailViewController.m */; };
 		8FA06BB01C979ABE002C1FAF /* ZWIntroductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA06BAF1C979ABE002C1FAF /* ZWIntroductionViewController.m */; };
 		8FA06BB31C97A6A7002C1FAF /* weatherImage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FA06BB21C97A6A7002C1FAF /* weatherImage.plist */; };
+		8FAC56D11CFBE9E300A9F890 /* TestRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAC56D01CFBE9E300A9F890 /* TestRequest.m */; };
+		8FB3F47C1CCE0CB90045AE28 /* NSObject+tryCateNUmber.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB3F47B1CCE0CB90045AE28 /* NSObject+tryCateNUmber.m */; };
 		8FD58A0A1C71A40100652009 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A091C71A40100652009 /* Security.framework */; };
 		8FD58A0C1C71A40D00652009 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A0B1C71A40D00652009 /* libicucore.tbd */; };
 		8FD58A0E1C71A41600652009 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD58A0D1C71A41600652009 /* libz.1.2.5.tbd */; };
@@ -157,6 +159,10 @@
 		8FA06BAE1C979ABE002C1FAF /* ZWIntroductionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWIntroductionViewController.h; sourceTree = "<group>"; };
 		8FA06BAF1C979ABE002C1FAF /* ZWIntroductionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWIntroductionViewController.m; sourceTree = "<group>"; };
 		8FA06BB21C97A6A7002C1FAF /* weatherImage.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = weatherImage.plist; sourceTree = "<group>"; };
+		8FAC56CF1CFBE9E300A9F890 /* TestRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRequest.h; sourceTree = "<group>"; };
+		8FAC56D01CFBE9E300A9F890 /* TestRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRequest.m; sourceTree = "<group>"; };
+		8FB3F47A1CCE0CB90045AE28 /* NSObject+tryCateNUmber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+tryCateNUmber.h"; sourceTree = "<group>"; };
+		8FB3F47B1CCE0CB90045AE28 /* NSObject+tryCateNUmber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+tryCateNUmber.m"; sourceTree = "<group>"; };
 		8FD58A091C71A40100652009 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8FD58A0B1C71A40D00652009 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		8FD58A0D1C71A41600652009 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
@@ -282,6 +288,8 @@
 		8F0386111C43856B00AE9523 /* EasyLifeTests */ = {
 			isa = PBXGroup;
 			children = (
+				8FAC56CF1CFBE9E300A9F890 /* TestRequest.h */,
+				8FAC56D01CFBE9E300A9F890 /* TestRequest.m */,
 				8F0386121C43856B00AE9523 /* EasyLifeTests.m */,
 				8F0386141C43856B00AE9523 /* Info.plist */,
 			);
@@ -403,6 +411,8 @@
 		8FA06BB11C97A231002C1FAF /* AD+GUIDE */ = {
 			isa = PBXGroup;
 			children = (
+				8FB3F47A1CCE0CB90045AE28 /* NSObject+tryCateNUmber.h */,
+				8FB3F47B1CCE0CB90045AE28 /* NSObject+tryCateNUmber.m */,
 				8FA06BAE1C979ABE002C1FAF /* ZWIntroductionViewController.h */,
 				8FA06BAF1C979ABE002C1FAF /* ZWIntroductionViewController.m */,
 				8F3539151C969FC7001521A9 /* AdViewController.h */,
@@ -661,6 +671,7 @@
 				8F35A2C21C61DBB100A1ED45 /* WebSearchViewController.m in Sources */,
 				8F67730C1C95ABEA003DAA44 /* UIImage+Rotate.m in Sources */,
 				8FD58A301C7AED8D00652009 /* MovieTableViewController.m in Sources */,
+				8FB3F47C1CCE0CB90045AE28 /* NSObject+tryCateNUmber.m in Sources */,
 				8F1B50B71C8D627F0027F6CC /* CollectionViewCell.m in Sources */,
 				8F35A2D81C61F91300A1ED45 /* UIBarButtonItem+Badge.m in Sources */,
 				8F35A2DB1C61F91300A1ED45 /* NewsTableViewCell.m in Sources */,
@@ -673,6 +684,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F0386131C43856B00AE9523 /* EasyLifeTests.m in Sources */,
+				8FAC56D11CFBE9E300A9F890 /* TestRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -837,8 +849,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/BaiduMapKit\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/MOBFoundation\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/ShareSDK3\"",
+					"\"${PODS_ROOT}/Headers/Public/YRSideViewController\"",
+				);
 				INFOPLIST_FILE = EasyLifeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PODS_ROOT = "${SRCROOT}/Pods";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLifeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasyLife.app/EasyLife";
@@ -849,8 +872,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/BaiduMapKit\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/MOBFoundation\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/ShareSDK3\"",
+					"\"${PODS_ROOT}/Headers/Public/YRSideViewController\"",
+				);
 				INFOPLIST_FILE = EasyLifeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PODS_ROOT = "${SRCROOT}/Pods";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qg715buy.yiren.EasyLifeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasyLife.app/EasyLife";

@@ -19,6 +19,8 @@
 @property (nonatomic, assign) CGRect sourceRect;       // 用户手势点 对应需要突出显示的rect
 @property (nonatomic, strong) NSIndexPath *indexPath;  // 用户手势点 对应的indexPath
 
+-(void) preloadData;
+-(void)getNewsWithChannelID:(NSString *)channelId;
 
 //@property (strong,nonatomic)NewsData *dataModel;
 @end

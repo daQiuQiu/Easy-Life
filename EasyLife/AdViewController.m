@@ -8,6 +8,7 @@
 
 #import "AdViewController.h"
 #import <Masonry.h>
+#import "NSObject+tryCateNUmber.h"
 
 @interface AdViewController ()
 
@@ -20,7 +21,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     [self creatAdImageView];
-    
+    [self catePrint];
     NSLog(@"ad");
 }
 

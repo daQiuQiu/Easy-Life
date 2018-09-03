@@ -91,7 +91,7 @@ BOOL isLoading = NO;
     UIColor * color = [UIColor whiteColor];
     fontdic = [NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
     self.navigationController.navigationBar.titleTextAttributes = fontdic;
-    [self notificationToRefresh];//默认载入新闻
+    //[self notificationToRefresh];//默认载入新闻
     
 
 }
@@ -110,10 +110,16 @@ BOOL isLoading = NO;
 //    YRSideViewController *sideViewController=[delegate sideController];
 //    [sideViewController showLeftViewController:true];
 //}
+#pragma mark - 预加载数据方法
+
+-(void) preloadData {
+    [self getNewsData];
+}
 
 #pragma mark - 通知刷新方法
 -(void) notificationToRefresh {
     //[self removeScrollView];
+    NSLog(@"new noti load");
     DataLoading *model = [DataLoading initWithModel];
     [self pullToRefresh];
     self.navigationItem.title = @"今日热闻";
@@ -381,6 +387,132 @@ BOOL isLoading = NO;
 - (void)sideMenuClick:(NSString *)channelId
 {
     [self getNewsWithChannelID:channelId];
+}
+
+#pragma mark - 纯新闻数据
+-(void) getNewsData {
+    DataLoading *model = [DataLoading initWithModel];
+    NSString *channelid = model.channelId;
+    NSLog(@"newsID is%@",channelid);
+    
+    NSString *url = @"http://apis.baidu.com/showapi_open_bus/channel_news/search_news";
+    NSString *argu = [NSString stringWithFormat:@"channelId=%@&page=1",channelid];
+    NSString *urlString = [NSString stringWithFormat:@"%@?%@",url,argu];
+    NSLog(@"%@",urlString);
+    NSURL *dataurl = [NSURL URLWithString:urlString];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:dataurl cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10];
+    request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
+    request.HTTPMethod = @"get";
+    [request setValue:@"48d0498b92b758d3e0d5119c69c08a94" forHTTPHeaderField:@"apikey"];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@",error);
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"网络不给力"
+                                                                           message:@"请稍后再试"
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:nil];
+            [alert addAction:cancelAction];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        }
+        else {
+            
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+            NSLog(@"JSON%@",dic);
+            NSDictionary *dic1 = [dic objectForKey:@"showapi_res_body"];
+            NSDictionary *dic2 = [dic1 objectForKey:@"pagebean"];
+            NSMutableArray *array = [dic2 objectForKey:@"contentlist"];
+            //NSLog(@"数据：%@",array);
+            DataLoading *model = [DataLoading initWithModel];
+            model.newsTitleArray = [NSMutableArray array];
+            model.imageArray = [NSMutableArray array];
+            model.urlArray = [NSMutableArray array];
+            model.tagArray = [NSMutableArray array];
+            for (NSDictionary *dic in array) {
+                NSString *title = [dic objectForKey:@"title"];
+                NSString *newsurl = [dic objectForKey:@"link"];
+                NSDictionary *tagDic = [dic objectForKey:@"sentiment_tag"];
+                if (tagDic) {
+                    NSString *tag = [tagDic objectForKey:@"name"];
+                    [model.tagArray addObject:tag];
+                    //NSLog(@"tag = %@",tag);
+                }
+                else {
+                    NSString *notag = @" ";
+                    [model.tagArray addObject:notag];
+                }
+                NSLog(@"%@",title);
+                NSLog(@"%@",newsurl);
+                [model.newsTitleArray addObject:title];
+                [model.urlArray addObject:newsurl];
+                
+                NSMutableArray *imageurl = [dic objectForKey:@"imageurls"];
+                
+                if ([imageurl count] == 0) {
+                    
+                    NSString *noImageurl = [NSString stringWithFormat:@"http://n10.cmsfile.pg0.cn/group2/M00/31/8B/Cgqg2lbcv02AEuYKAADcSqN9jCc982.jpg"];
+                    //noImageurl = [noImageurl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+                    [model.imageArray addObject:noImageurl];
+                }
+                else {
+                    NSDictionary *imagedic = imageurl[0];
+                    NSString *imageurlstring = [imagedic objectForKey:@"url"];
+                    [model.imageArray addObject:imageurlstring];
+                }//取第一张图片，如果没有  自动使用备用图
+                
+                //                if (imageurl == nil) {
+                //                    [imageurl addObject:@"x"];
+                //                }
+                //                NSLog(@"imagedic is aaaa%@",[dic objectForKey:@"imageurls"]);
+                //NSLog(@"存数组：%@",imageurl);
+                //                NSLog(@"%ld",[imageurl count]);
+                //                [model.imageArray addObjectsFromArray:imageurl];
+                //                NSLog(@"%ld",[model.imageArray count]);
+                //                for (NSDictionary *imagedic in imageurl) {
+                //
+                //                    //NSLog(@"arrar is%@",model.imageArray);
+                //                }
+            }
+            
+            
+            
+            
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+             DataLoading *model = [DataLoading initWithModel];
+            NSString *homeDictionary = NSHomeDirectory();//获取根目录
+            NSString *homePath  = [homeDictionary stringByAppendingPathComponent:@"newsModel.archiver"];//添加储存的文件名
+            NSMutableData *data = [[NSMutableData alloc] init];
+            NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+            
+            
+            [archiver encodeObject:model forKey:@"kmodel"];//归档一个字符串
+            [archiver finishEncoding];
+            if (data) {
+                [data writeToFile:homePath atomically:YES];
+                NSLog(@"预加载完成!");
+            }
+            else {
+                NSLog(@"预加载FAIL!");
+            }
+            
+            
+//            [self getImage];
+//            if (self.timer) {
+//                //[self.timer invalidate];
+//            }
+//            if (self.topScr == nil) {
+//                [self creatScrollView];
+//            }
+            
+        });
+        
+    }];
+    
+    [dataTask resume];
+
 }
 
 #pragma mark - 得到新闻内容

@@ -37,6 +37,6 @@
 @property (nonatomic) double lon;
 
 @property (nonatomic,strong) CLLocationManager* locationManager;
-
+-(void) changeBackgroundImage;
 
 @end

@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EasyLife/TableViewController.m"
-            timestampString = "481519947.308367"
+            timestampString = "483432756.428247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "453"
-            endingLineNumber = "453"
+            startingLineNumber = "585"
+            endingLineNumber = "585"
             landmarkName = "-getNewsWithChannelID:"
             landmarkType = "5">
          </BreakpointContent>
@@ -36,13 +36,91 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EasyLife/TableViewController.m"
-            timestampString = "481519949.685879"
+            timestampString = "483432756.428247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "458"
-            endingLineNumber = "458"
+            startingLineNumber = "590"
+            endingLineNumber = "590"
             landmarkName = "-getNewsWithChannelID:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EasyLifeTests/EasyLifeTests.m"
+            timestampString = "486284253.781352"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "-test1002PhoneLogin"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__35-[EasyLifeTests test1002PhoneLogin]_block_invoke"
+                  moduleName = "EasyLifeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yiren/Desktop/EasyLife/EasyLifeTests/EasyLifeTests.m"
+                  timestampString = "486285670.273952"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "298">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__35-[EasyLifeTests test1002PhoneLogin]_block_invoke"
+                  moduleName = "EasyLifeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yiren/Desktop/EasyLife/EasyLifeTests/EasyLifeTests.m"
+                  timestampString = "486285670.274495"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "714">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__35-[EasyLifeTests test1002PhoneLogin]_block_invoke"
+                  moduleName = "EasyLifeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yiren/Desktop/EasyLife/EasyLifeTests/EasyLifeTests.m"
+                  timestampString = "486285670.275003"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "791">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__35-[EasyLifeTests test1002PhoneLogin]_block_invoke"
+                  moduleName = "EasyLifeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yiren/Desktop/EasyLife/EasyLifeTests/EasyLifeTests.m"
+                  timestampString = "486285670.27549"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "913">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

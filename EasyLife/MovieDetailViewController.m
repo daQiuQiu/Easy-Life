@@ -450,6 +450,8 @@ BOOL isExpand = NO;
     }
 }
 
+
+
 #pragma mark - 视频播放
 -(void) playMovie {
     [UIApplication sharedApplication].statusBarHidden = YES;
